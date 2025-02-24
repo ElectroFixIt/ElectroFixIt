@@ -140,7 +140,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 0;
+      padding: 0; /* Se elimina el padding para evitar recortes */
     }
     .fullscreen-img .close-btn {
       position: absolute;
@@ -163,8 +163,8 @@
     }
     .fullscreen-img .img-container img {
       max-width: 45%;
-      max-height: calc(100vh - 40px); /* Se resta un margen para que no se recorte por debajo */
-      object-fit: contain;
+      max-height: 100%;
+      object-fit: contain; /* Asegura que la imagen se muestre completa sin recortes */
     }
 
     /* Responsividad */
