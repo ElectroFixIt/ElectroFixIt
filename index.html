@@ -13,7 +13,6 @@
       font-family: 'Orbitron', sans-serif;
       margin: 0;
       padding: 0;
-      /* Sustituimos la imagen de fondo por la nueva */
       background: url('https://wallpapers.com/images/high/hd-engineering-colorful-computer-circuit-board-0bgyx90tzqx86vss.webp') no-repeat center center fixed;
       background-size: cover;
       color: #e5e5e5;
@@ -163,7 +162,10 @@
     }
     .fullscreen-img .img-container img {
       max-width: 45%;
-      max-height: calc(100vh - 40px); /* Se resta un margen para que no se recorte por debajo */
+      /* Se usa calc() para restar un margen y asegurar que la imagen se ajuste completamente al viewport */
+      max-height: calc(100vh - 40px);
+      width: auto;
+      height: auto;
       object-fit: contain;
     }
 
@@ -183,6 +185,7 @@
       }
       .fullscreen-img .img-container img {
         max-width: 90%;
+        max-height: calc(100vh - 40px);
       }
     }
   </style>
