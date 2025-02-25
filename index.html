@@ -10,11 +10,32 @@
   <style>
     /* Variables CSS para facilitar cambios */
     :root {
-      --primary-color: #FFD700;
-      --secondary-color: #000;
-      --background-overlay: rgba(0, 0, 0, 0.85);
-      --accent-color: #fff;
-      --text-color: #e5e5e5;
+      --primary-color: #007aff;         /* Azul vibrante */
+      --secondary-color: #ffffff;         /* Blanco */
+      --background-overlay: rgba(0, 0, 0, 0.7); /* Fondo semitransparente para secciones */
+      --accent-color: #a7d8ff;            /* Azul claro para hover */
+      --text-color: #f0f0f0;              /* Texto claro */
+    }
+
+    /* Selector de idioma en la esquina superior derecha */
+    #languageSelectorContainer {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 110;
+    }
+    #languageSwitcher {
+      padding: 5px 10px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: none;
+      background: rgba(0, 0, 0, 0.6);
+      color: var(--primary-color);
+      transition: background 0.3s, color 0.3s;
+    }
+    #languageSwitcher:hover {
+      background: var(--primary-color);
+      color: var(--secondary-color);
     }
 
     /* Estilos base */
@@ -28,8 +49,7 @@
     }
     body {
       font-family: 'Roboto', sans-serif;
-      background: url('https://wallpapers.com/images/high/hd-engineering-colorful-computer-circuit-board-0bgyx90tzqx86vss.webp') no-repeat center center fixed;
-      background-size: cover;
+      background: linear-gradient(135deg, #1a1a1a, #333333);
       color: var(--text-color);
       line-height: 1.6;
     }
@@ -57,7 +77,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0, 0, 0, 0.8);
       padding: 10px 0;
       text-align: center;
       box-shadow: 0 2px 4px rgba(0,0,0,0.3);
@@ -85,7 +105,7 @@
       max-width: 1000px;
       margin: 20px auto;
     }
-    /* Agregamos scroll-margin-top para desplazar las secciones */
+    /* Desplazamiento con margen superior para secciones */
     section {
       scroll-margin-top: 100px;
       background: var(--background-overlay);
@@ -125,6 +145,14 @@
     .btn:hover {
       background: var(--accent-color);
       transform: scale(1.05);
+    }
+
+    /* Estilo para subenunciados en "Quiénes Somos" */
+    #quienes-somos .subheading {
+      display: block;
+      font-size: 1.3rem;
+      margin: 15px 0 10px;
+      color: var(--primary-color);
     }
 
     /* Footer */
@@ -218,84 +246,99 @@
   </style>
 </head>
 <body>
+  <!-- Selector de idioma en la parte superior derecha -->
+  <div id="languageSelectorContainer">
+    <select id="languageSwitcher">
+      <option value="es" selected>🇪🇸 Español</option>
+      <option value="en">🇬🇧 English</option>
+    </select>
+  </div>
+
   <header>
     <img src="img/Photoroom_20250126_215254.PNG" alt="Logo de Electro Fix It">
-    <p>🔧 Servicio técnico transparente y personalizado - ¡+500 clientes satisfechos! 😊</p>
-    <p>⭐ Calidad que impulsa tu confianza - Servicio a domicilio en Tenerife 🚚🏝</p>
+    <p id="header-tagline1">🔧 Servicio técnico transparente y personalizado - ¡+500 clientes satisfechos! 😊</p>
+    <p id="header-tagline2">⭐ Calidad que impulsa tu confianza - Servicio a domicilio en Tenerife 🚚🏝</p>
   </header>
 
   <nav>
-    <a href="#services">Servicios</a>
-    <a href="#products">Móviles en Venta</a>
-    <a href="#accessories">Accesorios</a>
-    <a href="#trabajos">Nuestros Trabajos</a>
-    <a href="#testimonios">Testimonios de Clientes</a>
-    <a href="#reseñas">Reseñas en Google</a>
+    <a href="#services" id="nav-services">Servicios</a>
+    <a href="#products" id="nav-products">Móviles en Venta</a>
+    <a href="#accessories" id="nav-accessories">Accesorios</a>
+    <a href="#trabajos" id="nav-works">Nuestros Trabajos</a>
+    <a href="#testimonios" id="nav-testimonials">Testimonios de Clientes</a>
+    <a href="#reseñas" id="nav-reviews">Reseñas en Google</a>
   </nav>
 
   <main>
+    <!-- Sección "Quiénes Somos" -->
     <section id="quienes-somos">
-      <h2>Quiénes Somos</h2>
-      <p>🔧 <strong>Electro Fix It - Más que un servicio técnico, una garantía de confianza</strong></p>
-      <p>Bienvenido a <strong>Electro Fix It</strong>, tu taller de confianza en <strong>Tenerife</strong>, especializado en la <strong>reparación, reacondicionamiento y venta de dispositivos móviles</strong>. Nos destacamos por ofrecer un <strong>servicio técnico transparente y personalizado</strong>.</p>
-      <ul>
-        <li>✅ <strong>Experiencia y transparencia:</strong> Años de experiencia en la reparación de móviles.</li>
-        <li>✅ <strong>+500 clientes satisfechos:</strong> Nuestro crecimiento ha sido impulsado por la confianza de nuestros clientes.</li>
-        <li>✅ <strong>Móviles reacondicionados con garantía:</strong> Productos en excelente estado con garantía incluida.</li>
-        <li>✅ <strong>Servicio a domicilio:</strong> Recogida y entrega en distintas zonas de Tenerife.</li>
-        <li>✅ <strong>Precios justos y accesibles:</strong> Evitamos costos inflados sin razón.</li>
+      <h2 id="section-quienes-title">Quiénes Somos</h2>
+      <p><strong class="subheading" id="section-quienes-subheading">🔧 Electro Fix It - Más que un servicio técnico, una garantía de confianza</strong></p>
+      <p id="section-quienes-desc">Bienvenido a Electro Fix It, tu taller de confianza en Tenerife, especializado en la reparación, reacondicionamiento y venta de dispositivos móviles. Nos destacamos por ofrecer un servicio técnico transparente y personalizado.</p>
+      <ul id="section-quienes-list">
+        <li>✅ Experiencia y transparencia: Años de experiencia en la reparación de móviles.</li>
+        <li>✅ +500 clientes satisfechos: Nuestro crecimiento ha sido impulsado por la confianza de nuestros clientes.</li>
+        <li>✅ Móviles reacondicionados y nuevos con garantía: Productos en excelente estado con garantía incluida.</li>
+        <li>✅ Servicio a domicilio: Recogida y entrega en distintas zonas de Tenerife.</li>
+        <li>✅ Precios justos y accesibles: Evitamos costos inflados sin razón.</li>
       </ul>
-      <p>📍 <strong>Ubicación y disponibilidad</strong></p>
-      <p>🚛 Trabajamos en <strong>Tenerife</strong>, con opción de recogida y entrega a domicilio.</p>
-      <p>🕒 <strong>Atendemos 24/7</strong></p>
-      <p>📩 <strong>Contáctanos</strong></p>
-      <p>📲 <strong>WhatsApp:</strong> <a href="https://wa.me/34642886426" target="_blank">Contáctanos ahora</a></p>
-      <p>📷 <strong>Instagram:</strong> <a href="https://www.instagram.com/electro_fix_it/" target="_blank">@electro_fix_it</a></p>
+      <p id="section-quienes-location-title"><strong>📍 Ubicación y disponibilidad</strong></p>
+      <p id="section-quienes-location-desc">🚛 Trabajamos en Tenerife, con opción de recogida y entrega a domicilio.</p>
+      <p id="section-quienes-availability"><strong>🕒 Atendemos 24/7</strong></p>
+      <p id="section-quienes-contact"><strong>📩 Contáctanos</strong></p>
+      <p id="section-quienes-whatsapp">📲 WhatsApp: Contáctanos ahora</p>
+      <p id="section-quienes-instagram">📷 Instagram: @electro_fix_it</p>
     </section>
 
+    <!-- Sección "Servicios" -->
     <section id="services">
-      <h2>Servicios</h2>
-      <p>Reparación de pantallas, baterías, cámaras y más. Nuestro equipo de expertos garantiza calidad y rapidez en cada servicio.</p>
-      <a href="https://wa.me/34642886426" target="_blank" class="btn">Contáctanos</a>
+      <h2 id="section-services-title">Servicios</h2>
+      <p id="section-services-desc">Reparación de pantallas, baterías, cámaras y más. Nuestro equipo de expertos garantiza calidad y rapidez en cada servicio.</p>
+      <a href="https://wa.me/34642886426" target="_blank" class="btn" id="section-services-btn">Contáctanos</a>
     </section>
 
+    <!-- Sección "Móviles en Venta" -->
     <section id="products">
-      <h2>Móviles en Venta</h2>
-      <p>Descubre nuestra selección de móviles restaurados y nuevos. Encuentra los mejores precios y productos certificados.</p>
-      <a href="https://www.facebook.com/marketplace/profile/61565708769230/" target="_blank" class="btn">Ver Catálogo</a>
+      <h2 id="section-products-title">Móviles en Venta</h2>
+      <p id="section-products-desc">Descubre nuestra selección de móviles restaurados y nuevos. Encuentra los mejores precios y productos certificados.</p>
+      <a href="https://www.facebook.com/marketplace/profile/61565708769230/" target="_blank" class="btn" id="section-products-btn">Ver Catálogo</a>
     </section>
 
+    <!-- Sección "Accesorios" -->
     <section id="accessories">
-      <h2>Accesorios</h2>
-      <p>Explora nuestra gama de accesorios para móviles: cargadores, carcasas, protectores de pantalla y mucho más.</p>
-      <a href="#" class="btn" id="openModal">Explorar Accesorios</a>
+      <h2 id="section-accessories-title">Accesorios</h2>
+      <p id="section-accessories-desc">Explora nuestra gama de accesorios para móviles: cargadores, carcasas, protectores de pantalla y mucho más.</p>
+      <a href="#" class="btn" id="section-accessories-btn">Explorar Accesorios</a>
     </section>
     
+    <!-- Sección "Nuestros Trabajos" -->
     <section id="trabajos">
-      <h2>Nuestros Trabajos</h2>
-      <p>Conoce algunos de los proyectos realizados por nuestro equipo. ¡Calidad y detalle en cada trabajo!</p>
-      <a href="https://www.instagram.com/reel/DGEewjuoofu/?hl=es" target="_blank" class="btn">Ver Trabajos</a>
+      <h2 id="section-works-title">Nuestros Trabajos</h2>
+      <p id="section-works-desc">Conoce algunos de los proyectos realizados por nuestro equipo. ¡Calidad y detalle en cada trabajo!</p>
+      <a href="https://www.instagram.com/reel/DGEewjuoofu/?hl=es" target="_blank" class="btn" id="section-works-btn">Ver Trabajos</a>
     </section>
 
+    <!-- Sección "Testimonios de Clientes" -->
     <section id="testimonios">
-      <h2>Testimonios de Clientes</h2>
-      <p>Descubre las experiencias y opiniones de nuestros clientes satisfechos. ¡La calidad de nuestro servicio habla por sí misma!</p>
-      <a href="https://www.instagram.com/stories/highlights/17989038299202294/?hl=es" target="_blank" class="btn">Ver Testimonios</a>
+      <h2 id="section-testimonials-title">Testimonios de Clientes</h2>
+      <p id="section-testimonials-desc">Descubre las experiencias y opiniones de nuestros clientes satisfechos. ¡La calidad de nuestro servicio habla por sí misma!</p>
+      <a href="https://www.instagram.com/stories/highlights/17989038299202294/?hl=es" target="_blank" class="btn" id="section-testimonials-btn">Ver Testimonios</a>
     </section>
     
+    <!-- Sección "Reseñas en Google" -->
     <section id="reseñas">
-      <h2>Reseñas en Google</h2>
-      <p>¡Comparte tu experiencia y ayúdanos a mejorar! Deja tu reseña sobre nuestro servicio en Google.</p>
-      <a href="https://www.google.com/search?sca_esv=27bcf78510aa1d17&rlz=1C1UEAD_enES1072ES1074&sxsrf=AHTn8zp4f2greNeNNSxJn_1E7o6UXe64JQ:1740378193651&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2KzTzeJeSZyoB8baWqoSPFqahiAy_wx7DLuBr0B2un-3MvDk2zOyS-REPILlmBKddgeHz4GrFHEZD2AHMJYeYahO15FCuR" target="_blank" class="btn">Deja tu Reseña</a>
+      <h2 id="section-reviews-title">Reseñas en Google</h2>
+      <p id="section-reviews-desc">¡Comparte tu experiencia y ayúdanos a mejorar! Deja tu reseña sobre nuestro servicio en Google.</p>
+      <a href="https://www.google.com/search?sca_esv=27bcf78510aa1d17&rlz=1C1UEAD_enES1072ES1074&sxsrf=AHTn8zp4f2greNeNNSxJn_1E7o6UXe64JQ:1740378193651&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2KzTzeJeSZyoB8baWqoSPFqahiAy_wx7DLuBr0B2un-3MvDk2zOyS-REPILlmBKddgeHz4GrFHEZD2AHMJYeYahO15FCuR" target="_blank" class="btn" id="section-reviews-btn">Deja tu Reseña</a>
     </section>
   </main>
 
   <footer>
     <p>
       <img src="img/Instagram_logo_2022.svg.webp" alt="Logo Instagram">
-      Síguenos en Instagram: <a href="https://www.instagram.com/electro_fix_it/" target="_blank">@electro_fix_it</a>
+      <span id="footer-instagram">Síguenos en Instagram: @electro_fix_it</span>
     </p>
-    <p>© 2024 Electro Fix It. Todos los derechos reservados.</p>
+    <p id="footer-copyright">© 2024 Electro Fix It. Todos los derechos reservados.</p>
   </footer>
 
   <!-- Modal para imágenes de accesorios -->
@@ -308,25 +351,206 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const modal = document.getElementById('fullscreenImg');
-      const openModalBtn = document.getElementById('openModal');
-      const closeModalBtn = document.getElementById('closeBtn');
-
-      openModalBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        modal.style.display = 'block';
-      });
-
-      closeModalBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-      });
-
-      // Cierra el modal si se hace clic fuera de la imagen
-      window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-          modal.style.display = 'none';
+    // Objeto de traducciones para español e inglés
+    const translations = {
+      es: {
+        header: {
+          tagline1: "🔧 Servicio técnico transparente y personalizado - ¡+500 clientes satisfechos! 😊",
+          tagline2: "⭐ Calidad que impulsa tu confianza - Servicio a domicilio en Tenerife 🚚🏝"
+        },
+        nav: {
+          services: "Servicios",
+          products: "Móviles en Venta",
+          accessories: "Accesorios",
+          works: "Nuestros Trabajos",
+          testimonials: "Testimonios de Clientes",
+          reviews: "Reseñas en Google"
+        },
+        quienes: {
+          title: "Quiénes Somos",
+          subheading: "🔧 Electro Fix It - Más que un servicio técnico, una garantía de confianza",
+          description: "Bienvenido a Electro Fix It, tu taller de confianza en Tenerife, especializado en la reparación, reacondicionamiento y venta de dispositivos móviles. Nos destacamos por ofrecer un servicio técnico transparente y personalizado.",
+          list: [
+            "✅ Experiencia y transparencia: Años de experiencia en la reparación de móviles.",
+            "✅ +500 clientes satisfechos: Nuestro crecimiento ha sido impulsado por la confianza de nuestros clientes.",
+            "✅ Móviles reacondicionados y nuevos con garantía: Productos en excelente estado con garantía incluida.",
+            "✅ Servicio a domicilio: Recogida y entrega en distintas zonas de Tenerife.",
+            "✅ Precios justos y accesibles: Evitamos costos inflados sin razón."
+          ],
+          locationTitle: "📍 Ubicación y disponibilidad",
+          locationDesc: "🚛 Trabajamos en Tenerife, con opción de recogida y entrega a domicilio.",
+          availability: "🕒 Atendemos 24/7",
+          contact: "📩 Contáctanos",
+          whatsapp: "📲 WhatsApp: Contáctanos ahora",
+          instagram: "📷 Instagram: @electro_fix_it"
+        },
+        services: {
+          title: "Servicios",
+          description: "Reparación de pantallas, baterías, cámaras y más. Nuestro equipo de expertos garantiza calidad y rapidez en cada servicio.",
+          btn: "Contáctanos"
+        },
+        products: {
+          title: "Móviles en Venta",
+          description: "Descubre nuestra selección de móviles restaurados y nuevos. Encuentra los mejores precios y productos certificados.",
+          btn: "Ver Catálogo"
+        },
+        accessories: {
+          title: "Accesorios",
+          description: "Explora nuestra gama de accesorios para móviles: cargadores, carcasas, protectores de pantalla y mucho más.",
+          btn: "Explorar Accesorios"
+        },
+        works: {
+          title: "Nuestros Trabajos",
+          description: "Conoce algunos de los proyectos realizados por nuestro equipo. ¡Calidad y detalle en cada trabajo!",
+          btn: "Ver Trabajos"
+        },
+        testimonials: {
+          title: "Testimonios de Clientes",
+          description: "Descubre las experiencias y opiniones de nuestros clientes satisfechos. ¡La calidad de nuestro servicio habla por sí misma!",
+          btn: "Ver Testimonios"
+        },
+        reviews: {
+          title: "Reseñas en Google",
+          description: "¡Comparte tu experiencia y ayúdanos a mejorar! Deja tu reseña sobre nuestro servicio en Google.",
+          btn: "Deja tu Reseña"
+        },
+        footer: {
+          instagram: "Síguenos en Instagram: @electro_fix_it",
+          copyright: "© 2024 Electro Fix It. Todos los derechos reservados."
         }
+      },
+      en: {
+        header: {
+          tagline1: "🔧 Transparent and personalized technical service - +500 satisfied customers! 😊",
+          tagline2: "⭐ Quality that boosts your trust - Home service in Tenerife 🚚🏝"
+        },
+        nav: {
+          services: "Services",
+          products: "Mobile Phones for Sale",
+          accessories: "Accessories",
+          works: "Our Works",
+          testimonials: "Customer Testimonials",
+          reviews: "Google Reviews"
+        },
+        quienes: {
+          title: "Who We Are",
+          subheading: "🔧 Electro Fix It - More than just a technical service, a guarantee of trust",
+          description: "Welcome to Electro Fix It, your trusted workshop in Tenerife, specialized in the repair, refurbishment and sale of mobile devices. We stand out for offering a transparent and personalized technical service.",
+          list: [
+            "✅ Experience and transparency: Years of experience in mobile repair.",
+            "✅ +500 satisfied customers: Our growth has been driven by our customers' trust.",
+            "✅ Refurbished and new phones with warranty: Products in excellent condition with an included warranty.",
+            "✅ Home service: Pickup and delivery in various areas of Tenerife.",
+            "✅ Fair and affordable prices: We avoid unnecessarily inflated costs."
+          ],
+          locationTitle: "📍 Location and availability",
+          locationDesc: "🚛 We operate in Tenerife, offering pickup and delivery options.",
+          availability: "🕒 Available 24/7",
+          contact: "📩 Contact us",
+          whatsapp: "📲 WhatsApp: Contact us now",
+          instagram: "📷 Instagram: @electro_fix_it"
+        },
+        services: {
+          title: "Services",
+          description: "Screen, battery, camera repairs and more. Our team of experts ensures quality and speed in every service.",
+          btn: "Contact Us"
+        },
+        products: {
+          title: "Mobile Phones for Sale",
+          description: "Discover our selection of refurbished and new mobile phones. Find the best prices and certified products.",
+          btn: "View Catalog"
+        },
+        accessories: {
+          title: "Accessories",
+          description: "Explore our range of mobile accessories: chargers, cases, screen protectors and much more.",
+          btn: "Explore Accessories"
+        },
+        works: {
+          title: "Our Works",
+          description: "Discover some of the projects completed by our team. Quality and detail in every project!",
+          btn: "View Works"
+        },
+        testimonials: {
+          title: "Customer Testimonials",
+          description: "Discover the experiences and opinions of our satisfied customers. The quality of our service speaks for itself.",
+          btn: "View Testimonials"
+        },
+        reviews: {
+          title: "Google Reviews",
+          description: "Share your experience and help us improve! Leave your review about our service on Google.",
+          btn: "Leave Your Review"
+        },
+        footer: {
+          instagram: "Follow us on Instagram: @electro_fix_it",
+          copyright: "© 2024 Electro Fix It. All rights reserved."
+        }
+      }
+    };
+
+    // Función para actualizar el contenido según el idioma seleccionado
+    function updateLanguage(lang) {
+      // Header
+      document.getElementById("header-tagline1").innerText = translations[lang].header.tagline1;
+      document.getElementById("header-tagline2").innerText = translations[lang].header.tagline2;
+      // Navegación
+      document.getElementById("nav-services").innerText = translations[lang].nav.services;
+      document.getElementById("nav-products").innerText = translations[lang].nav.products;
+      document.getElementById("nav-accessories").innerText = translations[lang].nav.accessories;
+      document.getElementById("nav-works").innerText = translations[lang].nav.works;
+      document.getElementById("nav-testimonials").innerText = translations[lang].nav.testimonials;
+      document.getElementById("nav-reviews").innerText = translations[lang].nav.reviews;
+      // Sección Quiénes Somos
+      document.getElementById("section-quienes-title").innerText = translations[lang].quienes.title;
+      document.getElementById("section-quienes-subheading").innerText = translations[lang].quienes.subheading;
+      document.getElementById("section-quienes-desc").innerText = translations[lang].quienes.description;
+      // Actualizamos la lista de características
+      const listUl = document.getElementById("section-quienes-list");
+      listUl.innerHTML = "";
+      translations[lang].quienes.list.forEach(item => {
+        const li = document.createElement("li");
+        li.innerText = item;
+        listUl.appendChild(li);
+      });
+      document.getElementById("section-quienes-location-title").innerText = translations[lang].quienes.locationTitle;
+      document.getElementById("section-quienes-location-desc").innerText = translations[lang].quienes.locationDesc;
+      document.getElementById("section-quienes-availability").innerText = translations[lang].quienes.availability;
+      document.getElementById("section-quienes-contact").innerText = translations[lang].quienes.contact;
+      document.getElementById("section-quienes-whatsapp").innerText = translations[lang].quienes.whatsapp;
+      document.getElementById("section-quienes-instagram").innerText = translations[lang].quienes.instagram;
+      // Sección Servicios
+      document.getElementById("section-services-title").innerText = translations[lang].services.title;
+      document.getElementById("section-services-desc").innerText = translations[lang].services.description;
+      document.getElementById("section-services-btn").innerText = translations[lang].services.btn;
+      // Sección Móviles en Venta
+      document.getElementById("section-products-title").innerText = translations[lang].products.title;
+      document.getElementById("section-products-desc").innerText = translations[lang].products.description;
+      document.getElementById("section-products-btn").innerText = translations[lang].products.btn;
+      // Sección Accesorios
+      document.getElementById("section-accessories-title").innerText = translations[lang].accessories.title;
+      document.getElementById("section-accessories-desc").innerText = translations[lang].accessories.description;
+      document.getElementById("section-accessories-btn").innerText = translations[lang].accessories.btn;
+      // Sección Nuestros Trabajos
+      document.getElementById("section-works-title").innerText = translations[lang].works.title;
+      document.getElementById("section-works-desc").innerText = translations[lang].works.description;
+      document.getElementById("section-works-btn").innerText = translations[lang].works.btn;
+      // Sección Testimonios de Clientes
+      document.getElementById("section-testimonials-title").innerText = translations[lang].testimonials.title;
+      document.getElementById("section-testimonials-desc").innerText = translations[lang].testimonials.description;
+      document.getElementById("section-testimonials-btn").innerText = translations[lang].testimonials.btn;
+      // Sección Reseñas en Google
+      document.getElementById("section-reviews-title").innerText = translations[lang].reviews.title;
+      document.getElementById("section-reviews-desc").innerText = translations[lang].reviews.description;
+      document.getElementById("section-reviews-btn").innerText = translations[lang].reviews.btn;
+      // Footer
+      document.getElementById("footer-instagram").innerText = translations[lang].footer.instagram;
+      document.getElementById("footer-copyright").innerText = translations[lang].footer.copyright;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Al cambiar el idioma se actualiza el contenido
+      const languageSwitcher = document.getElementById('languageSwitcher');
+      languageSwitcher.addEventListener('change', function() {
+        updateLanguage(this.value);
       });
     });
   </script>
