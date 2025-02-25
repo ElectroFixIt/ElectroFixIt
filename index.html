@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electro Fix It - Reparación y Venta de Móviles</title>
+  <title>Electro Fix It - Reparación y Venta de Móviles</title>  
   <link rel="icon" href="img/favicon.ico">
   <!-- Fuente Roboto -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -17,12 +17,10 @@
       --text-color: #f0f0f0;              /* Texto claro */
     }
 
-    /* Selector de idioma en la esquina superior derecha */
+    /* Contenedor del selector de idioma, sin posición fija */
     #languageSelectorContainer {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 110;
+      margin: 10px;
+      text-align: right;
     }
     #languageSwitcher {
       padding: 5px 10px;
@@ -67,9 +65,12 @@
       height: auto;
       margin-bottom: 20px;
     }
-    header p {
-      font-size: 1.2rem;
-      margin: 10px 0;
+    /* Nuevo estilo para el título del header */
+    #header-tagline1 {
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-top: 20px;
     }
 
     /* Navegación sticky */
@@ -105,7 +106,7 @@
       max-width: 1000px;
       margin: 20px auto;
     }
-    /* Aumentamos el margen superior al hacer scroll para que se vea el título y la descripción */
+    /* Ajustamos el scroll para que se vea el título y la descripción */
     section {
       scroll-margin-top: 150px;
       background: var(--background-overlay);
@@ -256,8 +257,7 @@
 
   <header>
     <img src="img/Photoroom_20250126_215254.PNG" alt="Logo de Electro Fix It">
-    <p id="header-tagline1">🔧 Servicio técnico transparente y personalizado - ¡+500 clientes satisfechos! 😊</p>
-    <p id="header-tagline2">⭐ Calidad que impulsa tu confianza - Servicio a domicilio en Tenerife 🚚🏝</p>
+    <p id="header-tagline1">Servicio técnico transparente y personalizado</p>
   </header>
 
   <nav>
@@ -282,12 +282,13 @@
         <li>✅ Servicio a domicilio: Recogida y entrega en distintas zonas de Tenerife.</li>
         <li>✅ Precios justos y accesibles: Evitamos costos inflados sin razón.</li>
       </ul>
-      <p id="section-quienes-location-title"><strong>📍 Ubicación y disponibilidad</strong></p>
-      <p id="section-quienes-location-desc">🚛 Trabajamos en Tenerife, con opción de recogida y entrega a domicilio.</p>
+      <p id="section-quienes-location-desc"><strong>📍 Nos encontramos en Granadilla</strong></p>
+      <p id="section-quienes-location-desc"><strong>🚛 Con opción de recogida y entrega a domicilio en todo Tenerife.</strong></p>
       <p id="section-quienes-availability"><strong>🕒 Atendemos 24/7</strong></p>
       <p id="section-quienes-contact"><strong>📩 Contáctanos</strong></p>
-      <p id="section-quienes-whatsapp">📲 WhatsApp: Contáctanos ahora</p>
-      <p id="section-quienes-instagram">📷 Instagram: @electro_fix_it</p>
+      <!-- Enlaces directos -->
+      <p id="section-quienes-whatsapp">📲 <a href="https://wa.me/34642886426" target="_blank">WhatsApp</a></p>
+      <p id="section-quienes-instagram"><p>📷 <a href="https://www.instagram.com/electro_fix_it/" target="_blank">Instagram</a></p>
     </section>
 
     <!-- Sección "Servicios" -->
@@ -381,8 +382,8 @@
           locationDesc: "🚛 Trabajamos en Tenerife, con opción de recogida y entrega a domicilio.",
           availability: "🕒 Atendemos 24/7",
           contact: "📩 Contáctanos",
-          whatsapp: "📲 WhatsApp: Contáctanos ahora",
-          instagram: "📷 Instagram: @electro_fix_it"
+          whatsapp: '📲 WhatsApp: <a href="https://wa.me/34642886426" target="_blank">Contáctanos ahora</a>',
+          instagram: '📷 Instagram: <a href="https://www.instagram.com/electro_fix_it/" target="_blank">@electro_fix_it</a>'
         },
         services: {
           title: "Servicios",
@@ -447,8 +448,8 @@
           locationDesc: "🚛 We operate in Tenerife, offering pickup and delivery options.",
           availability: "🕒 Available 24/7",
           contact: "📩 Contact us",
-          whatsapp: "📲 WhatsApp: Contact us now",
-          instagram: "📷 Instagram: @electro_fix_it"
+          whatsapp: '📲 WhatsApp: <a href="https://wa.me/34642886426" target="_blank">Contact us now</a>',
+          instagram: '📷 Instagram: <a href="https://www.instagram.com/electro_fix_it/" target="_blank">@electro_fix_it</a>'
         },
         services: {
           title: "Services",
@@ -491,7 +492,6 @@
     function updateLanguage(lang) {
       // Header
       document.getElementById("header-tagline1").innerText = translations[lang].header.tagline1;
-      document.getElementById("header-tagline2").innerText = translations[lang].header.tagline2;
       // Navegación
       document.getElementById("nav-services").innerText = translations[lang].nav.services;
       document.getElementById("nav-products").innerText = translations[lang].nav.products;
@@ -515,8 +515,9 @@
       document.getElementById("section-quienes-location-desc").innerText = translations[lang].quienes.locationDesc;
       document.getElementById("section-quienes-availability").innerText = translations[lang].quienes.availability;
       document.getElementById("section-quienes-contact").innerText = translations[lang].quienes.contact;
-      document.getElementById("section-quienes-whatsapp").innerText = translations[lang].quienes.whatsapp;
-      document.getElementById("section-quienes-instagram").innerText = translations[lang].quienes.instagram;
+      // Usamos innerHTML para conservar los enlaces
+      document.getElementById("section-quienes-whatsapp").innerHTML = translations[lang].quienes.whatsapp;
+      document.getElementById("section-quienes-instagram").innerHTML = translations[lang].quienes.instagram;
       // Sección Servicios
       document.getElementById("section-services-title").innerText = translations[lang].services.title;
       document.getElementById("section-services-desc").innerText = translations[lang].services.description;
@@ -547,7 +548,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      // Al cambiar el idioma se actualiza el contenido
       const languageSwitcher = document.getElementById('languageSwitcher');
       languageSwitcher.addEventListener('change', function() {
         updateLanguage(this.value);
