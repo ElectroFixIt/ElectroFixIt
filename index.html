@@ -4,12 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Electro Fix It - Reparación y Venta de Móviles</title>
+  <link rel="icon" href="img/favicon.ico">
+  <!-- Fuente Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Importa la fuente Orbitron */
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+    /* Variables CSS para facilitar cambios */
+    :root {
+      --primary-color: #FFD700;
+      --secondary-color: #000;
+      --background-overlay: rgba(0, 0, 0, 0.85);
+      --accent-color: #fff;
+      --text-color: #e5e5e5;
+    }
 
     /* Estilos base */
-    * {
+    *, *::before, *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -18,16 +27,16 @@
       scroll-behavior: smooth;
     }
     body {
-      font-family: 'Orbitron', sans-serif;
+      font-family: 'Roboto', sans-serif;
       background: url('https://wallpapers.com/images/high/hd-engineering-colorful-computer-circuit-board-0bgyx90tzqx86vss.webp') no-repeat center center fixed;
       background-size: cover;
-      color: #e5e5e5;
+      color: var(--text-color);
       line-height: 1.6;
     }
 
     /* Header */
     header {
-      background: rgba(0, 0, 0, 0.85);
+      background: var(--background-overlay);
       padding: 40px 20px;
       text-align: center;
       box-shadow: 0 4px 6px rgba(0,0,0,0.2);
@@ -36,7 +45,7 @@
     header img {
       width: 300px;
       height: auto;
-      margin: 0 auto 20px;
+      margin-bottom: 20px;
     }
     header p {
       font-size: 1.2rem;
@@ -60,14 +69,14 @@
       font-size: 1.1rem;
       font-weight: bold;
       text-decoration: none;
-      color: #FFD700;
+      color: var(--primary-color);
       background: rgba(0, 0, 0, 0.6);
       border-radius: 5px;
       transition: background 0.3s, color 0.3s;
     }
     nav a:hover {
-      background: #FFD700;
-      color: #000;
+      background: var(--primary-color);
+      color: var(--secondary-color);
     }
 
     /* Main content */
@@ -77,7 +86,7 @@
       margin: 20px auto;
     }
     section {
-      background: rgba(0, 0, 0, 0.85);
+      background: var(--background-overlay);
       padding: 30px;
       margin-bottom: 30px;
       border-radius: 10px;
@@ -88,20 +97,23 @@
       transform: scale(1.02);
     }
     h2 {
-      color: #FFD700;
+      color: var(--primary-color);
       margin-bottom: 15px;
       padding-bottom: 5px;
-      border-bottom: 2px solid #FFD700;
+      border-bottom: 2px solid var(--primary-color);
       text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
     }
-    p {
+    p, ul {
       margin-bottom: 15px;
       font-size: 1rem;
     }
+    ul li {
+      margin-bottom: 8px;
+    }
     .btn {
       display: inline-block;
-      background: #FFD700;
-      color: #000;
+      background: var(--primary-color);
+      color: var(--secondary-color);
       padding: 10px 20px;
       border-radius: 5px;
       text-decoration: none;
@@ -109,27 +121,27 @@
       transition: background 0.3s, transform 0.3s;
     }
     .btn:hover {
-      background: #fff;
+      background: var(--accent-color);
       transform: scale(1.05);
     }
 
     /* Footer */
     footer {
-      background: rgba(0, 0, 0, 0.85);
-      color: #FFD700;
+      background: var(--background-overlay);
+      color: var(--primary-color);
       text-align: center;
       padding: 20px 10px;
       font-size: 0.9rem;
       margin-top: 30px;
     }
     footer a {
-      color: #FFD700;
+      color: var(--primary-color);
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s;
     }
     footer a:hover {
-      color: #fff;
+      color: var(--accent-color);
     }
     footer img {
       vertical-align: middle;
@@ -138,7 +150,7 @@
       margin-right: 10px;
     }
 
-    /* Modal / Fullscreen Image Viewer */
+    /* Modal / Visor de Imagen a Pantalla Completa */
     .fullscreen-img {
       display: none;
       position: fixed;
@@ -154,15 +166,17 @@
       animation: fadeIn 0.5s;
     }
     @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
     .fullscreen-img .close-btn {
       position: absolute;
       top: 20px;
       right: 20px;
-      color: #FFD700;
+      color: var(--primary-color);
       font-size: 30px;
+      background: transparent;
+      border: none;
       cursor: pointer;
     }
     .img-container {
@@ -177,7 +191,7 @@
       max-width: 45%;
       max-height: calc(100vh - 80px);
       object-fit: contain;
-      border: 5px solid #FFD700;
+      border: 5px solid var(--primary-color);
       border-radius: 10px;
     }
 
@@ -225,51 +239,52 @@
       <ul>
         <li>✅ <strong>Experiencia y transparencia:</strong> Años de experiencia en la reparación de móviles.</li>
         <li>✅ <strong>+500 clientes satisfechos:</strong> Nuestro crecimiento ha sido impulsado por la confianza de nuestros clientes.</li>
-        <li>✅ <strong>Móviles reacondicionados con garantía:</strong> Vendemos móviles en excelente estado con garantía incluida.</li>
-        <li>✅ <strong>Servicio a domicilio:</strong> Recogida y entrega en diferentes zonas de Tenerife.</li>
+        <li>✅ <strong>Móviles reacondicionados con garantía:</strong> Productos en excelente estado con garantía incluida.</li>
+        <li>✅ <strong>Servicio a domicilio:</strong> Recogida y entrega en distintas zonas de Tenerife.</li>
         <li>✅ <strong>Precios justos y accesibles:</strong> Evitamos costos inflados sin razón.</li>
       </ul>
       <p>📍 <strong>Ubicación y disponibilidad</strong></p>
       <p>🚛 Trabajamos en <strong>Tenerife</strong>, con opción de recogida y entrega a domicilio.</p>
-      <p>🕒 <strong>Atendemos 24/7</strong>.</p>
+      <p>🕒 <strong>Atendemos 24/7</strong></p>
       <p>📩 <strong>Contáctanos</strong></p>
-      <p>📲 <strong>WhatsApp:</strong> <a href="https://wa.me/34642886426" target="_blank">📩 Contáctanos ahora</a></p>
+      <p>📲 <strong>WhatsApp:</strong> <a href="https://wa.me/34642886426" target="_blank">Contáctanos ahora</a></p>
       <p>📷 <strong>Instagram:</strong> <a href="https://www.instagram.com/electro_fix_it/" target="_blank">@electro_fix_it</a></p>
     </section>
-    <section id="services" class="services">
+
+    <section id="services">
       <h2>Servicios</h2>
       <p>Reparación de pantallas, baterías, cámaras y más. Nuestro equipo de expertos garantiza calidad y rapidez en cada servicio.</p>
       <a href="https://wa.me/34642886426" target="_blank" class="btn">Contáctanos</a>
     </section>
 
-    <section id="products" class="products">
+    <section id="products">
       <h2>Móviles en Venta</h2>
-      <p>Descubre nuestra selección de móviles restaurados y nuevos. Encuentra los mejores precios del mercado y productos certificados.</p>
+      <p>Descubre nuestra selección de móviles restaurados y nuevos. Encuentra los mejores precios y productos certificados.</p>
       <a href="https://www.facebook.com/marketplace/profile/61565708769230/" target="_blank" class="btn">Ver Catálogo</a>
     </section>
 
-    <section id="accessories" class="accessories">
+    <section id="accessories">
       <h2>Accesorios</h2>
       <p>Explora nuestra gama de accesorios para móviles: cargadores, carcasas, protectores de pantalla y mucho más.</p>
-      <a href="#" class="btn" onclick="showFullscreenImage()">Explorar Accesorios</a>
+      <a href="#" class="btn" id="openModal">Explorar Accesorios</a>
     </section>
     
-    <section id="trabajos" class="trabajos">
+    <section id="trabajos">
       <h2>Nuestros Trabajos</h2>
       <p>Conoce algunos de los proyectos realizados por nuestro equipo. ¡Calidad y detalle en cada trabajo!</p>
       <a href="https://www.instagram.com/reel/DGEewjuoofu/?hl=es" target="_blank" class="btn">Ver Trabajos</a>
     </section>
 
-    <section id="testimonios" class="testimonios">
+    <section id="testimonios">
       <h2>Testimonios de Clientes</h2>
       <p>Descubre las experiencias y opiniones de nuestros clientes satisfechos. ¡La calidad de nuestro servicio habla por sí misma!</p>
       <a href="https://www.instagram.com/stories/highlights/17989038299202294/?hl=es" target="_blank" class="btn">Ver Testimonios</a>
     </section>
     
-    <section id="reseñas" class="reseñas">
+    <section id="reseñas">
       <h2>Reseñas en Google</h2>
       <p>¡Comparte tu experiencia y ayúdanos a mejorar! Deja tu reseña sobre nuestro servicio en Google.</p>
-      <a href="https://www.google.com/search?sca_esv=27bcf78510aa1d17&rlz=1C1UEAD_enES1072ES1074&sxsrf=AHTn8zp4f2greNeNNSxJn_1E7o6UXe64JQ:1740378193651&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2KzTzeJeSZyoB8baWqoSPFqahiAy_wx7DLuBr0B2un-3MvDk2zOyS-REPILlmBKddgeHz4GrFHEZD2AHMJYeYahO15FCuR&q=Electro+Fix+It+Rese%C3%B1as&sa=X&ved=2ahUKEwiWo4eA1tuLAxWJKvsDHbUMEeUQ0bkNegQIJRAD&biw=1366&bih=607&dpr=1" target="_blank" class="btn">Deja tu Reseña</a>
+      <a href="https://www.google.com/search?sca_esv=27bcf78510aa1d17&rlz=1C1UEAD_enES1072ES1074&sxsrf=AHTn8zp4f2greNeNNSxJn_1E7o6UXe64JQ:1740378193651&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2KzTzeJeSZyoB8baWqoSPFqahiAy_wx7DLuBr0B2un-3MvDk2zOyS-REPILlmBKddgeHz4GrFHEZD2AHMJYeYahO15FCuR" target="_blank" class="btn">Deja tu Reseña</a>
     </section>
   </main>
 
@@ -281,9 +296,9 @@
     <p>© 2024 Electro Fix It. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- Ventana modal para mostrar imágenes de accesorios -->
-  <div class="fullscreen-img" id="fullscreenImg">
-    <span class="close-btn" onclick="closeFullscreenImage()">&times;</span>
+  <!-- Modal para imágenes de accesorios -->
+  <div class="fullscreen-img" id="fullscreenImg" role="dialog" aria-modal="true">
+    <button class="close-btn" aria-label="Cerrar imagen" id="closeBtn">&times;</button>
     <div class="img-container">
       <img src="img/Nuevo 1.jpg" alt="Accesorio 1">
       <img src="img/Nuevo 2.jpg" alt="Accesorio 2">
@@ -291,12 +306,27 @@
   </div>
 
   <script>
-    function showFullscreenImage() {
-      document.getElementById('fullscreenImg').style.display = 'block';
-    }
-    function closeFullscreenImage() {
-      document.getElementById('fullscreenImg').style.display = 'none';
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('fullscreenImg');
+      const openModalBtn = document.getElementById('openModal');
+      const closeModalBtn = document.getElementById('closeBtn');
+
+      openModalBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.style.display = 'block';
+      });
+
+      closeModalBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+
+      // Cierra el modal si se hace clic fuera de la imagen
+      window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    });
   </script>
 </body>
 </html>
