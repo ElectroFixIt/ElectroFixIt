@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -60,7 +60,6 @@
     .card .media{
       background:#fff; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
     }
-    /* Mostrar las imágenes completas sin recortar ni deformar */
     .card .media img{ width:100%; height:100%; object-fit:contain; background:#fff; }
     .card .body{ padding:12px 14px }
     .card .title{ font-weight:800; margin-bottom:6px }
@@ -72,9 +71,19 @@
     @media (max-width:640px){ .grid{ grid-template-columns:1fr } }
 
     /* Iconos inline junto a botones */
-    .icon{
-      vertical-align:middle; width:20px; height:20px; margin-right:6px; filter:drop-shadow(0 0 0 rgba(0,0,0,0));
+    .icon{ vertical-align:middle; width:20px; height:20px; margin-right:6px; }
+
+    /* Botones de reseñas (Google / Wallapop) */
+    .reviews-buttons{
+      display:flex; gap:12px; flex-wrap:wrap; margin-top:10px;
     }
+    .review-btn{
+      display:inline-flex; align-items:center; gap:10px;
+      background:#1e1e1e; border:1px solid var(--border); padding:10px 14px;
+      border-radius:10px; text-decoration:none; color:#fff; font-weight:700;
+    }
+    .review-btn:hover{ background:#2a2a2a }
+    .review-btn img{ width:22px; height:22px }
   </style>
 </head>
 <body>
@@ -150,9 +159,20 @@
     </section>
 
     <section id="reseñas">
-      <h2>Reseñas en Google</h2>
-      <p>¿Ya nos conoces? Déjanos tu reseña en Google y ayuda a otros.</p>
-      <a href="https://www.google.com/search?q=Electro+Fix+IT+rese%C3%B1as" target="_blank" class="btn">Dejar reseña</a>
+      <h2>Reseñas</h2>
+      <p>Elige dónde prefieres dejarnos tu opinión:</p>
+      <div class="reviews-buttons">
+        <a class="review-btn" target="_blank"
+           href="https://www.google.com/search?q=Electro+Fix+IT+rese%C3%B1as">
+          <img src="img/google_logo.png" alt="Google">
+          Reseñar en Google
+        </a>
+        <a class="review-btn" target="_blank"
+           href="https://es.wallapop.com/app/profile/reviews">
+          <img src="img/wallapop_logo.png" alt="Wallapop">
+          Reseñar en Wallapop
+        </a>
+      </div>
     </section>
   </main>
 
@@ -319,7 +339,6 @@
     function openModal(){
       accModal.setAttribute('aria-hidden','false');
       document.body.style.overflow='hidden';
-      // Reset búsqueda
       accSearch.value='';
       filterCards('');
       setTimeout(()=>accSearch.focus(), 0);
@@ -336,10 +355,7 @@
       if(btn){ btn.addEventListener('click', e=>{ e.preventDefault(); openModal(); }); }
     });
     closeAccBtn.addEventListener('click', closeModal);
-    // Cerrar clic fuera
-    accModal.addEventListener('click', e=>{
-      if(e.target===accModal) closeModal();
-    });
+    accModal.addEventListener('click', e=>{ if(e.target===accModal) closeModal(); });
 
     // Búsqueda
     function filterCards(q){
