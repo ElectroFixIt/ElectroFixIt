@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -99,7 +99,7 @@
     .card .media{
       background:rgba(255,255,255,.04); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
     }
-    .card .media img{ width:100%; height:100%; object-fit:cover }
+    .card .media img{ width:100%; height:100%; object-fit:contain; background:#fff }
     .card .body{ padding:12px 14px }
     .card .title{ font-weight:800; margin-bottom:6px }
     .card .desc{ color:var(--muted); font-size:.95rem; margin-bottom:8px }
@@ -132,23 +132,12 @@
   <main>
     <section id="quienes-somos">
       <h2>Quiénes Somos</h2>
-      <p>📍 Estamos en <strong>Charco del Pino (Granadilla de Abona)</strong>, Tenerife.<br>
-      🚚 Ofrecemos <strong>transporte y envíos a toda Canarias</strong>.</p>
-
-      <p>🔧 <strong>Electro Fix It</strong> es tu taller especializado en reparación y venta de móviles.  
-      Nos eligen por nuestra <strong>transparencia</strong>, <strong>trato cercano</strong> y <strong>resultados con garantía</strong>.</p>
-
+      <p>Somos tu taller de confianza en Tenerife. Estamos en <strong>Charco del Pino</strong> (Granadilla de Abona) y ofrecemos <strong>transporte y envíos a toda Canarias</strong>.</p>
       <ul>
-        <li>✔️ <strong>+500 clientes satisfechos</strong> — la confianza es nuestro motor.</li>
-        <li>✔️ Reparaciones de pantalla, batería, cámaras, conector, etc. con <strong>garantía</strong>.</li>
-        <li>✔️ Venta de móviles <strong>reacondicionados</strong> y nuevos en perfecto estado.</li>
-        <li>✔️ <strong>Atención por cita</strong> para dedicarte el tiempo que mereces.</li>
-        <li>✔️ Horario amplio: <strong>8:30 – 21:30</strong>.</li>
-        <li>✔️ Precios justos y explicados sin letras pequeñas.</li>
+        <li>+500 clientes satisfechos.</li>
+        <li>Reparación, reacondicionamiento y venta con garantía.</li>
+        <li>Atención por cita. Horario: <strong>8:30–21:30</strong>.</li>
       </ul>
-
-      <p>💬 Nuestro objetivo es que te vayas con tu dispositivo al <strong>100%</strong> y una experiencia de 10 😊.</p>
-
       <p>
         <img src="img/whatsapp_icon.png" alt="WhatsApp" style="vertical-align:middle;width:20px;height:20px;margin-right:6px;">
         <a href="https://wa.me/34642886426" target="_blank" class="btn">Escribir por WhatsApp</a>
@@ -160,8 +149,7 @@
 
     <section id="services">
       <h2>Servicios</h2>
-      <p>Reparación de pantallas, baterías, cámaras, conectores y más.  
-      Servicio rápido, precios claros y garantía en todas las reparaciones.</p>
+      <p>Reparación de pantallas, baterías, cámaras, conectores y más. Servicio rápido, precios claros y garantía.</p>
       <a href="https://wa.me/34642886426" target="_blank" class="btn">Pedir presupuesto</a>
     </section>
 
@@ -229,7 +217,7 @@
             <div class="title">Protector de pantalla</div>
             <div class="desc">Protección básica para la pantalla del móvil.</div>
             <div class="price">4 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Protector%20de%20pantalla%20(4%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Protector%20de%20pantalla%20(4%20€)" target="_blank">Pedir por WhatsApp</a>
           </div>
         </article>
 
@@ -242,161 +230,33 @@
             <div class="title">Protector con instalación</div>
             <div class="desc">Incluye instalación profesional.</div>
             <div class="price">6 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Protector%20con%20instalaci%C3%B3n%20(6%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Protector%20con%20instalaci%C3%B3n%20(6%20€)" target="_blank">Pedir por WhatsApp</a>
           </div>
         </article>
 
         <!-- 3) Carcasa transparente MagSafe -->
         <article class="card" data-name="carcasa transparente magsafe">
-          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="media">
+            <img src="img/Carcasa_transparente.jpg" alt="Carcasa transparente MagSafe">
+          </div>
           <div class="body">
             <div class="title">Carcasa transparente MagSafe</div>
             <div class="desc">Funda transparente con MagSafe integrado.</div>
             <div class="price">5 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Carcasa%20transparente%20MagSafe%20(5%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Carcasa%20MagSafe%20(5%20€)" target="_blank">Pedir por WhatsApp</a>
           </div>
         </article>
 
         <!-- 4) Cable Lightning a USB/Tipo C -->
         <article class="card" data-name="cable lightning a usb tipo c">
-          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="media">
+            <img src="img/cable_tipo_c_lightning.jpg" alt="Cable Lightning a USB/Tipo C">
+          </div>
           <div class="body">
             <div class="title">Cable Lightning a USB/Tipo C</div>
             <div class="desc">Compatible con Apple.</div>
             <div class="price">4,50 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Cable%20Lightning%20a%20USB%20Tipo%20C%20(4,50%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
-          </div>
-        </article>
-
-        <!-- 5) Cable Lightning a Tipo C Original -->
-        <article class="card" data-name="cable lightning a tipo c original">
-          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
-          <div class="body">
-            <div class="title">Cable Lightning a Tipo C – Original</div>
-            <div class="desc">Original Apple.</div>
-            <div class="price">15 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Cable%20Lightning%20a%20Tipo%20C%20Original%20(15%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
-          </div>
-        </article>
-
-        <!-- 6) Cargador Tipo C – Original -->
-        <article class="card" data-name="cargador tipo c original">
-          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
-          <div class="body">
-            <div class="title">Cargador Tipo C – Original</div>
-            <div class="desc">Adaptador de corriente original Apple.</div>
-            <div class="price">25 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Cargador%20Tipo%20C%20Original%20(25%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
-          </div>
-        </article>
-
-        <!-- 7) Cargador inalámbrico -->
-        <article class="card" data-name="cargador inalámbrico">
-          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
-          <div class="body">
-            <div class="title">Cargador inalámbrico</div>
-            <div class="desc">Carga por inducción.</div>
-            <div class="price">10 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Cargador%20inal%C3%A1mbrico%20(10%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
-          </div>
-        </article>
-
-        <!-- 8) Cargador genérico 65W -->
-        <article class="card" data-name="cargador genérico 65w">
-          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
-          <div class="body">
-            <div class="title">Cargador genérico 65W</div>
-            <div class="desc">Alta potencia, multi-dispositivo.</div>
-            <div class="price">10 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Cargador%2065W%20(10%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
-          </div>
-        </article>
-
-        <!-- 9) Cargador Apple Watch/SmartWatch -->
-        <article class="card" data-name="cargador apple watch smartwatch">
-          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
-          <div class="body">
-            <div class="title">Cargador Apple Watch/SmartWatch</div>
-            <div class="desc">Base de carga magnética.</div>
-            <div class="price">10 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Cargador%20Apple%20Watch/SmartWatch%20(10%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
-          </div>
-        </article>
-
-        <!-- 10) Set 3 en 1 -->
-        <article class="card" data-name="set de carga 3 en 1">
-          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
-          <div class="body">
-            <div class="title">Set de carga 3 en 1</div>
-            <div class="desc">Móvil + AirPods + Apple Watch.</div>
-            <div class="price">20 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Set%203%20en%201%20(20%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
-          </div>
-        </article>
-
-        <!-- 11) Soporte con ventosas -->
-        <article class="card" data-name="soporte con ventosas">
-          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
-          <div class="body">
-            <div class="title">Soporte con ventosas</div>
-            <div class="desc">Antirrobo; se adhiere a superficies.</div>
-            <div class="price">2,50 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Soporte%20con%20ventosas%20(2,50%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
-          </div>
-        </article>
-
-        <!-- 12) Empaquetado para regalo -->
-        <article class="card" data-name="empaquetado para regalo">
-          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
-          <div class="body">
-            <div class="title">Empaquetado para regalo</div>
-            <div class="desc">Envoltura para regalo.</div>
-            <div class="price">3 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Empaquetado%20para%20regalo%20(3%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
-          </div>
-        </article>
-
-        <!-- 13) AirPods 2 -->
-        <article class="card" data-name="airpods 2">
-          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
-          <div class="body">
-            <div class="title">AirPods 2ª generación</div>
-            <div class="desc">Auriculares inalámbricos.</div>
-            <div class="price">50 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=AirPods%202%20(50%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
-          </div>
-        </article>
-
-        <!-- 14) AirPods 3 -->
-        <article class="card" data-name="airpods 3">
-          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
-          <div class="body">
-            <div class="title">AirPods 3ª generación</div>
-            <div class="desc">Auriculares inalámbricos.</div>
-            <div class="price">70 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=AirPods%203%20(70%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
-          </div>
-        </article>
-
-        <!-- 15) AirPods Pro 2 -->
-        <article class="card" data-name="airpods pro 2">
-          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
-          <div class="body">
-            <div class="title">AirPods Pro 2</div>
-            <div class="desc">Cancelación de ruido.</div>
-            <div class="price">80 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=AirPods%20Pro%202%20(80%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
-          </div>
-        </article>
-
-        <!-- 16) Seguro para tu móvil -->
-        <article class="card" data-name="seguro para tu móvil">
-          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
-          <div class="body">
-            <div class="title">Seguro para tu móvil</div>
-            <div class="desc">Protección ante imprevistos.</div>
-            <div class="price">Desde 1 €/mes</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Seguro%20para%20mi%20m%C3%B3vil%20(Desde%201%20%E2%82%AC/mes)" target="_blank">Pedir por WhatsApp</a>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Cable%20Lightning%20a%20USB/Tipo%20C%20(4,50%20€)" target="_blank">Pedir por WhatsApp</a>
           </div>
         </article>
       </div>
@@ -411,11 +271,8 @@
 
     openAccBtns.forEach(btn=>{
       if(btn){
-        btn.addEventListener('click',(e)=>{ 
-          e.preventDefault(); 
-          accModal.style.display='block';
-          document.getElementById('accSearch').focus(); 
-        });
+        btn.addEventListener('click',(e)=>{ e.preventDefault(); accModal.style.display='block';
+          document.getElementById('accSearch').focus(); });
       }
     });
     closeAcc.addEventListener('click', ()=> accModal.style.display='none');
