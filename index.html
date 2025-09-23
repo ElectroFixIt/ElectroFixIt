@@ -97,18 +97,16 @@
     .grid{ display:grid; gap:14px; grid-template-columns:repeat(3,1fr) }
     .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden }
     .card .media{
-      /* Fondo BLANCO para que se vea el “relleno” cuando la imagen no ocupa todo */
+      /* Fondo BLANCO para que se vea el relleno cuando la imagen no ocupa todo */
       background:#fff;
-      /* Relación 4:3 y centrado */
+      /* Relación 4:3 + centrado */
       aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
-      padding:8px; /* pequeño margen interior para que no pegue a los bordes */
+      padding:8px;
     }
     .card .media img{
       /* SIN recortes ni zoom */
       max-width:100%; max-height:100%;
-      width:auto; height:auto;
-      object-fit:contain; /* evita cualquier recorte */
-      display:block;
+      width:auto; height:auto; object-fit:contain; display:block;
     }
     .card .body{ padding:12px 14px }
     .card .title{ font-weight:800; margin-bottom:6px }
@@ -218,7 +216,7 @@
       </div>
 
       <div class="grid" id="accCards">
-        <!-- 1) Protector de pantalla (con imagen, SIN recortes) -->
+        <!-- 1) Protector de pantalla (con imagen, sin recortes) -->
         <article class="card" data-name="protector de pantalla">
           <div class="media">
             <img src="img/protector_pantalla.jpg" alt="Protector de pantalla">
@@ -231,9 +229,11 @@
           </div>
         </article>
 
-        <!-- 2) Protector con instalación (sin imagen por ahora) -->
+        <!-- 2) Protector con instalación (NUEVA FOTO) -->
         <article class="card" data-name="protector con instalación">
-          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="media">
+            <img src="img/protector_instalacion.jpg" alt="Protector con instalación">
+          </div>
           <div class="body">
             <div class="title">Protector con instalación</div>
             <div class="desc">Incluye instalación profesional.</div>
@@ -264,7 +264,7 @@
           </div>
         </article>
 
-        <!-- ... (resto de tarjetas igual que antes) ... -->
+        <!-- (Puedes seguir añadiendo más tarjetas aquí…) -->
       </div>
     </div>
   </div>
@@ -284,7 +284,7 @@
     closeAcc.addEventListener('click', ()=> accModal.style.display='none');
     accModal.addEventListener('click', (e)=>{ if(e.target===accModal) accModal.style.display='none'; });
 
-    // Buscador en las tarjetas
+    // Buscador simple en tarjetas
     const accSearch = document.getElementById('accSearch');
     const accCards = document.getElementById('accCards');
     accSearch.addEventListener('input', ()=>{
