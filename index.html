@@ -6,14 +6,16 @@
   <title>Electro Fix It - Reparación y Venta de Móviles</title>  
   <link rel="icon" href="img/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --primary-color:#007aff; --secondary-color:#fff; --background-overlay:rgba(0,0,0,.7);
-      --accent-color:#a7d8ff; --text-color:#f0f0f0; --muted:#c9d1d9;
+      --primary-color:#007aff; --secondary-color:#ffffff;
+      --background-overlay:rgba(0,0,0,.7); --accent-color:#a7d8ff;
+      --text-color:#f0f0f0; --muted:#c9d1d9;
       --card:#0f1115; --border:rgba(255,255,255,.12); --radius:12px;
     }
 
-    /* Idioma */
+    /* Selector de idioma */
     #languageSelectorContainer{ margin:10px; text-align:right }
     #languageSwitcher{
       padding:6px 10px; font-size:1rem; border-radius:6px; border:1px solid rgba(255,255,255,.2);
@@ -29,6 +31,7 @@
       color:var(--text-color); line-height:1.6;
     }
 
+    /* Header */
     header{
       background:var(--background-overlay); padding:40px 20px; text-align:center;
       box-shadow:0 4px 6px rgba(0,0,0,.2); text-transform:uppercase;
@@ -66,12 +69,14 @@
     }
     .btn:hover{ background:var(--accent-color); transform:translateY(-1px) }
 
-    /* Tabla */
+    /* Tablas */
     .table-wrap{ overflow-x:auto }
     table{ width:100%; border-collapse:collapse }
     th,td{ padding:12px 10px; border-bottom:1px solid var(--border); text-align:left }
     th{ color:#fff; font-weight:700 }
     tbody tr:hover{ background:rgba(255,255,255,.06) }
+    .hide-sm{ display:block }
+    @media (max-width:768px){ .hide-sm{ display:none } }
 
     /* Footer */
     footer{ background:var(--background-overlay); color:var(--primary-color); text-align:center; padding:20px 10px; margin-top:30px }
@@ -96,8 +101,378 @@
     /* Tarjetas de accesorios */
     .grid{ display:grid; gap:14px }
     .grid.cards{ grid-template-columns:repeat(3,1fr) }
-    .card{
-      background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden;
-    }
+    .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden }
     .card .media{
       background:rgba(255,255,255,.04); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
+    }
+    .card .media img{ width:100%; height:100%; object-fit:cover }
+    .card .body{ padding:12px 14px }
+    .card .title{ font-weight:800; margin-bottom:6px }
+    .card .desc{ color:var(--muted); font-size:.95rem; margin-bottom:8px }
+    .card .price{ font-weight:800; color:#fff }
+
+    @media (max-width:980px){ .grid.cards{ grid-template-columns:repeat(2,1fr) } }
+    @media (max-width:640px){ .grid.cards{ grid-template-columns:1fr } }
+  </style>
+</head>
+<body>
+  <!-- Selector de idioma -->
+  <div id="languageSelectorContainer">
+    <select id="languageSwitcher">
+      <option value="es" selected>🇪🇸 Español</option>
+      <option value="en">🇬🇧 English</option>
+    </select>
+  </div>
+
+  <header>
+    <img src="img/Photoroom_20250126_215254.PNG" alt="Logo de Electro Fix It">
+    <p id="header-tagline1">Servicio técnico transparente y personalizado</p>
+  </header>
+
+  <nav>
+    <a href="#services" id="nav-services">Servicios</a>
+    <a href="#products" id="nav-products">Móviles en Venta</a>
+    <!-- Accesorios abre el modal -->
+    <a href="#" id="nav-accessories">Accesorios</a>
+    <a href="#trabajos" id="nav-works">Nuestros Trabajos</a>
+    <a href="#testimonios" id="nav-testimonials">Testimonios de Clientes</a>
+    <a href="#reseñas" id="nav-reviews">Reseñas en Google</a>
+  </nav>
+
+  <main>
+    <!-- Quiénes Somos -->
+    <section id="quienes-somos">
+      <h2 id="section-quienes-title">Quiénes Somos</h2>
+      <p><strong class="subheading" id="section-quienes-subheading">🔧 Electro Fix It - Más que un servicio técnico, una garantía de confianza</strong></p>
+      <p id="section-quienes-desc">Bienvenido a Electro Fix It, tu taller de confianza en Tenerife, especializado en la reparación, reacondicionamiento y venta de dispositivos móviles. Nos destacamos por ofrecer un servicio técnico transparente y personalizado.</p>
+      <ul id="section-quienes-list">
+        <li>✅ Experiencia y transparencia: Años de experiencia en la reparación de móviles.</li>
+        <li>✅ +500 clientes satisfechos: Nuestro crecimiento ha sido impulsado por la confianza de nuestros clientes.</li>
+        <li>✅ Móviles reacondicionados y nuevos con garantía: Productos en excelente estado con garantía incluida.</li>
+        <li>✅ Servicio a domicilio: Recogida y entrega en distintas zonas de Tenerife.</li>
+        <li>✅ Precios justos y accesibles: Evitamos costos inflados sin razón.</li>
+      </ul>
+      <p id="section-quienes-location-title"><strong>📍 Ubicación y disponibilidad</strong></p>
+      <p id="section-quienes-location-desc">Estamos en <strong>Charco del Pino</strong> (Granadilla de Abona). 🚛 Transporte y envíos a <strong>toda Canarias</strong>.</p>
+      <p id="section-quienes-availability"><strong>🕒 Horario: 8:30–21:30 (por cita)</strong></p>
+      <p id="section-quienes-contact"><strong>📩 Contáctanos</strong></p>
+      <p id="section-quienes-whatsapp">
+        <img src="img/whatsapp_icon.png" alt="WhatsApp" style="vertical-align:middle; width:20px; height:20px;"> 
+        <a href="https://wa.me/34642886426" target="_blank">WhatsApp</a>
+      </p>
+      <p id="section-quienes-instagram">
+        <img src="img/Instagram_logo_2022.svg.webp" alt="Instagram" style="vertical-align:middle; width:20px; height:20px;"> 
+        <a href="https://www.instagram.com/electro_fix_it/" target="_blank">Instagram</a>
+      </p>
+    </section>
+
+    <!-- Servicios -->
+    <section id="services">
+      <h2 id="section-services-title">Servicios</h2>
+      <p id="section-services-desc">Reparación de pantallas, baterías, cámaras y más. Nuestro equipo de expertos garantiza calidad y rapidez en cada servicio.</p>
+      <a href="https://wa.me/34642886426" target="_blank" class="btn" id="section-services-btn">Contáctanos</a>
+    </section>
+
+    <!-- Móviles en Venta -->
+    <section id="products">
+      <h2 id="section-products-title">Móviles en Venta</h2>
+      <p id="section-products-desc">Descubre nuestra selección de móviles restaurados y nuevos. Encuentra los mejores precios y productos certificados.</p>
+      <a href="https://www.facebook.com/marketplace/profile/61565708769230/" target="_blank" class="btn" id="section-products-btn">Ver Catálogo</a>
+    </section>
+
+    <!-- Accesorios (SEO + botón para abrir el modal) -->
+    <section id="accessories">
+      <h2 id="section-accessories-title">Accesorios</h2>
+      <p id="section-accessories-desc">Toca el botón para ver todos los accesorios con su precio sin salir de esta página.</p>
+      <a href="#" class="btn" id="section-accessories-btn">Abrir lista de Accesorios</a>
+
+      <!-- Tabla SEO (oculta en móvil) -->
+      <div class="table-wrap hide-sm" style="margin-top:14px;">
+        <table aria-label="Tabla de accesorios y precios">
+          <thead>
+            <tr><th>Producto</th><th>Descripción</th><th>Precio</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Protector de pantalla</td><td>Protección básica para pantalla.</td><td>4 €</td></tr>
+            <tr><td>Protector con instalación</td><td>Incluye instalación profesional.</td><td>6 €</td></tr>
+            <tr><td>Carcasa transparente MagSafe</td><td>Funda transparente con MagSafe integrado.</td><td>5 €</td></tr>
+            <tr><td>Cable Lightning a USB/Tipo C</td><td>Compatible con Apple.</td><td>4,50 €</td></tr>
+            <tr><td>Cable Lightning a Tipo C – Original</td><td>Original Apple.</td><td>15 €</td></tr>
+            <tr><td>Cargador Tipo C – Original</td><td>Adaptador de corriente original Apple.</td><td>25 €</td></tr>
+            <tr><td>Cargador inalámbrico</td><td>Carga por inducción.</td><td>10 €</td></tr>
+            <tr><td>Cargador genérico 65W</td><td>Alta potencia, multi-dispositivo.</td><td>10 €</td></tr>
+            <tr><td>Cargador Apple Watch/SmartWatch</td><td>Base de carga magnética.</td><td>10 €</td></tr>
+            <tr><td>Set de carga 3 en 1</td><td>Móvil + AirPods + Apple Watch.</td><td>20 €</td></tr>
+            <tr><td>Soporte con ventosas</td><td>Antirrobo, se adhiere a superficies.</td><td>2,50 €</td></tr>
+            <tr><td>Empaquetado para regalo</td><td>Envoltura para regalo.</td><td>3 €</td></tr>
+            <tr><td>AirPods 2ª generación</td><td>Auriculares inalámbricos.</td><td>50 €</td></tr>
+            <tr><td>AirPods 3ª generación</td><td>Auriculares inalámbricos.</td><td>70 €</td></tr>
+            <tr><td>AirPods Pro 2</td><td>Cancelación de ruido.</td><td>80 €</td></tr>
+            <tr><td>Seguro para tu móvil</td><td>Protección ante imprevistos.</td><td>Desde 1 €/mes</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+    <!-- Nuestros Trabajos -->
+    <section id="trabajos">
+      <h2 id="section-works-title">Nuestros Trabajos</h2>
+      <p id="section-works-desc">Pronto subiremos los vídeos aquí mismo para verlos sin salir de la web.</p>
+      <a href="https://www.instagram.com/reel/DGEewjuoofu/?hl=es" target="_blank" class="btn" id="section-works-btn">Ver Trabajos en Instagram</a>
+    </section>
+
+    <!-- Testimonios -->
+    <section id="testimonios">
+      <h2 id="section-testimonials-title">Testimonios de Clientes</h2>
+      <p id="section-testimonials-desc">Descubre las experiencias de nuestros clientes. La calidad del servicio habla por sí misma.</p>
+      <a href="https://www.instagram.com/stories/highlights/17989038299202294/?hl=es" target="_blank" class="btn" id="section-testimonials-btn">Ver Testimonios</a>
+    </section>
+    
+    <!-- Reseñas -->
+    <section id="reseñas">
+      <h2 id="section-reviews-title">Reseñas en Google</h2>
+      <p id="section-reviews-desc">¡Comparte tu experiencia y ayúdanos a mejorar!</p>
+      <a href="https://www.google.com/search?q=Electro+Fix+IT+rese%C3%B1as" target="_blank" class="btn" id="section-reviews-btn">Deja tu Reseña</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      <img src="img/Instagram_logo_2022.svg.webp" alt="Logo Instagram">
+      <span id="footer-instagram">Síguenos en Instagram: @electro_fix_it</span>
+    </p>
+    <p id="footer-copyright">© 2024 Electro Fix It. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- MODAL: Lista visual de Accesorios -->
+  <div class="modal" id="accessoriesModal" role="dialog" aria-modal="true" aria-labelledby="accTitle">
+    <div class="modal-inner">
+      <div class="modal-header">
+        <div class="modal-title" id="accTitle">Accesorios – Lista completa</div>
+        <button class="modal-close" id="closeAcc">Cerrar ✕</button>
+      </div>
+
+      <div class="modal-tools">
+        <input type="search" id="accSearch" class="modal-search" placeholder="Buscar accesorio...">
+        <a class="btn" href="https://wa.me/34642886426" target="_blank" rel="noopener">Preguntar por WhatsApp</a>
+      </div>
+
+      <!-- Tarjetas -->
+      <div class="grid cards" id="accCards">
+        <!-- 1) Protector de pantalla (con imagen real) -->
+        <article class="card" data-name="protector de pantalla">
+          <div class="media">
+            <img src="img/protector_pantalla.jpg" alt="Protector de pantalla">
+          </div>
+          <div class="body">
+            <div class="title">Protector de pantalla</div>
+            <div class="desc">Protección básica para la pantalla del móvil.</div>
+            <div class="price">4 €</div>
+          </div>
+        </article>
+
+        <!-- 2) Protector con instalación (sin imagen aún) -->
+        <article class="card" data-name="protector con instalación">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Protector con instalación</div>
+            <div class="desc">Incluye instalación profesional.</div>
+            <div class="price">6 €</div>
+          </div>
+        </article>
+
+        <!-- 3) Carcasa MagSafe -->
+        <article class="card" data-name="carcasa transparente magsafe">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Carcasa transparente MagSafe</div>
+            <div class="desc">Funda transparente con MagSafe integrado.</div>
+            <div class="price">5 €</div>
+          </div>
+        </article>
+
+        <!-- 4) Cable Lightning a USB/Tipo C -->
+        <article class="card" data-name="cable lightning a usb tipo c">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Cable Lightning a USB/Tipo C</div>
+            <div class="desc">Compatible con dispositivos Apple.</div>
+            <div class="price">4,50 €</div>
+          </div>
+        </article>
+
+        <!-- 5) Lightning a Tipo C Original -->
+        <article class="card" data-name="cable lightning a tipo c original">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Cable Lightning a Tipo C – Original</div>
+            <div class="desc">Cable original Apple.</div>
+            <div class="price">15 €</div>
+          </div>
+        </article>
+
+        <!-- 6) Cargador Tipo C Original -->
+        <article class="card" data-name="cargador tipo c original">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Cargador Tipo C – Original</div>
+            <div class="desc">Adaptador de corriente original Apple.</div>
+            <div class="price">25 €</div>
+          </div>
+        </article>
+
+        <!-- 7) Cargador inalámbrico -->
+        <article class="card" data-name="cargador inalámbrico">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Cargador inalámbrico</div>
+            <div class="desc">Carga por inducción.</div>
+            <div class="price">10 €</div>
+          </div>
+        </article>
+
+        <!-- 8) Genérico 65W -->
+        <article class="card" data-name="cargador genérico 65w">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Cargador genérico 65W</div>
+            <div class="desc">Alta potencia, multi-dispositivo.</div>
+            <div class="price">10 €</div>
+          </div>
+        </article>
+
+        <!-- 9) Apple Watch / SmartWatch -->
+        <article class="card" data-name="cargador apple watch smartwatch">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Cargador Apple Watch/SmartWatch</div>
+            <div class="desc">Base de carga magnética.</div>
+            <div class="price">10 €</div>
+          </div>
+        </article>
+
+        <!-- 10) Set 3 en 1 -->
+        <article class="card" data-name="set de carga 3 en 1">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Set de carga 3 en 1</div>
+            <div class="desc">Móvil + AirPods + Apple Watch.</div>
+            <div class="price">20 €</div>
+          </div>
+        </article>
+
+        <!-- 11) Soporte ventosas -->
+        <article class="card" data-name="soporte con ventosas">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Soporte con ventosas</div>
+            <div class="desc">Antirrobo, se adhiere a superficies.</div>
+            <div class="price">2,50 €</div>
+          </div>
+        </article>
+
+        <!-- 12) Empaquetado regalo -->
+        <article class="card" data-name="empaquetado para regalo">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Empaquetado para regalo</div>
+            <div class="desc">Envoltura para regalo.</div>
+            <div class="price">3 €</div>
+          </div>
+        </article>
+
+        <!-- 13) AirPods 2 -->
+        <article class="card" data-name="airpods 2">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">AirPods 2ª generación</div>
+            <div class="desc">Auriculares inalámbricos.</div>
+            <div class="price">50 €</div>
+          </div>
+        </article>
+
+        <!-- 14) AirPods 3 -->
+        <article class="card" data-name="airpods 3">
+          <div class="media"><span style="opacity:.6)">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">AirPods 3ª generación</div>
+            <div class="desc">Auriculares inalámbricos.</div>
+            <div class="price">70 €</div>
+          </div>
+        </article>
+
+        <!-- 15) AirPods Pro 2 -->
+        <article class="card" data-name="airpods pro 2">
+          <div class="media"><span style="opacity:.6)">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">AirPods Pro 2</div>
+            <div class="desc">Cancelación de ruido.</div>
+            <div class="price">80 €</div>
+          </div>
+        </article>
+
+        <!-- 16) Seguro -->
+        <article class="card" data-name="seguro para tu móvil">
+          <div class="media"><span style="opacity:.6)">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Seguro para tu móvil</div>
+            <div class="desc">Protección ante imprevistos.</div>
+            <div class="price">Desde 1 €/mes</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // (Mantengo el objeto de traducciones reducido para el header/nav)
+    const translations = {
+      es:{ header:{tagline1:"🔧 Servicio técnico transparente y personalizado - ¡+500 clientes satisfechos! 😊"},
+           nav:{services:"Servicios",products:"Móviles en Venta",accessories:"Accesorios",works:"Nuestros Trabajos",testimonials:"Testimonios de Clientes",reviews:"Reseñas en Google"} },
+      en:{ header:{tagline1:"🔧 Transparent and personalized technical service - 500+ satisfied customers! 😊"},
+           nav:{services:"Services",products:"Mobile Phones for Sale",accessories:"Accessories",works:"Our Works",testimonials:"Customer Testimonials",reviews:"Google Reviews"} }
+    };
+
+    function updateLanguage(lang){
+      document.getElementById("header-tagline1").innerText = translations[lang].header.tagline1;
+      document.getElementById("nav-services").innerText   = translations[lang].nav.services;
+      document.getElementById("nav-products").innerText   = translations[lang].nav.products;
+      document.getElementById("nav-accessories").innerText= translations[lang].nav.accessories;
+      document.getElementById("nav-works").innerText      = translations[lang].nav.works;
+      document.getElementById("nav-testimonials").innerText=translations[lang].nav.testimonials;
+      document.getElementById("nav-reviews").innerText    = translations[lang].nav.reviews;
+    }
+
+    document.addEventListener('DOMContentLoaded', ()=>{
+      // Idioma
+      const languageSwitcher = document.getElementById('languageSwitcher');
+      languageSwitcher.addEventListener('change', function(){ updateLanguage(this.value); });
+
+      // Modal Accesorios
+      const accModal = document.getElementById('accessoriesModal');
+      const openAccBtns = [document.getElementById('nav-accessories'), document.getElementById('section-accessories-btn')];
+      const closeAcc = document.getElementById('closeAcc');
+
+      openAccBtns.forEach(btn=>{
+        if(btn){
+          btn.addEventListener('click',(e)=>{ e.preventDefault(); accModal.style.display='block';
+            document.getElementById('accSearch').focus(); });
+        }
+      });
+      closeAcc.addEventListener('click', ()=> accModal.style.display='none');
+      accModal.addEventListener('click', (e)=>{ if(e.target===accModal) accModal.style.display='none'; });
+
+      // Filtro de búsqueda: filtra tarjetas por nombre/desc/precio
+      const accSearch = document.getElementById('accSearch');
+      const accCards  = document.getElementById('accCards');
+      accSearch.addEventListener('input', ()=>{
+        const q = accSearch.value.toLowerCase();
+        [...accCards.children].forEach(card=>{
+          const text = card.innerText.toLowerCase();
+          card.style.display = text.includes(q) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
