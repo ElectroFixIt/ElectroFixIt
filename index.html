@@ -1,385 +1,103 @@
 <!DOCTYPE html> 
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Electro Fix It - Reparación y Venta de Móviles</title>  
   <link rel="icon" href="img/favicon.ico">
-  <!-- Fuente Roboto -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Variables CSS para facilitar cambios */
-    :root {
-      --primary-color: #007aff;           /* Azul vibrante */
-      --secondary-color: #ffffff;         /* Blanco */
-      --background-overlay: rgba(0,0,0,.7);
-      --accent-color: #a7d8ff;            /* Azul claro hover */
-      --text-color: #f0f0f0;              /* Texto claro */
-      --muted: #c9d1d9;
+    :root{
+      --primary-color:#007aff; --secondary-color:#fff; --background-overlay:rgba(0,0,0,.7);
+      --accent-color:#a7d8ff; --text-color:#f0f0f0; --muted:#c9d1d9;
+      --card:#0f1115; --border:rgba(255,255,255,.12); --radius:12px;
     }
 
-    /* Contenedor del selector de idioma */
-    #languageSelectorContainer { margin: 10px; text-align: right; }
-    #languageSwitcher {
-      padding: 6px 10px; font-size: 1rem; border-radius: 6px; border: 1px solid rgba(255,255,255,.2);
-      background: rgba(0, 0, 0, 0.6); color: var(--primary-color); transition: .2s;
+    /* Idioma */
+    #languageSelectorContainer{ margin:10px; text-align:right }
+    #languageSwitcher{
+      padding:6px 10px; font-size:1rem; border-radius:6px; border:1px solid rgba(255,255,255,.2);
+      background:rgba(0,0,0,.6); color:var(--primary-color); transition:.2s;
     }
-    #languageSwitcher:hover { background: var(--primary-color); color: var(--secondary-color); }
+    #languageSwitcher:hover{ background:var(--primary-color); color:var(--secondary-color) }
 
-    /* Estilos base */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #121212, #2a2a2a);
-      color: var(--text-color);
-      line-height: 1.6;
+    /* Base */
+    *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0 }
+    html{ scroll-behavior:smooth }
+    body{
+      font-family:'Roboto',sans-serif; background:linear-gradient(135deg,#121212,#2a2a2a);
+      color:var(--text-color); line-height:1.6;
     }
 
-    /* Header */
-    header {
-      background: var(--background-overlay);
-      padding: 40px 20px;
-      text-align: center;
-      box-shadow: 0 4px 6px rgba(0,0,0,.2);
-      text-transform: uppercase;
+    header{
+      background:var(--background-overlay); padding:40px 20px; text-align:center;
+      box-shadow:0 4px 6px rgba(0,0,0,.2); text-transform:uppercase;
     }
-    header img { width: 300px; height: auto; margin-bottom: 20px; }
-    #header-tagline1 { font-size: 2rem; font-weight: bold; letter-spacing: 1px; margin-top: 20px; }
+    header img{ width:300px; height:auto; margin-bottom:20px }
+    #header-tagline1{ font-size:2rem; font-weight:700; letter-spacing:1px; margin-top:20px }
 
-    /* Navegación sticky */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(0,0,0,.85);
-      padding: 10px 0; text-align: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,.3);
+    /* Nav */
+    nav{
+      position:sticky; top:0; z-index:100; background:rgba(0,0,0,.85);
+      padding:10px 0; text-align:center; box-shadow:0 2px 4px rgba(0,0,0,.3);
     }
-    nav a {
-      display: inline-block; margin: 0 12px; padding: 10px 18px;
-      font-size: 1.05rem; font-weight: 700; text-decoration: none;
-      color: var(--primary-color); background: rgba(0,0,0,.6);
-      border-radius: 8px; transition: transform .15s, background .2s, color .2s;
+    nav a{
+      display:inline-block; margin:0 12px; padding:10px 18px; font-size:1.05rem; font-weight:700; text-decoration:none;
+      color:var(--primary-color); background:rgba(0,0,0,.6); border-radius:8px; transition:.15s;
     }
-    nav a:hover { background: var(--primary-color); color: var(--secondary-color); transform: translateY(-1px); }
+    nav a:hover{ background:var(--primary-color); color:var(--secondary-color); transform:translateY(-1px) }
 
     /* Main */
-    main { padding: 20px; max-width: 1000px; margin: 20px auto; }
-
-    section {
-      scroll-margin-top: 140px;
-      background: var(--background-overlay);
-      padding: 30px; margin-bottom: 30px;
-      border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,.2);
-      transition: transform .25s;
+    main{ padding:20px; max-width:1000px; margin:20px auto }
+    section{
+      scroll-margin-top:140px; background:var(--background-overlay); padding:30px; margin-bottom:30px;
+      border-radius:12px; box-shadow:0 4px 8px rgba(0,0,0,.2); transition:.25s;
     }
-    section:hover { transform: scale(1.02); }
-    h2 {
-      color: var(--primary-color); margin-bottom: 15px;
-      padding-bottom: 6px; border-bottom: 2px solid var(--primary-color);
-      text-shadow: 1px 1px 2px rgba(0,0,0,.8);
+    section:hover{ transform:scale(1.02) }
+    h2{
+      color:var(--primary-color); margin-bottom:15px; padding-bottom:6px; border-bottom:2px solid var(--primary-color);
+      text-shadow:1px 1px 2px rgba(0,0,0,.8);
     }
-    p, ul { margin-bottom: 15px; font-size: 1rem; }
-    ul li { margin-bottom: 8px; }
+    p,ul{ margin-bottom:15px; font-size:1rem } ul li{ margin-bottom:8px }
 
-    .btn {
-      display: inline-block; background: var(--primary-color); color: var(--secondary-color);
-      padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700;
-      transition: background .2s, transform .2s;
+    .btn{
+      display:inline-block; background:var(--primary-color); color:#fff; padding:10px 20px;
+      border-radius:8px; text-decoration:none; font-weight:700; transition:.2s;
     }
-    .btn:hover { background: var(--accent-color); transform: translateY(-1px); }
+    .btn:hover{ background:var(--accent-color); transform:translateY(-1px) }
 
-    /* Tabla de accesorios */
-    .table-wrap { overflow-x: auto; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid rgba(255,255,255,.12); }
-    th { color: var(--secondary-color); font-weight: 700; }
-    tbody tr:hover { background: rgba(255,255,255,.06); }
+    /* Tabla */
+    .table-wrap{ overflow-x:auto }
+    table{ width:100%; border-collapse:collapse }
+    th,td{ padding:12px 10px; border-bottom:1px solid var(--border); text-align:left }
+    th{ color:#fff; font-weight:700 }
+    tbody tr:hover{ background:rgba(255,255,255,.06) }
 
     /* Footer */
-    footer {
-      background: var(--background-overlay); color: var(--primary-color);
-      text-align: center; padding: 20px 10px; font-size: .95rem; margin-top: 30px;
+    footer{ background:var(--background-overlay); color:var(--primary-color); text-align:center; padding:20px 10px; margin-top:30px }
+    footer a{ color:var(--primary-color); font-weight:700; text-decoration:none } footer a:hover{ color:var(--accent-color) }
+    footer img{ vertical-align:middle; width:20px; height:20px; margin-right:10px }
+
+    /* MODAL Accesorios */
+    .modal{ display:none; position:fixed; inset:0; background:rgba(0,0,0,.9); z-index:1200; padding:24px; overflow:auto }
+    .modal-inner{
+      max-width:1100px; margin:0 auto; background:rgba(0,0,0,.6);
+      border:1px solid var(--border); border-radius:14px; box-shadow:0 10px 30px rgba(0,0,0,.5); padding:20px;
     }
-    footer a { color: var(--primary-color); font-weight: 700; text-decoration: none; }
-    footer a:hover { color: var(--accent-color); }
-    footer img { vertical-align: middle; width: 20px; height: 20px; margin-right: 10px; }
-
-    /* Modal visor de imágenes (lo dejamos por si luego metemos fotos de accesorios) */
-    .fullscreen-img { display:none; position:fixed; inset:0; background:rgba(0,0,0,.95); z-index:1000; overflow-y:auto; padding:40px 20px; text-align:center; }
-    .fullscreen-img .close-btn { position:absolute; top:20px; right:20px; color:var(--primary-color); font-size:30px; background:transparent; border:none; cursor:pointer; }
-    .img-container { display:flex; justify-content:center; align-items:center; gap:20px; flex-wrap:wrap; margin-top:60px; }
-    .img-container img { max-width:45%; max-height:calc(100vh - 80px); object-fit:contain; border:5px solid var(--primary-color); border-radius:10px; }
-
-    /* Responsive */
-    @media (max-width: 768px){
-      header img { width: 200px; }
-      #header-tagline1 { font-size: 1.25rem; }
-      nav a { margin: 6px; padding: 8px 14px; font-size: 1rem; }
-      .img-container img { max-width: 90%; }
-    }
-  </style>
-</head>
-<body>
-  <!-- Selector de idioma -->
-  <div id="languageSelectorContainer">
-    <select id="languageSwitcher">
-      <option value="es" selected>🇪🇸 Español</option>
-      <option value="en">🇬🇧 English</option>
-    </select>
-  </div>
-
-  <header>
-    <img src="img/Photoroom_20250126_215254.PNG" alt="Logo de Electro Fix It">
-    <p id="header-tagline1">Servicio técnico transparente y personalizado</p>
-  </header>
-
-  <nav>
-    <a href="#services" id="nav-services">Servicios</a>
-    <a href="#products" id="nav-products">Móviles en Venta</a>
-    <a href="#accessories" id="nav-accessories">Accesorios</a>
-    <a href="#trabajos" id="nav-works">Nuestros Trabajos</a>
-    <a href="#testimonios" id="nav-testimonials">Testimonios de Clientes</a>
-    <a href="#reseñas" id="nav-reviews">Reseñas en Google</a>
-  </nav>
-
-  <main>
-    <!-- Quiénes Somos -->
-    <section id="quienes-somos">
-      <h2 id="section-quienes-title">Quiénes Somos</h2>
-      <p><strong class="subheading" id="section-quienes-subheading">🔧 Electro Fix It - Más que un servicio técnico, una garantía de confianza</strong></p>
-      <p id="section-quienes-desc">Bienvenido a Electro Fix It, tu taller de confianza en Tenerife, especializado en la reparación, reacondicionamiento y venta de dispositivos móviles. Nos destacamos por ofrecer un servicio técnico transparente y personalizado.</p>
-      <ul id="section-quienes-list">
-        <li>✅ Experiencia y transparencia: Años de experiencia en la reparación de móviles.</li>
-        <li>✅ +500 clientes satisfechos: Nuestro crecimiento ha sido impulsado por la confianza de nuestros clientes.</li>
-        <li>✅ Móviles reacondicionados y nuevos con garantía: Productos en excelente estado con garantía incluida.</li>
-        <li>✅ Servicio a domicilio: Recogida y entrega en distintas zonas de Tenerife.</li>
-        <li>✅ Precios justos y accesibles: Evitamos costos inflados sin razón.</li>
-      </ul>
-      <p id="section-quienes-location-title"><strong>📍 Ubicación y disponibilidad</strong></p>
-      <p id="section-quienes-location-desc">Nos encontramos en Granadilla. 🚛 Con opción de recogida y entrega a domicilio en todo Tenerife.</p>
-      <p id="section-quienes-availability"><strong>🕒 Horario: 8:30–21:30 (por cita)</strong></p>
-      <p id="section-quienes-contact"><strong>📩 Contáctanos</strong></p>
-      <p id="section-quienes-whatsapp">
-        <img src="img/whatsapp_icon.png" alt="WhatsApp" style="vertical-align:middle; width:20px; height:20px;"> 
-        <a href="https://wa.me/34642886426" target="_blank">WhatsApp</a>
-      </p>
-      <p id="section-quienes-instagram">
-        <img src="img/Instagram_logo_2022.svg.webp" alt="Instagram" style="vertical-align:middle; width:20px; height:20px;"> 
-        <a href="https://www.instagram.com/electro_fix_it/" target="_blank">Instagram</a>
-      </p>
-    </section>
-
-    <!-- Servicios -->
-    <section id="services">
-      <h2 id="section-services-title">Servicios</h2>
-      <p id="section-services-desc">Reparación de pantallas, baterías, cámaras y más. Nuestro equipo de expertos garantiza calidad y rapidez en cada servicio.</p>
-      <a href="https://wa.me/34642886426" target="_blank" class="btn" id="section-services-btn">Contáctanos</a>
-    </section>
-
-    <!-- Móviles en Venta -->
-    <section id="products">
-      <h2 id="section-products-title">Móviles en Venta</h2>
-      <p id="section-products-desc">Descubre nuestra selección de móviles restaurados y nuevos. Encuentra los mejores precios y productos certificados.</p>
-      <a href="https://www.facebook.com/marketplace/profile/61565708769230/" target="_blank" class="btn" id="section-products-btn">Ver Catálogo</a>
-    </section>
-
-    <!-- Accesorios (con lista y precios) -->
-    <section id="accessories">
-      <h2 id="section-accessories-title">Accesorios</h2>
-      <p id="section-accessories-desc">Explora nuestra gama de accesorios para móviles: cargadores, carcasas, protectores de pantalla y mucho más.</p>
-
-      <div class="table-wrap">
-        <table aria-label="Tabla de accesorios y precios">
-          <thead>
-            <tr>
-              <th>Producto</th>
-              <th>Descripción</th>
-              <th>Precio</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Protector de pantalla</td><td>Protección básica para pantalla.</td><td>4 €</td></tr>
-            <tr><td>Protector con instalación</td><td>Incluye instalación profesional.</td><td>6 €</td></tr>
-            <tr><td>Carcasa transparente MagSafe</td><td>Funda transparente con MagSafe integrado.</td><td>5 €</td></tr>
-            <tr><td>Cable Lightning a USB/Tipo C</td><td>Compatible con Apple.</td><td>4,50 €</td></tr>
-            <tr><td>Cable Lightning a Tipo C – Original</td><td>Original Apple.</td><td>15 €</td></tr>
-            <tr><td>Cargador Tipo C – Original</td><td>Adaptador de corriente original Apple.</td><td>25 €</td></tr>
-            <tr><td>Cargador inalámbrico</td><td>Carga por inducción.</td><td>10 €</td></tr>
-            <tr><td>Cargador genérico 65W</td><td>Alta potencia, multi-dispositivo.</td><td>10 €</td></tr>
-            <tr><td>Cargador Apple Watch/SmartWatch</td><td>Base de carga magnética.</td><td>10 €</td></tr>
-            <tr><td>Set de carga 3 en 1</td><td>Móvil + AirPods + Apple Watch.</td><td>20 €</td></tr>
-            <tr><td>Soporte con ventosas</td><td>Antirrobo, se adhiere a superficies.</td><td>2,50 €</td></tr>
-            <tr><td>Empaquetado para regalo</td><td>Envoltura para regalo.</td><td>3 €</td></tr>
-            <tr><td>AirPods 2ª generación</td><td>Auriculares inalámbricos.</td><td>50 €</td></tr>
-            <tr><td>AirPods 3ª generación</td><td>Auriculares inalámbricos.</td><td>70 €</td></tr>
-            <tr><td>AirPods Pro 2</td><td>Cancelación de ruido.</td><td>80 €</td></tr>
-            <tr><td>Seguro para tu móvil</td><td>Protección ante imprevistos.</td><td>Desde 1 €/mes</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p style="margin-top:14px;color:var(--muted)">¿Te interesa alguno? Escríbenos por WhatsApp y te confirmamos compatibilidades y colores.</p>
-      <a href="https://wa.me/34642886426" target="_blank" class="btn" id="section-accessories-btn">Preguntar por WhatsApp</a>
-    </section>
-    
-    <!-- Nuestros Trabajos -->
-    <section id="trabajos">
-      <h2 id="section-works-title">Nuestros Trabajos</h2>
-      <p id="section-works-desc">Pronto subiremos los vídeos aquí mismo para verlos sin salir de la web.</p>
-      <a href="https://www.instagram.com/reel/DGEewjuoofu/?hl=es" target="_blank" class="btn" id="section-works-btn">Ver Trabajos en Instagram</a>
-    </section>
-
-    <!-- Testimonios -->
-    <section id="testimonios">
-      <h2 id="section-testimonials-title">Testimonios de Clientes</h2>
-      <p id="section-testimonials-desc">Descubre las experiencias de nuestros clientes. La calidad del servicio habla por sí misma.</p>
-      <a href="https://www.instagram.com/stories/highlights/17989038299202294/?hl=es" target="_blank" class="btn" id="section-testimonials-btn">Ver Testimonios</a>
-    </section>
-    
-    <!-- Reseñas -->
-    <section id="reseñas">
-      <h2 id="section-reviews-title">Reseñas en Google</h2>
-      <p id="section-reviews-desc">¡Comparte tu experiencia y ayúdanos a mejorar!</p>
-      <a href="https://www.google.com/search?q=Electro+Fix+IT+rese%C3%B1as" target="_blank" class="btn" id="section-reviews-btn">Deja tu Reseña</a>
-    </section>
-  </main>
-
-  <footer>
-    <p>
-      <img src="img/Instagram_logo_2022.svg.webp" alt="Logo Instagram">
-      <span id="footer-instagram">Síguenos en Instagram: @electro_fix_it</span>
-    </p>
-    <p id="footer-copyright">© 2024 Electro Fix It. Todos los derechos reservados.</p>
-  </footer>
-
-  <!-- Modal para imágenes (lo mantengo por si luego subimos fotos de accesorios) -->
-  <div class="fullscreen-img" id="fullscreenImg" role="dialog" aria-modal="true">
-    <button class="close-btn" aria-label="Cerrar imagen" id="closeBtn">&times;</button>
-    <div class="img-container">
-      <img src="img/Nuevo 1.jpg" alt="Accesorio 1">
-      <img src="img/Nuevo 2.jpg" alt="Accesorio 2">
-    </div>
-  </div>
-
-  <script>
-    // Traducciones ES/EN
-    const translations = {
-      es: {
-        header: { tagline1: "🔧 Servicio técnico transparente y personalizado - ¡+500 clientes satisfechos! 😊" },
-        nav: { services:"Servicios", products:"Móviles en Venta", accessories:"Accesorios", works:"Nuestros Trabajos", testimonials:"Testimonios de Clientes", reviews:"Reseñas en Google" },
-        quienes: {
-          title:"Quiénes Somos",
-          subheading:"🔧 Electro Fix It - Más que un servicio técnico, una garantía de confianza",
-          description:"Bienvenido a Electro Fix It, tu taller de confianza en Tenerife, especializado en la reparación, reacondicionamiento y venta de dispositivos móviles. Nos destacamos por ofrecer un servicio técnico transparente y personalizado.",
-          list:[
-            "✅ Experiencia y transparencia: Años de experiencia en la reparación de móviles.",
-            "✅ +500 clientes satisfechos: Nuestro crecimiento ha sido impulsado por la confianza de nuestros clientes.",
-            "✅ Móviles reacondicionados y nuevos con garantía: Productos en excelente estado con garantía incluida.",
-            "✅ Servicio a domicilio: Recogida y entrega en distintas zonas de Tenerife.",
-            "✅ Precios justos y accesibles: Evitamos costos inflados sin razón."
-          ],
-          locationTitle:"📍 Ubicación y disponibilidad",
-          locationDesc:"Nos encontramos en Granadilla. 🚛 Con opción de recogida y entrega a domicilio en todo Tenerife.",
-          availability:"🕒 Horario: 8:30–21:30 (por cita)",
-          contact:"📩 Contáctanos",
-          whatsapp:'📲 WhatsApp: <a href="https://wa.me/34642886426" target="_blank">Contáctanos ahora</a>',
-          instagram:'📷 Instagram: <a href="https://www.instagram.com/electro_fix_it/" target="_blank">@electro_fix_it</a>'
-        },
-        services:{ title:"Servicios", description:"Reparación de pantallas, baterías, cámaras y más. Nuestro equipo de expertos garantiza calidad y rapidez en cada servicio.", btn:"Contáctanos" },
-        products:{ title:"Móviles en Venta", description:"Descubre nuestra selección de móviles restaurados y nuevos. Encuentra los mejores precios y productos certificados.", btn:"Ver Catálogo" },
-        accessories:{ title:"Accesorios", description:"Explora nuestra gama de accesorios para móviles: cargadores, carcasas, protectores de pantalla y mucho más.", btn:"Preguntar por WhatsApp" },
-        works:{ title:"Nuestros Trabajos", description:"Pronto subiremos los vídeos aquí mismo para verlos sin salir de la web.", btn:"Ver Trabajos en Instagram" },
-        testimonials:{ title:"Testimonios de Clientes", description:"Descubre las experiencias y opiniones de nuestros clientes satisfechos.", btn:"Ver Testimonios" },
-        reviews:{ title:"Reseñas en Google", description:"¡Comparte tu experiencia y ayúdanos a mejorar!", btn:"Deja tu Reseña" },
-        footer:{ instagram:"Síguenos en Instagram: @electro_fix_it", copyright:"© 2024 Electro Fix It. Todos los derechos reservados." }
-      },
-      en: {
-        header: { tagline1: "🔧 Transparent and personalized technical service - 500+ satisfied customers! 😊" },
-        nav: { services:"Services", products:"Mobile Phones for Sale", accessories:"Accessories", works:"Our Works", testimonials:"Customer Testimonials", reviews:"Google Reviews" },
-        quienes: {
-          title:"Who We Are",
-          subheading:"🔧 Electro Fix It - More than a repair shop, a guarantee of trust",
-          description:"Welcome to Electro Fix It, your trusted workshop in Tenerife, specialized in repair, refurbishment and sale of mobile devices. We offer transparent and personalized service.",
-          list:[
-            "✅ Experience and transparency: Years of mobile repair experience.",
-            "✅ 500+ satisfied customers: Our growth is driven by trust.",
-            "✅ Refurbished & new with warranty.",
-            "✅ Home pickup & delivery across Tenerife.",
-            "✅ Fair prices without inflated costs."
-          ],
-          locationTitle:"📍 Location & availability",
-          locationDesc:"We’re in Granadilla. 🚛 Pickup & delivery across Tenerife.",
-          availability:"🕒 Hours: 8:30–21:30 (by appointment)",
-          contact:"📩 Contact us",
-          whatsapp:'📲 WhatsApp: <a href="https://wa.me/34642886426" target="_blank">Chat now</a>',
-          instagram:'📷 Instagram: <a href="https://www.instagram.com/electro_fix_it/" target="_blank">@electro_fix_it</a>'
-        },
-        services:{ title:"Services", description:"Screens, batteries, cameras and more. Fast, quality repairs.", btn:"Contact Us" },
-        products:{ title:"Mobile Phones for Sale", description:"Discover our refurbished & new devices.", btn:"View Catalog" },
-        accessories:{ title:"Accessories", description:"Chargers, cases, screen protectors and more.", btn:"WhatsApp Us" },
-        works:{ title:"Our Works", description:"Soon we’ll host the videos here directly.", btn:"See on Instagram" },
-        testimonials:{ title:"Customer Testimonials", description:"Read what our customers say.", btn:"View Testimonials" },
-        reviews:{ title:"Google Reviews", description:"Share your experience!", btn:"Leave a Review" },
-        footer:{ instagram:"Follow us on Instagram: @electro_fix_it", copyright:"© 2024 Electro Fix It. All rights reserved." }
-      }
-    };
-
-    function updateLanguage(lang) {
-      // Header
-      document.getElementById("header-tagline1").innerText = translations[lang].header.tagline1;
-      // Nav
-      document.getElementById("nav-services").innerText = translations[lang].nav.services;
-      document.getElementById("nav-products").innerText = translations[lang].nav.products;
-      document.getElementById("nav-accessories").innerText = translations[lang].nav.accessories;
-      document.getElementById("nav-works").innerText = translations[lang].nav.works;
-      document.getElementById("nav-testimonials").innerText = translations[lang].nav.testimonials;
-      document.getElementById("nav-reviews").innerText = translations[lang].nav.reviews;
-      // Quienes
-      document.getElementById("section-quienes-title").innerText = translations[lang].quienes.title;
-      document.getElementById("section-quienes-subheading").innerText = translations[lang].quienes.subheading;
-      document.getElementById("section-quienes-desc").innerText = translations[lang].quienes.description;
-      const listUl = document.getElementById("section-quienes-list");
-      listUl.innerHTML = "";
-      translations[lang].quienes.list.forEach(t=>{ const li=document.createElement("li"); li.innerText=t; listUl.appendChild(li); });
-      document.getElementById("section-quienes-location-title").innerText = translations[lang].quienes.locationTitle;
-      document.getElementById("section-quienes-location-desc").innerText = translations[lang].quienes.locationDesc;
-      document.getElementById("section-quienes-availability").innerText = translations[lang].quienes.availability;
-      document.getElementById("section-quienes-contact").innerText = translations[lang].quienes.contact;
-      document.getElementById("section-quienes-whatsapp").innerHTML = translations[lang].quienes.whatsapp;
-      document.getElementById("section-quienes-instagram").innerHTML = translations[lang].quienes.instagram;
-      // Secciones
-      document.getElementById("section-services-title").innerText = translations[lang].services.title;
-      document.getElementById("section-services-desc").innerText = translations[lang].services.description;
-      document.getElementById("section-services-btn").innerText = translations[lang].services.btn;
-
-      document.getElementById("section-products-title").innerText = translations[lang].products.title;
-      document.getElementById("section-products-desc").innerText = translations[lang].products.description;
-      document.getElementById("section-products-btn").innerText = translations[lang].products.btn;
-
-      document.getElementById("section-accessories-title").innerText = translations[lang].accessories.title;
-      document.getElementById("section-accessories-desc").innerText = translations[lang].accessories.description;
-      document.getElementById("section-accessories-btn").innerText = translations[lang].accessories.btn;
-
-      document.getElementById("section-works-title").innerText = translations[lang].works.title;
-      document.getElementById("section-works-desc").innerText = translations[lang].works.description;
-      document.getElementById("section-works-btn").innerText = translations[lang].works.btn;
-
-      document.getElementById("section-testimonials-title").innerText = translations[lang].testimonials.title;
-      document.getElementById("section-testimonials-desc").innerText = translations[lang].testimonials.description;
-      document.getElementById("section-testimonials-btn").innerText = translations[lang].testimonials.btn;
-
-      document.getElementById("section-reviews-title").innerText = translations[lang].reviews.title;
-      document.getElementById("section-reviews-desc").innerText = translations[lang].reviews.description;
-      document.getElementById("section-reviews-btn").innerText = translations[lang].reviews.btn;
-
-      document.getElementById("footer-instagram").innerText = translations[lang].footer.instagram;
-      document.getElementById("footer-copyright").innerText = translations[lang].footer.copyright;
+    .modal-header{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px }
+    .modal-title{ font-size:1.4rem; font-weight:800; color:#fff }
+    .modal-close{ background:transparent; border:1px solid var(--border); color:#fff; border-radius:10px; padding:8px 12px; cursor:pointer }
+    .modal-tools{ display:flex; gap:10px; align-items:center; margin:8px 0 14px }
+    .modal-search{
+      flex:1; min-width:220px; background:rgba(255,255,255,.06); border:1px solid var(--border);
+      color:#fff; padding:10px 12px; border-radius:10px; outline:none;
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const languageSwitcher = document.getElementById('languageSwitcher');
-      languageSwitcher.addEventListener('change', function(){ updateLanguage(this.value); });
-    });
-  </script>
-</body>
-</html>
+    /* Tarjetas de accesorios */
+    .grid{ display:grid; gap:14px }
+    .grid.cards{ grid-template-columns:repeat(3,1fr) }
+    .card{
+      background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden;
+    }
+    .card .media{
+      background:rgba(255,255,255,.04); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
