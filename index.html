@@ -44,6 +44,10 @@
     footer a:hover{ color:var(--accent-color) }
     footer img{ vertical-align:middle; width:20px; height:20px; margin-right:10px }
 
+    /* Iconos inline */
+    .icon{ vertical-align:middle; width:20px; height:20px; margin-right:6px }
+    .inline-chip{ display:inline-flex; align-items:center; gap:6px; margin-right:12px; vertical-align:middle; }
+
     /* MODAL Accesorios */
     .modal{ display:none; position:fixed; inset:0; background:rgba(0,0,0,.9); z-index:1200; padding:24px; overflow:auto }
     .modal[aria-hidden="false"]{ display:block }
@@ -54,13 +58,11 @@
     .modal-tools{ display:flex; gap:10px; align-items:center; margin:8px 0 14px }
     .modal-search{ flex:1; min-width:220px; background:rgba(255,255,255,.06); border:1px solid var(--border); color:#fff; padding:10px 12px; border-radius:10px; outline:none; }
 
-    /* Tarjetas (Accesorios) */
+    /* Tarjetas Accesorios */
     .grid{ display:grid; gap:14px; grid-template-columns:repeat(3,1fr) }
     .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden }
-    .card .media{
-      background:#fff; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
-    }
-    /* Mostrar las imágenes completas sin recortar ni deformar */
+    .card .media{ background:#fff; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; }
+    /* Mostrar imágenes completas sin recortar ni deformar */
     .card .media img{ width:100%; height:100%; object-fit:contain; background:#fff; }
     .card .body{ padding:12px 14px }
     .card .title{ font-weight:800; margin-bottom:6px }
@@ -71,14 +73,9 @@
     @media (max-width:980px){ .grid{ grid-template-columns:repeat(2,1fr) } }
     @media (max-width:640px){ .grid{ grid-template-columns:1fr } }
 
-    /* Iconos inline junto a botones (WhatsApp / Instagram) */
-    .icon{
-      vertical-align:middle; width:20px; height:20px; margin-right:6px;
-    }
-
-    /* Logos de reseñas (solo iconos) */
+    /* Reseñas (iconos solo, alineados a la izquierda) */
     .review-logos{
-      display:flex; gap:24px; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:12px;
+      display:flex; gap:24px; justify-content:flex-start; align-items:center; flex-wrap:wrap; margin-top:12px;
     }
     .review-logos a{
       display:inline-flex; align-items:center; justify-content:center;
@@ -87,9 +84,7 @@
     }
     .review-logos a:hover{ transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,.35) }
     .review-logos img{ max-width:70%; max-height:70%; object-fit:contain }
-    @media (max-width:480px){
-      .review-logos a{ width:64px; height:64px; border-radius:14px }
-    }
+    .review-logos a.wallapop img{ max-width:80%; max-height:80%; } /* Wallapop un poco más grande */
   </style>
 </head>
 <body>
@@ -125,11 +120,14 @@
       </ul>
       <p>🌟 Transparencia, precios justos y trato cercano. Tu tranquilidad es nuestra prioridad.</p>
       <p>
-        <img class="icon" src="img/whatsapp_icon.png" alt="WhatsApp">
-        <a href="https://wa.me/34642886426" target="_blank" class="btn">Escribir por WhatsApp</a>
-        &nbsp;&nbsp;
-        <img class="icon" src="img/Instagram_logo_2022.svg.webp" alt="Instagram">
-        <a href="https://www.instagram.com/electro_fix_it/" target="_blank" class="btn" style="background:#E1306C">Instagram</a>
+        <span class="inline-chip">
+          <img class="icon" src="img/whatsapp_icon.png" alt="WhatsApp">
+          <a href="https://wa.me/34642886426" target="_blank" class="btn">Escribir por WhatsApp</a>
+        </span>
+        <span class="inline-chip">
+          <img class="icon" src="img/Instagram_logo_2022.svg.webp" alt="Instagram">
+          <a href="https://www.instagram.com/electro_fix_it/" target="_blank" class="btn" style="background:#E1306C">Instagram</a>
+        </span>
       </p>
     </section>
 
@@ -148,7 +146,7 @@
     <!-- Accesorios (solo botón; la lista se muestra en el modal) -->
     <section id="accessories">
       <h2>Accesorios</h2>
-      <p>Haz clic para ver todos los accesorios con precio e imágenes.</p>
+      <p>Haz clic para ver los accesorios con precio e imágenes.</p>
       <a href="#" class="btn" id="section-accessories-btn">Abrir lista de Accesorios</a>
     </section>
 
@@ -171,7 +169,7 @@
         <a href="https://www.google.com/search?q=Electro+Fix+IT+rese%C3%B1as" target="_blank" aria-label="Reseñas en Google">
           <img src="img/google_icon.png" alt="Google">
         </a>
-        <a href="https://es.wallapop.com/app/profile/reviews" target="_blank" aria-label="Reseñas en Wallapop">
+        <a href="https://es.wallapop.com/app/profile/reviews" target="_blank" aria-label="Reseñas en Wallapop" class="wallapop">
           <img src="img/wallapop_icon.png" alt="Wallapop">
         </a>
       </div>
@@ -187,7 +185,7 @@
     <p>© 2024 Electro Fix It. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- MODAL: Accesorios -->
+  <!-- MODAL: Accesorios (SOLO con foto) -->
   <div class="modal" id="accessoriesModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="accTitle">
     <div class="modal-inner">
       <div class="modal-header">
@@ -200,8 +198,6 @@
       </div>
 
       <div class="grid" id="accCards">
-        <!-- SOLO accesorios con foto -->
-
         <!-- 1) Protector de pantalla -->
         <article class="card">
           <div class="media"><img src="img/protector_pantalla.jpg" alt="Protector de pantalla"></div>
@@ -321,13 +317,12 @@
                href="https://wa.me/34642886426?text=Hola%20Electro%20Fix%20It%2C%20quiero%20Soporte%20con%20ventosas%20(2%2C50%E2%82%AC)">Pedir por WhatsApp</a>
           </div>
         </article>
-
       </div>
     </div>
   </div>
 
   <script>
-    // Utilidades
+    // Helpers
     const $ = (q,ctx=document)=>ctx.querySelector(q);
     const $$ = (q,ctx=document)=>Array.from(ctx.querySelectorAll(q));
 
@@ -341,7 +336,6 @@
     function openModal(){
       accModal.setAttribute('aria-hidden','false');
       document.body.style.overflow='hidden';
-      // Reset búsqueda
       accSearch.value='';
       filterCards('');
       setTimeout(()=>accSearch.focus(), 0);
@@ -358,10 +352,7 @@
       if(btn){ btn.addEventListener('click', e=>{ e.preventDefault(); openModal(); }); }
     });
     closeAccBtn.addEventListener('click', closeModal);
-    // Cerrar clic fuera
-    accModal.addEventListener('click', e=>{
-      if(e.target===accModal) closeModal();
-    });
+    accModal.addEventListener('click', e=>{ if(e.target===accModal) closeModal(); });
 
     // Búsqueda
     function filterCards(q){
