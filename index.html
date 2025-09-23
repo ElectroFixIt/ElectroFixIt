@@ -132,12 +132,23 @@
   <main>
     <section id="quienes-somos">
       <h2>Quiénes Somos</h2>
-      <p>Somos tu taller de confianza en Tenerife. Estamos en <strong>Charco del Pino</strong> (Granadilla de Abona) y ofrecemos <strong>transporte y envíos a toda Canarias</strong>.</p>
+      <p>📍 Estamos en <strong>Charco del Pino (Granadilla de Abona)</strong>, Tenerife.<br>
+      🚚 Ofrecemos <strong>transporte y envíos a toda Canarias</strong>.</p>
+
+      <p>🔧 <strong>Electro Fix It</strong> es tu taller especializado en reparación y venta de móviles.  
+      Nos eligen por nuestra <strong>transparencia</strong>, <strong>trato cercano</strong> y <strong>resultados con garantía</strong>.</p>
+
       <ul>
-        <li>+500 clientes satisfechos.</li>
-        <li>Reparación, reacondicionamiento y venta con garantía.</li>
-        <li>Atención por cita. Horario: <strong>8:30–21:30</strong>.</li>
+        <li>✔️ <strong>+500 clientes satisfechos</strong> — la confianza es nuestro motor.</li>
+        <li>✔️ Reparaciones de pantalla, batería, cámaras, conector, etc. con <strong>garantía</strong>.</li>
+        <li>✔️ Venta de móviles <strong>reacondicionados</strong> y nuevos en perfecto estado.</li>
+        <li>✔️ <strong>Atención por cita</strong> para dedicarte el tiempo que mereces.</li>
+        <li>✔️ Horario amplio: <strong>8:30 – 21:30</strong>.</li>
+        <li>✔️ Precios justos y explicados sin letras pequeñas.</li>
       </ul>
+
+      <p>💬 Nuestro objetivo es que te vayas con tu dispositivo al <strong>100%</strong> y una experiencia de 10 😊.</p>
+
       <p>
         <img src="img/whatsapp_icon.png" alt="WhatsApp" style="vertical-align:middle;width:20px;height:20px;margin-right:6px;">
         <a href="https://wa.me/34642886426" target="_blank" class="btn">Escribir por WhatsApp</a>
@@ -149,7 +160,8 @@
 
     <section id="services">
       <h2>Servicios</h2>
-      <p>Reparación de pantallas, baterías, cámaras, conectores y más. Servicio rápido, precios claros y garantía.</p>
+      <p>Reparación de pantallas, baterías, cámaras, conectores y más.  
+      Servicio rápido, precios claros y garantía en todas las reparaciones.</p>
       <a href="https://wa.me/34642886426" target="_blank" class="btn">Pedir presupuesto</a>
     </section>
 
@@ -208,7 +220,7 @@
       </div>
 
       <div class="grid" id="accCards">
-        <!-- 1) Protector de pantalla (con imagen) -->
+        <!-- 1) Protector de pantalla -->
         <article class="card" data-name="protector de pantalla">
           <div class="media">
             <img src="img/protector_pantalla.jpg" alt="Protector de pantalla">
@@ -217,11 +229,11 @@
             <div class="title">Protector de pantalla</div>
             <div class="desc">Protección básica para la pantalla del móvil.</div>
             <div class="price">4 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Hola%20Electro%20Fix%20It,%20quiero%20un%20Protector%20de%20pantalla%20(4%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Protector%20de%20pantalla%20(4%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
           </div>
         </article>
 
-        <!-- 2) Protector con instalación (AHORA CON IMAGEN) -->
+        <!-- 2) Protector con instalación -->
         <article class="card" data-name="protector con instalación">
           <div class="media">
             <img src="img/protector_instalacion.jpg" alt="Protector con instalación">
@@ -252,11 +264,11 @@
             <div class="title">Cable Lightning a USB/Tipo C</div>
             <div class="desc">Compatible con Apple.</div>
             <div class="price">4,50 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Cable%20Lightning%20a%20USB/Tipo%20C%20(4,50%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Cable%20Lightning%20a%20USB%20Tipo%20C%20(4,50%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
           </div>
         </article>
 
-        <!-- 5) Cable Lightning a Tipo C – Original -->
+        <!-- 5) Cable Lightning a Tipo C Original -->
         <article class="card" data-name="cable lightning a tipo c original">
           <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
           <div class="body">
@@ -399,8 +411,11 @@
 
     openAccBtns.forEach(btn=>{
       if(btn){
-        btn.addEventListener('click',(e)=>{ e.preventDefault(); accModal.style.display='block';
-          document.getElementById('accSearch').focus(); });
+        btn.addEventListener('click',(e)=>{ 
+          e.preventDefault(); 
+          accModal.style.display='block';
+          document.getElementById('accSearch').focus(); 
+        });
       }
     });
     closeAcc.addEventListener('click', ()=> accModal.style.display='none');
