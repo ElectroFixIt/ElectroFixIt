@@ -99,10 +99,7 @@
     .card .media{
       background:rgba(255,255,255,.04); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
     }
-    /* imagenes SIN recortes ni deformación */
-    .card .media img{
-      width:100%; height:100%; object-fit:contain; background:#fff;
-    }
+    .card .media img{ width:95%; height:95%; object-fit:contain } /* Imagenes más grandes */
     .card .body{ padding:12px 14px }
     .card .title{ font-weight:800; margin-bottom:6px }
     .card .desc{ color:var(--muted); font-size:.95rem; margin-bottom:8px }
@@ -162,29 +159,11 @@
       <a href="https://www.facebook.com/marketplace/profile/61565708769230/" target="_blank" class="btn">Ver catálogo</a>
     </section>
 
-    <!-- Accesorios (SOLO botón; la lista va en el modal) -->
+    <!-- Accesorios (botón que abre modal) -->
     <section id="accessories">
       <h2>Accesorios</h2>
       <p>Haz clic para ver todos los accesorios con precio e imágenes sin salir de la página.</p>
       <a href="#" class="btn" id="section-accessories-btn">Abrir lista de Accesorios</a>
-    </section>
-
-    <section id="trabajos">
-      <h2>Nuestros Trabajos</h2>
-      <p>Muy pronto podrás ver aquí los vídeos directamente. Mientras tanto, puedes verlos en Instagram.</p>
-      <a href="https://www.instagram.com/reel/DGEewjuoofu/?hl=es" target="_blank" class="btn">Ver en Instagram</a>
-    </section>
-
-    <section id="testimonios">
-      <h2>Testimonios</h2>
-      <p>La mejor carta de presentación: la experiencia de nuestros clientes.</p>
-      <a href="https://www.instagram.com/stories/highlights/17989038299202294/?hl=es" target="_blank" class="btn">Ver testimonios</a>
-    </section>
-
-    <section id="reseñas">
-      <h2>Reseñas en Google</h2>
-      <p>¿Ya nos conoces? Déjanos tu reseña y ayuda a otros a decidir.</p>
-      <a href="https://www.google.com/search?q=Electro+Fix+IT+rese%C3%B1as" target="_blank" class="btn">Dejar reseña</a>
     </section>
   </main>
 
@@ -211,115 +190,79 @@
       </div>
 
       <div class="grid" id="accCards">
-        <!-- 1) Protector de pantalla -->
-        <article class="card" data-name="protector de pantalla">
-          <div class="media">
-            <img src="img/protector_pantalla.jpg" alt="Protector de pantalla">
-          </div>
-          <div class="body">
-            <div class="title">Protector de pantalla</div>
-            <div class="desc">Protección básica para la pantalla del móvil.</div>
-            <div class="price">4 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Protector%20de%20pantalla%20(4%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
-          </div>
+        <!-- Protector de pantalla -->
+        <article class="card">
+          <div class="media"><img src="img/protector_pantalla.jpg" alt="Protector de pantalla"></div>
+          <div class="body"><div class="title">Protector de pantalla</div><div class="desc">Protección básica.</div><div class="price">4 €</div></div>
         </article>
 
-        <!-- 2) Protector con instalación -->
-        <article class="card" data-name="protector con instalación">
-          <div class="media">
-            <img src="img/protector_instalacion.jpg" alt="Protector con instalación">
-          </div>
-          <div class="body">
-            <div class="title">Protector con instalación</div>
-            <div class="desc">Incluye instalación profesional.</div>
-            <div class="price">6 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Protector%20con%20instalaci%C3%B3n%20(6%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
-          </div>
+        <!-- Protector con instalación -->
+        <article class="card">
+          <div class="media"><img src="img/protector_instalacion.jpg" alt="Protector con instalación"></div>
+          <div class="body"><div class="title">Protector con instalación</div><div class="desc">Incluye instalación profesional.</div><div class="price">6 €</div></div>
         </article>
 
-        <!-- 3) Carcasa transparente MagSafe -->
-        <article class="card" data-name="carcasa transparente magsafe">
-          <div class="media">
-            <img src="img/Carcasa_transparente.jpg" alt="Carcasa transparente MagSafe">
-          </div>
-          <div class="body">
-            <div class="title">Carcasa transparente MagSafe</div>
-            <div class="desc">Funda transparente con anillo magnético compatible MagSafe.</div>
-            <div class="price">5 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Carcasa%20MagSafe%20(5%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
-          </div>
+        <!-- Carcasa transparente MagSafe -->
+        <article class="card">
+          <div class="media"><img src="img/Carcasa_transparente.jpg" alt="Carcasa transparente"></div>
+          <div class="body"><div class="title">Carcasa transparente MagSafe</div><div class="desc">Funda transparente con MagSafe.</div><div class="price">5 €</div></div>
         </article>
 
-        <!-- 4) Cable Lightning a USB/Tipo C -->
-        <article class="card" data-name="cable lightning a usb tipo c">
-          <div class="media">
-            <img src="img/cable_tipo_c_lightning.jpg" alt="Cable Lightning a USB/Tipo C">
-          </div>
-          <div class="body">
-            <div class="title">Cable Lightning a USB/Tipo C</div>
-            <div class="desc">Cable de datos y carga compatible con iPhone.</div>
-            <div class="price">4,50 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Cable%20Lightning%20a%20USB/Tipo%20C%20(4,50%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
-          </div>
+        <!-- Cable Lightning Tipo C -->
+        <article class="card">
+          <div class="media"><img src="img/cable_tipo_c_lightning.jpg" alt="Cable Lightning"></div>
+          <div class="body"><div class="title">Cable Lightning a Tipo C</div><div class="desc">Compatible con Apple.</div><div class="price">4,50 €</div></div>
         </article>
 
-        <!-- 5) Batería MagSafe 5000 mAh -->
-        <article class="card" data-name="bateria magsafe 5000">
-          <div class="media">
-            <img src="img/bateria_magsafe.jpg" alt="Batería MagSafe 5000mAh">
-          </div>
-          <div class="body">
-            <div class="title">Batería portátil MagSafe 5.000 mAh</div>
-            <div class="desc">Power bank magnético con carga inalámbrica hasta 15W. Perfecto para el día a día.</div>
-            <div class="price">30 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Bater%C3%ADa%20MagSafe%205000mAh%20(30%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
-          </div>
+        <!-- Batería MagSafe 5000 -->
+        <article class="card">
+          <div class="media"><img src="img/bateria_magsafe.jpg" alt="Batería MagSafe"></div>
+          <div class="body"><div class="title">Batería MagSafe 5000 mAh</div><div class="desc">Carga inalámbrica portátil.</div><div class="price">30 €</div></div>
         </article>
 
-        <!-- 6) Batería MagSafe 10000 mAh -->
-        <article class="card" data-name="bateria magsafe 10000">
-          <div class="media">
-            <img src="img/bateria_magsafe.jpg" alt="Batería MagSafe 10000mAh">
-          </div>
-          <div class="body">
-            <div class="title">Batería portátil MagSafe 10.000 mAh</div>
-            <div class="desc">Doble capacidad, carga inalámbrica magnética hasta 15W. Ideal para viajes largos.</div>
-            <div class="price">40 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Bater%C3%ADa%20MagSafe%2010000mAh%20(40%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
-          </div>
+        <!-- Batería MagSafe 10000 -->
+        <article class="card">
+          <div class="media"><img src="img/bateria_magsafe.jpg" alt="Batería MagSafe grande"></div>
+          <div class="body"><div class="title">Batería MagSafe 10000 mAh</div><div class="desc">Mayor capacidad con carga rápida.</div><div class="price">40 €</div></div>
+        </article>
+
+        <!-- Cargador 65W -->
+        <article class="card">
+          <div class="media"><img src="img/cargador_65w.jpg" alt="Cargador 65W"></div>
+          <div class="body"><div class="title">Cargador genérico 65W</div><div class="desc">Compatible con varios dispositivos.</div><div class="price">10 €</div></div>
+        </article>
+
+        <!-- Cargador Apple Watch -->
+        <article class="card">
+          <div class="media"><img src="img/cargador_watch.jpg" alt="Cargador Apple Watch"></div>
+          <div class="body"><div class="title">Cargador Apple Watch</div><div class="desc">Base magnética para relojes.</div><div class="price">10 €</div></div>
+        </article>
+
+        <!-- Set 3 en 1 -->
+        <article class="card">
+          <div class="media"><img src="img/set_3en1.jpg" alt="Set carga 3 en 1"></div>
+          <div class="body"><div class="title">Set de carga 3 en 1</div><div class="desc">Móvil + AirPods + Apple Watch.</div><div class="price">20 €</div></div>
+        </article>
+
+        <!-- Soporte ventosas -->
+        <article class="card">
+          <div class="media"><img src="img/soporte_ventosas.jpg" alt="Soporte con ventosas"></div>
+          <div class="body"><div class="title">Soporte con ventosas</div><div class="desc">Antirrobo; se adhiere a superficies.</div><div class="price">2,50 €</div></div>
         </article>
       </div>
     </div>
   </div>
 
   <script>
-    // Abrir/cerrar modal Accesorios
-    const accModal = document.getElementById('accessoriesModal');
-    const openAccBtns = [document.getElementById('nav-accessories'), document.getElementById('section-accessories-btn')];
-    const closeAcc = document.getElementById('closeAcc');
-
-    openAccBtns.forEach(btn=>{
-      if(btn){
-        btn.addEventListener('click',(e)=>{ 
-          e.preventDefault(); 
-          accModal.style.display='block';
-          document.getElementById('accSearch').focus();
-        });
-      }
-    });
-    closeAcc.addEventListener('click', ()=> accModal.style.display='none');
-    accModal.addEventListener('click', (e)=>{ if(e.target===accModal) accModal.style.display='none'; });
-
-    // Buscador en las tarjetas
-    const accSearch = document.getElementById('accSearch');
-    const accCards = document.getElementById('accCards');
-    accSearch.addEventListener('input', ()=>{
-      const q = accSearch.value.toLowerCase();
-      [...accCards.children].forEach(card=>{
-        const text = card.innerText.toLowerCase();
-        card.style.display = text.includes(q) ? '' : 'none';
-      });
-    });
+    const accModal=document.getElementById('accessoriesModal');
+    const openAccBtns=[document.getElementById('nav-accessories'),document.getElementById('section-accessories-btn')];
+    const closeAcc=document.getElementById('closeAcc');
+    openAccBtns.forEach(btn=>{if(btn){btn.addEventListener('click',(e)=>{e.preventDefault();accModal.style.display='block';document.getElementById('accSearch').focus();});}});
+    closeAcc.addEventListener('click',()=> accModal.style.display='none');
+    accModal.addEventListener('click',(e)=>{if(e.target===accModal) accModal.style.display='none';});
+    const accSearch=document.getElementById('accSearch');
+    const accCards=document.getElementById('accCards');
+    accSearch.addEventListener('input',()=>{const q=accSearch.value.toLowerCase();[...accCards.children].forEach(card=>{const text=card.innerText.toLowerCase();card.style.display=text.includes(q)?'':'none';});});
   </script>
 </body>
 </html>
