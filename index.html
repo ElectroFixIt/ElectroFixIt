@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -97,17 +97,9 @@
     .grid{ display:grid; gap:14px; grid-template-columns:repeat(3,1fr) }
     .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden }
     .card .media{
-      /* Fondo BLANCO para que se vea el relleno cuando la imagen no ocupa todo */
-      background:#fff;
-      /* Relación 4:3 + centrado */
-      aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
-      padding:8px;
+      background:rgba(255,255,255,.04); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
     }
-    .card .media img{
-      /* SIN recortes ni zoom */
-      max-width:100%; max-height:100%;
-      width:auto; height:auto; object-fit:contain; display:block;
-    }
+    .card .media img{ width:100%; height:100%; object-fit:cover }
     .card .body{ padding:12px 14px }
     .card .title{ font-weight:800; margin-bottom:6px }
     .card .desc{ color:var(--muted); font-size:.95rem; margin-bottom:8px }
@@ -216,7 +208,7 @@
       </div>
 
       <div class="grid" id="accCards">
-        <!-- 1) Protector de pantalla (con imagen, sin recortes) -->
+        <!-- 1) Protector de pantalla (con imagen) -->
         <article class="card" data-name="protector de pantalla">
           <div class="media">
             <img src="img/protector_pantalla.jpg" alt="Protector de pantalla">
@@ -229,7 +221,7 @@
           </div>
         </article>
 
-        <!-- 2) Protector con instalación (NUEVA FOTO) -->
+        <!-- 2) Protector con instalación (AHORA CON IMAGEN) -->
         <article class="card" data-name="protector con instalación">
           <div class="media">
             <img src="img/protector_instalacion.jpg" alt="Protector con instalación">
@@ -264,7 +256,137 @@
           </div>
         </article>
 
-        <!-- (Puedes seguir añadiendo más tarjetas aquí…) -->
+        <!-- 5) Cable Lightning a Tipo C – Original -->
+        <article class="card" data-name="cable lightning a tipo c original">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Cable Lightning a Tipo C – Original</div>
+            <div class="desc">Original Apple.</div>
+            <div class="price">15 €</div>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Cable%20Lightning%20a%20Tipo%20C%20Original%20(15%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- 6) Cargador Tipo C – Original -->
+        <article class="card" data-name="cargador tipo c original">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Cargador Tipo C – Original</div>
+            <div class="desc">Adaptador de corriente original Apple.</div>
+            <div class="price">25 €</div>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Cargador%20Tipo%20C%20Original%20(25%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- 7) Cargador inalámbrico -->
+        <article class="card" data-name="cargador inalámbrico">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Cargador inalámbrico</div>
+            <div class="desc">Carga por inducción.</div>
+            <div class="price">10 €</div>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Cargador%20inal%C3%A1mbrico%20(10%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- 8) Cargador genérico 65W -->
+        <article class="card" data-name="cargador genérico 65w">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Cargador genérico 65W</div>
+            <div class="desc">Alta potencia, multi-dispositivo.</div>
+            <div class="price">10 €</div>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Cargador%2065W%20(10%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- 9) Cargador Apple Watch/SmartWatch -->
+        <article class="card" data-name="cargador apple watch smartwatch">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Cargador Apple Watch/SmartWatch</div>
+            <div class="desc">Base de carga magnética.</div>
+            <div class="price">10 €</div>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Cargador%20Apple%20Watch/SmartWatch%20(10%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- 10) Set 3 en 1 -->
+        <article class="card" data-name="set de carga 3 en 1">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Set de carga 3 en 1</div>
+            <div class="desc">Móvil + AirPods + Apple Watch.</div>
+            <div class="price">20 €</div>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Set%203%20en%201%20(20%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- 11) Soporte con ventosas -->
+        <article class="card" data-name="soporte con ventosas">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Soporte con ventosas</div>
+            <div class="desc">Antirrobo; se adhiere a superficies.</div>
+            <div class="price">2,50 €</div>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Soporte%20con%20ventosas%20(2,50%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- 12) Empaquetado para regalo -->
+        <article class="card" data-name="empaquetado para regalo">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Empaquetado para regalo</div>
+            <div class="desc">Envoltura para regalo.</div>
+            <div class="price">3 €</div>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Empaquetado%20para%20regalo%20(3%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- 13) AirPods 2 -->
+        <article class="card" data-name="airpods 2">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">AirPods 2ª generación</div>
+            <div class="desc">Auriculares inalámbricos.</div>
+            <div class="price">50 €</div>
+            <a class="cta btn" href="https://wa.me/34642886426?text=AirPods%202%20(50%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- 14) AirPods 3 -->
+        <article class="card" data-name="airpods 3">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">AirPods 3ª generación</div>
+            <div class="desc">Auriculares inalámbricos.</div>
+            <div class="price">70 €</div>
+            <a class="cta btn" href="https://wa.me/34642886426?text=AirPods%203%20(70%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- 15) AirPods Pro 2 -->
+        <article class="card" data-name="airpods pro 2">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">AirPods Pro 2</div>
+            <div class="desc">Cancelación de ruido.</div>
+            <div class="price">80 €</div>
+            <a class="cta btn" href="https://wa.me/34642886426?text=AirPods%20Pro%202%20(80%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- 16) Seguro para tu móvil -->
+        <article class="card" data-name="seguro para tu móvil">
+          <div class="media"><span style="opacity:.6">Imagen próximamente</span></div>
+          <div class="body">
+            <div class="title">Seguro para tu móvil</div>
+            <div class="desc">Protección ante imprevistos.</div>
+            <div class="price">Desde 1 €/mes</div>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Seguro%20para%20mi%20m%C3%B3vil%20(Desde%201%20%E2%82%AC/mes)" target="_blank">Pedir por WhatsApp</a>
+          </div>
+        </article>
       </div>
     </div>
   </div>
@@ -284,7 +406,7 @@
     closeAcc.addEventListener('click', ()=> accModal.style.display='none');
     accModal.addEventListener('click', (e)=>{ if(e.target===accModal) accModal.style.display='none'; });
 
-    // Buscador simple en tarjetas
+    // Buscador en las tarjetas
     const accSearch = document.getElementById('accSearch');
     const accCards = document.getElementById('accCards');
     accSearch.addEventListener('input', ()=>{
