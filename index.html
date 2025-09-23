@@ -99,7 +99,10 @@
     .card .media{
       background:rgba(255,255,255,.04); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
     }
-    .card .media img{ width:100%; height:100%; object-fit:contain; background:#fff }
+    /* imagenes SIN recortes ni deformación */
+    .card .media img{
+      width:100%; height:100%; object-fit:contain; background:#fff;
+    }
     .card .body{ padding:12px 14px }
     .card .title{ font-weight:800; margin-bottom:6px }
     .card .desc{ color:var(--muted); font-size:.95rem; margin-bottom:8px }
@@ -217,7 +220,7 @@
             <div class="title">Protector de pantalla</div>
             <div class="desc">Protección básica para la pantalla del móvil.</div>
             <div class="price">4 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Protector%20de%20pantalla%20(4%20€)" target="_blank">Pedir por WhatsApp</a>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Protector%20de%20pantalla%20(4%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
           </div>
         </article>
 
@@ -230,7 +233,7 @@
             <div class="title">Protector con instalación</div>
             <div class="desc">Incluye instalación profesional.</div>
             <div class="price">6 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Protector%20con%20instalaci%C3%B3n%20(6%20€)" target="_blank">Pedir por WhatsApp</a>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Protector%20con%20instalaci%C3%B3n%20(6%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
           </div>
         </article>
 
@@ -241,9 +244,9 @@
           </div>
           <div class="body">
             <div class="title">Carcasa transparente MagSafe</div>
-            <div class="desc">Funda transparente con MagSafe integrado.</div>
+            <div class="desc">Funda transparente con anillo magnético compatible MagSafe.</div>
             <div class="price">5 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Carcasa%20MagSafe%20(5%20€)" target="_blank">Pedir por WhatsApp</a>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Carcasa%20MagSafe%20(5%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
           </div>
         </article>
 
@@ -254,9 +257,35 @@
           </div>
           <div class="body">
             <div class="title">Cable Lightning a USB/Tipo C</div>
-            <div class="desc">Compatible con Apple.</div>
+            <div class="desc">Cable de datos y carga compatible con iPhone.</div>
             <div class="price">4,50 €</div>
-            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Cable%20Lightning%20a%20USB/Tipo%20C%20(4,50%20€)" target="_blank">Pedir por WhatsApp</a>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Cable%20Lightning%20a%20USB/Tipo%20C%20(4,50%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- 5) Batería MagSafe 5000 mAh -->
+        <article class="card" data-name="bateria magsafe 5000">
+          <div class="media">
+            <img src="img/bateria_magsafe.jpg" alt="Batería MagSafe 5000mAh">
+          </div>
+          <div class="body">
+            <div class="title">Batería portátil MagSafe 5.000 mAh</div>
+            <div class="desc">Power bank magnético con carga inalámbrica hasta 15W. Perfecto para el día a día.</div>
+            <div class="price">30 €</div>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Bater%C3%ADa%20MagSafe%205000mAh%20(30%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- 6) Batería MagSafe 10000 mAh -->
+        <article class="card" data-name="bateria magsafe 10000">
+          <div class="media">
+            <img src="img/bateria_magsafe.jpg" alt="Batería MagSafe 10000mAh">
+          </div>
+          <div class="body">
+            <div class="title">Batería portátil MagSafe 10.000 mAh</div>
+            <div class="desc">Doble capacidad, carga inalámbrica magnética hasta 15W. Ideal para viajes largos.</div>
+            <div class="price">40 €</div>
+            <a class="cta btn" href="https://wa.me/34642886426?text=Quiero%20Bater%C3%ADa%20MagSafe%2010000mAh%20(40%20%E2%82%AC)" target="_blank">Pedir por WhatsApp</a>
           </div>
         </article>
       </div>
@@ -271,8 +300,11 @@
 
     openAccBtns.forEach(btn=>{
       if(btn){
-        btn.addEventListener('click',(e)=>{ e.preventDefault(); accModal.style.display='block';
-          document.getElementById('accSearch').focus(); });
+        btn.addEventListener('click',(e)=>{ 
+          e.preventDefault(); 
+          accModal.style.display='block';
+          document.getElementById('accSearch').focus();
+        });
       }
     });
     closeAcc.addEventListener('click', ()=> accModal.style.display='none');
