@@ -76,8 +76,8 @@
 
     /* ======= FIX desplegable modelos (contraste) ======= */
     select, option{
-      background:#0f1115;   /* fondo oscuro dentro del menú */
-      color:#ffffff;         /* texto claro */
+      background:#0f1115;
+      color:#ffffff;
     }
     select{
       border:1px solid var(--border);
@@ -94,6 +94,22 @@
     .repair-price{ font-weight:800; background:#111; padding:6px 10px; border-radius:10px; border:1px solid var(--border) }
     .repair-actions{ display:flex; gap:8px; flex-wrap:wrap }
     .btn.ok{ background:var(--ok) }
+
+    /* ===== Reseñas: botones uniformes ===== */
+    .review-row{
+      display:flex; gap:14px; align-items:center; flex-wrap:wrap; justify-content:flex-start;
+    }
+    .review-btn{
+      display:flex; align-items:center; justify-content:center;
+      height:52px; width:160px; /* mismo tamaño para todos */
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:8px 12px;
+      transition:.15s;
+    }
+    .review-btn:hover{ transform:translateY(-1px); border-color:rgba(255,255,255,.25); background:rgba(255,255,255,.09) }
+    .review-btn img{ max-height:100%; max-width:100%; object-fit:contain; display:block; }
   </style>
 </head>
 <body>
@@ -173,15 +189,17 @@
     <section id="reseñas">
       <h2>Reseñas</h2>
       <p>Elige la plataforma que prefieras:</p>
-      <div class="modal-tools" style="justify-content:flex-start">
-        <a href="https://www.google.com/search?q=Electro+Fix+IT+rese%C3%B1as" target="_blank" title="Reseñas en Google">
-          <img src="img/google_icon.png" alt="Google" style="height:44px">
+
+      <!-- ===== NUEVO: botones iguales ===== -->
+      <div class="review-row">
+        <a class="review-btn" href="https://www.google.com/search?q=Electro+Fix+IT+rese%C3%B1as" target="_blank" title="Reseñas en Google">
+          <img src="img/google.png" alt="Google">
         </a>
-        <a href="https://es.wallapop.com/app/profile/reviews" target="_blank" title="Reseñas en Wallapop">
-          <img src="img/wallapop_icon.png" alt="Wallapop" style="height:46px">
+        <a class="review-btn" href="https://es.wallapop.com/app/profile/reviews" target="_blank" title="Reseñas en Wallapop">
+          <img src="img/Wallapop_icon.png" alt="Wallapop">
         </a>
-        <a href="https://www.milanuncios.com/valoraciones-usuario/electro-fix-it-74694909.htm" target="_blank" title="Reseñas en Milanuncios">
-          <img src="img/milanuncios_icon.png" alt="Milanuncios" style="height:46px">
+        <a class="review-btn" href="https://www.milanuncios.com/valoraciones-usuario/electro-fix-it-74694909.htm" target="_blank" title="Reseñas en Milanuncios">
+          <img src="img/milanuncios_icon.png" alt="Milanuncios">
         </a>
       </div>
     </section>
@@ -326,7 +344,7 @@
           </div>
         </article>
 
-        <!-- Set 3 en 1 (en Cargadores) -->
+        <!-- Set 3 en 1 -->
         <article class="card" data-cat="cargadores">
           <div class="media"><img src="img/set_3en1.jpg" alt="Set de carga 3 en 1"></div>
           <div class="body">
@@ -337,7 +355,7 @@
           </div>
         </article>
 
-        <!-- Soporte con ventosas (categoría Soportes) -->
+        <!-- Soporte con ventosas -->
         <article class="card" data-cat="soportes">
           <div class="media"><img src="img/soporte_ventosas.jpg" alt="Soporte con ventosas"></div>
           <div class="body">
@@ -370,7 +388,7 @@
   </div>
 
   <script>
-    /* ========== Utilidades comunes ========== */
+    /* Utilidades */
     const $ = (q,ctx=document)=>ctx.querySelector(q);
     const $$ = (q,ctx=document)=>Array.from(ctx.querySelectorAll(q));
 
@@ -419,116 +437,29 @@
     closeRepBtn.addEventListener('click', ()=>closeModal(repairsModal));
     repairsModal.addEventListener('click', e=>{ if(e.target===repairsModal) closeModal(repairsModal); });
 
-    // Datos: precios por modelo
     const DATA = {
-      "iPhone 11":{
-        "Pantalla (InCell)":69, "Batería":59, "Cámara trasera":59, "Cámara frontal":49, "Cristal cámara trasera":39,
-        "Puerto de carga (reemplazo)":59, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":59, "Botones":59,
-        "Vibrador":39, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":79, "Chasis completo":99,
-        "Daños por líquidos":"presupuesto tras revisión"
-      },
-      "iPhone 11 Pro":{
-        "Pantalla (InCell)":69, "Pantalla (Soft OLED)":105, "Batería":59, "Cámara trasera":89, "Cámara frontal":59,
-        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":69, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":69,
-        "Botones":69, "Vibrador":44, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":99, "Chasis completo":139,
-        "Daños por líquidos":"presupuesto tras revisión"
-      },
-      "iPhone 11 Pro Max":{
-        "Pantalla (InCell)":89, "Pantalla (JK Soft OLED)":115, "Batería":59, "Cámara trasera":89, "Cámara frontal":49,
-        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":69, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":69,
-        "Botones":69, "Vibrador":44, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":109, "Chasis completo":149,
-        "Daños por líquidos":"presupuesto tras revisión"
-      },
-      "iPhone 12":{
-        "Pantalla (InCell)":79, "Pantalla (Soft OLED)":139, "Batería":59, "Cámara trasera":89, "Cámara frontal":59,
-        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
-        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":104, "Chasis completo":134,
-        "Daños por líquidos":"presupuesto tras revisión"
-      },
-      "iPhone 12 Pro":{
-        "Pantalla (InCell)":79, "Pantalla (Soft OLED)":139, "Batería":59, "Cámara trasera":109, "Cámara frontal":59,
-        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
-        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":114, "Chasis completo":149,
-        "Daños por líquidos":"presupuesto tras revisión"
-      },
-      "iPhone 12 Pro Max":{
-        "Pantalla (InCell)":84, "Pantalla (Soft OLED)":144, "Batería":59, "Cámara trasera":109, "Cámara frontal":59,
-        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
-        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":124, "Chasis completo":159,
-        "Daños por líquidos":"presupuesto tras revisión"
-      },
-      "iPhone 13":{
-        "Pantalla (InCell)":84, "Pantalla (Soft OLED)":144, "Batería":69, "Cámara trasera":109, "Cámara frontal":69,
-        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
-        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":104, "Chasis completo":134,
-        "Daños por líquidos":"presupuesto tras revisión"
-      },
-      "iPhone 13 Pro":{
-        "Pantalla (InCell)":94, "Pantalla (Soft OLED)":154, "Batería":79, "Cámara trasera":129, "Cámara frontal":79,
-        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
-        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":114, "Chasis completo":149,
-        "Daños por líquidos":"presupuesto tras revisión"
-      },
-      "iPhone 13 Pro Max":{
-        "Pantalla (InCell)":99, "Pantalla (Soft OLED)":159, "Batería":79, "Cámara trasera":129, "Cámara frontal":79,
-        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
-        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":114, "Chasis completo":149,
-        "Daños por líquidos":"presupuesto tras revisión"
-      },
-      "iPhone 14":{
-        "Pantalla (InCell)":84, "Pantalla (Soft OLED)":144, "Batería":69, "Cámara trasera":99, "Cámara frontal":69,
-        "Cristal cámara trasera":69, "Puerto de carga (reemplazo)":84, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
-        "Botones":84, "Vibrador":59, "Altavoces (reemplazo)":79, "Altavoces (limpieza)":19, "Cubierta trasera":69, "Chasis completo":149,
-        "Daños por líquidos":"presupuesto tras revisión"
-      },
-      "iPhone 14 Plus":{
-        "Pantalla (InCell)":84, "Pantalla (Soft OLED)":149, "Batería":69, "Cámara trasera":99, "Cámara frontal":69,
-        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
-        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":74, "Chasis completo":154,
-        "Daños por líquidos":"presupuesto tras revisión"
-      },
-      "iPhone 14 Pro":{
-        "Pantalla (InCell)":109, "Pantalla (Soft OLED)":189, "Batería":79, "Cámara trasera":129, "Cámara frontal":79,
-        "Cristal cámara trasera":69, "Puerto de carga (reemplazo)":84, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
-        "Botones":84, "Vibrador":59, "Altavoces (reemplazo)":79, "Altavoces (limpieza)":19, "Cubierta trasera":119, "Chasis completo":164,
-        "Daños por líquidos":"presupuesto tras revisión"
-      },
-      "iPhone 14 Pro Max":{
-        "Pantalla (InCell)":114, "Pantalla (Soft OLED)":239, "Batería":79, "Cámara trasera":129, "Cámara frontal":79,
-        "Cristal cámara trasera":69, "Puerto de carga (reemplazo)":84, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
-        "Botones":84, "Vibrador":59, "Altavoces (reemplazo)":79, "Altavoces (limpieza)":19, "Cubierta trasera":119, "Chasis completo":164,
-        "Daños por líquidos":"presupuesto tras revisión"
-      },
-      "iPhone 15":{
-        "Pantalla (InCell)":89, "Pantalla (Soft OLED)":169, "Batería":79, "Cámara trasera":99, "Cámara frontal":69,
-        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
-        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":84, "Chasis completo":159,
-        "Daños por líquidos":"presupuesto tras revisión"
-      },
-      "iPhone 15 Plus":{
-        "Pantalla (InCell)":94, "Pantalla (Soft OLED)":194, "Batería":79, "Cámara trasera":104, "Cámara frontal":69,
-        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
-        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":84, "Chasis completo":164,
-        "Daños por líquidos":"presupuesto tras revisión"
-      },
-      "iPhone 15 Pro":{
-        "Pantalla (InCell)":109, "Pantalla (Soft OLED)":239, "Batería":84, "Cámara trasera":149, "Cámara frontal":79,
-        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
-        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":84, "Chasis completo":169,
-        "Daños por líquidos":"presupuesto tras revisión"
-      },
-      "iPhone 15 Pro Max":{
-        "Pantalla (InCell)":119, "Pantalla (Soft OLED)":249, "Pantalla (Original)":319, "Batería":84, "Cámara trasera":149, "Cámara frontal":89,
-        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
-        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":84, "Chasis completo":179,
-        "Daños por líquidos":"presupuesto tras revisión"
-      }
+      "iPhone 11":{"Pantalla (InCell)":69,"Batería":59,"Cámara trasera":59,"Cámara frontal":49,"Cristal cámara trasera":39,"Puerto de carga (reemplazo)":59,"Puerto de carga (limpieza)":19,"Carga inalámbrica / NFC":59,"Botones":59,"Vibrador":39,"Altavoces (reemplazo)":69,"Altavoces (limpieza)":19,"Cubierta trasera":79,"Chasis completo":99,"Daños por líquidos":"presupuesto tras revisión"},
+      "iPhone 11 Pro":{"Pantalla (InCell)":69,"Pantalla (Soft OLED)":105,"Batería":59,"Cámara trasera":89,"Cámara frontal":59,"Cristal cámara trasera":59,"Puerto de carga (reemplazo)":69,"Puerto de carga (limpieza)":19,"Carga inalámbrica / NFC":69,"Botones":69,"Vibrador":44,"Altavoces (reemplazo)":69,"Altavoces (limpieza)":19,"Cubierta trasera":99,"Chasis completo":139,"Daños por líquidos":"presupuesto tras revisión"},
+      "iPhone 11 Pro Max":{"Pantalla (InCell)":89,"Pantalla (JK Soft OLED)":115,"Batería":59,"Cámara trasera":89,"Cámara frontal":49,"Cristal cámara trasera":59,"Puerto de carga (reemplazo)":69,"Puerto de carga (limpieza)":19,"Carga inalámbrica / NFC":69,"Botones":69,"Vibrador":44,"Altavoces (reemplazo)":69,"Altavoces (limpieza)":19,"Cubierta trasera":109,"Chasis completo":149,"Daños por líquidos":"presupuesto tras revisión"},
+      "iPhone 12":{"Pantalla (InCell)":79,"Pantalla (Soft OLED)":139,"Batería":59,"Cámara trasera":89,"Cámara frontal":59,"Cristal cámara trasera":59,"Puerto de carga (reemplazo)":79,"Puerto de carga (limpieza)":19,"Carga inalámbrica / NFC":89,"Botones":79,"Vibrador":49,"Altavoces (reemplazo)":69,"Altavoces (limpieza)":19,"Cubierta trasera":104,"Chasis completo":134,"Daños por líquidos":"presupuesto tras revisión"},
+      "iPhone 12 Pro":{"Pantalla (InCell)":79,"Pantalla (Soft OLED)":139,"Batería":59,"Cámara trasera":109,"Cámara frontal":59,"Cristal cámara trasera":59,"Puerto de carga (reemplazo)":79,"Puerto de carga (limpieza)":19,"Carga inalámbrica / NFC":89,"Botones":79,"Vibrador":49,"Altavoces (reemplazo)":69,"Altavoces (limpieza)":19,"Cubierta trasera":114,"Chasis completo":149,"Daños por líquidos":"presupuesto tras revisión"},
+      "iPhone 12 Pro Max":{"Pantalla (InCell)":84,"Pantalla (Soft OLED)":144,"Batería":59,"Cámara trasera":109,"Cámara frontal":59,"Cristal cámara trasera":59,"Puerto de carga (reemplazo)":79,"Puerto de carga (limpieza)":19,"Carga inalámbrica / NFC":89,"Botones":79,"Vibrador":49,"Altavoces (reemplazo)":69,"Altavoces (limpieza)":19,"Cubierta trasera":124,"Chasis completo":159,"Daños por líquidos":"presupuesto tras revisión"},
+      "iPhone 13":{"Pantalla (InCell)":84,"Pantalla (Soft OLED)":144,"Batería":69,"Cámara trasera":109,"Cámara frontal":69,"Cristal cámara trasera":59,"Puerto de carga (reemplazo)":79,"Puerto de carga (limpieza)":19,"Carga inalámbrica / NFC":89,"Botones":79,"Vibrador":49,"Altavoces (reemplazo)":69,"Altavoces (limpieza)":19,"Cubierta trasera":104,"Chasis completo":134,"Daños por líquidos":"presupuesto tras revisión"},
+      "iPhone 13 Pro":{"Pantalla (InCell)":94,"Pantalla (Soft OLED)":154,"Batería":79,"Cámara trasera":129,"Cámara frontal":79,"Cristal cámara trasera":59,"Puerto de carga (reemplazo)":79,"Puerto de carga (limpieza)":19,"Carga inalámbrica / NFC":89,"Botones":79,"Vibrador":49,"Altavoces (reemplazo)":69,"Altavoces (limpieza)":19,"Cubierta trasera":114,"Chasis completo":149,"Daños por líquidos":"presupuesto tras revisión"},
+      "iPhone 13 Pro Max":{"Pantalla (InCell)":99,"Pantalla (Soft OLED)":159,"Batería":79,"Cámara trasera":129,"Cámara frontal":79,"Cristal cámara trasera":59,"Puerto de carga (reemplazo)":79,"Puerto de carga (limpieza)":19,"Carga inalámbrica / NFC":89,"Botones":79,"Vibrador":49,"Altavoces (reemplazo)":69,"Altavoces (limpieza)":19,"Cubierta trasera":114,"Chasis completo":149,"Daños por líquidos":"presupuesto tras revisión"},
+      "iPhone 14":{"Pantalla (InCell)":84,"Pantalla (Soft OLED)":144,"Batería":69,"Cámara trasera":99,"Cámara frontal":69,"Cristal cámara trasera":69,"Puerto de carga (reemplazo)":84,"Puerto de carga (limpieza)":19,"Carga inalámbrica / NFC":89,"Botones":84,"Vibrador":59,"Altavoces (reemplazo)":79,"Altavoces (limpieza)":19,"Cubierta trasera":69,"Chasis completo":149,"Daños por líquidos":"presupuesto tras revisión"},
+      "iPhone 14 Plus":{"Pantalla (InCell)":84,"Pantalla (Soft OLED)":149,"Batería":69,"Cámara trasera":99,"Cámara frontal":69,"Cristal cámara trasera":59,"Puerto de carga (reemplazo)":79,"Puerto de carga (limpieza)":19,"Carga inalámbrica / NFC":89,"Botones":79,"Vibrador":49,"Altavoces (reemplazo)":69,"Altavoces (limpieza)":19,"Cubierta trasera":74,"Chasis completo":154,"Daños por líquidos":"presupuesto tras revisión"},
+      "iPhone 14 Pro":{"Pantalla (InCell)":109,"Pantalla (Soft OLED)":189,"Batería":79,"Cámara trasera":129,"Cámara frontal":79,"Cristal cámara trasera":69,"Puerto de carga (reemplazo)":84,"Puerto de carga (limpieza)":19,"Carga inalámbrica / NFC":89,"Botones":84,"Vibrador":59,"Altavoces (reemplazo)":79,"Altavoces (limpieza)":19,"Cubierta trasera":119,"Chasis completo":164,"Daños por líquidos":"presupuesto tras revisión"},
+      "iPhone 14 Pro Max":{"Pantalla (InCell)":114,"Pantalla (Soft OLED)":239,"Batería":79,"Cámara trasera":129,"Cámara frontal":79,"Cristal cámara trasera":69,"Puerto de carga (reemplazo)":84,"Puerto de carga (limpieza)":19,"Carga inalámbrica / NFC":89,"Botones":84,"Vibrador":59,"Altavoces (reemplazo)":79,"Altavoces (limpieza)":19,"Cubierta trasera":119,"Chasis completo":164,"Daños por líquidos":"presupuesto tras revisión"},
+      "iPhone 15":{"Pantalla (InCell)":89,"Pantalla (Soft OLED)":169,"Batería":79,"Cámara trasera":99,"Cámara frontal":69,"Cristal cámara trasera":59,"Puerto de carga (reemplazo)":79,"Puerto de carga (limpieza)":19,"Carga inalámbrica / NFC":89,"Botones":79,"Vibrador":49,"Altavoces (reemplazo)":69,"Altavoces (limpieza)":19,"Cubierta trasera":84,"Chasis completo":159,"Daños por líquidos":"presupuesto tras revisión"},
+      "iPhone 15 Plus":{"Pantalla (InCell)":94,"Pantalla (Soft OLED)":194,"Batería":79,"Cámara trasera":104,"Cámara frontal":69,"Cristal cámara trasera":59,"Puerto de carga (reemplazo)":79,"Puerto de carga (limpieza)":19,"Carga inalámbrica / NFC":89,"Botones":79,"Vibrador":49,"Altavoces (reemplazo)":69,"Altavoces (limpieza)":19,"Cubierta trasera":84,"Chasis completo":164,"Daños por líquidos":"presupuesto tras revisión"},
+      "iPhone 15 Pro":{"Pantalla (InCell)":109,"Pantalla (Soft OLED)":239,"Batería":84,"Cámara trasera":149,"Cámara frontal":79,"Cristal cámara trasera":59,"Puerto de carga (reemplazo)":79,"Puerto de carga (limpieza)":19,"Carga inalámbrica / NFC":89,"Botones":79,"Vibrador":49,"Altavoces (reemplazo)":69,"Altavoces (limpieza)":19,"Cubierta trasera":84,"Chasis completo":169,"Daños por líquidos":"presupuesto tras revisión"},
+      "iPhone 15 Pro Max":{"Pantalla (InCell)":119,"Pantalla (Soft OLED)":249,"Pantalla (Original)":319,"Batería":84,"Cámara trasera":149,"Cámara frontal":89,"Cristal cámara trasera":59,"Puerto de carga (reemplazo)":79,"Puerto de carga (limpieza)":19,"Carga inalámbrica / NFC":89,"Botones":79,"Vibrador":49,"Altavoces (reemplazo)":69,"Altavoces (limpieza)":19,"Cubierta trasera":84,"Chasis completo":179,"Daños por líquidos":"presupuesto tras revisión"}
     };
 
-    // Cargar modelos en el select
     iphoneModelSel.innerHTML = Object.keys(DATA).map(m=>`<option value="${m}">${m}</option>`).join('');
     iphoneModelSel.addEventListener('change', renderRepairs);
-    renderRepairs(); // inicial
+    renderRepairs();
 
     function renderRepairs(){
       const model = iphoneModelSel.value || Object.keys(DATA)[0];
@@ -557,5 +488,3 @@
   </script>
 </body>
 </html>
-
-
