@@ -61,7 +61,7 @@
     .card .media{
       background:#fff; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; overflow:hidden;
     }
-    /* Mostrar las imágenes enteras sin recortes ni deformación */
+    /* Imágenes siempre dentro del cuadro, sin recortar ni deformar */
     .card .media img{ width:100%; height:100%; object-fit:contain; background:#fff; }
     .card .body{ padding:12px 14px }
     .card .title{ font-weight:800; margin-bottom:6px }
@@ -72,13 +72,13 @@
     @media (max-width:980px){ .grid{ grid-template-columns:repeat(2,1fr) } }
     @media (max-width:640px){ .grid{ grid-template-columns:1fr } }
 
-    /* Reseñas: iconos alineados a la izq., Wallapop un poco más grande */
+    /* Reseñas: solo iconos clicables */
     .review-logos{ display:flex; gap:24px; justify-content:flex-start; align-items:center; flex-wrap:wrap; margin-top:12px; }
-    .review-logos a{ display:inline-flex; align-items:center; justify-content:center; width:78px; height:78px; border-radius:16px; background:#ffffff; border:1px solid var(--border); transition:transform .15s ease, box-shadow .15s ease; }
+    .review-logos a{ display:inline-flex; align-items:center; justify-content:center; width:86px; height:86px; border-radius:16px; background:#ffffff; border:1px solid var(--border); transition:transform .15s ease, box-shadow .15s ease; }
     .review-logos a:hover{ transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,.35) }
-    .review-logos img{ max-width:70%; max-height:70%; object-fit:contain }
-    .review-logos a.wallapop img{ max-width:92%; max-height:92%; }   /* más grande */
-    .review-logos a.milanuncios img{ max-width:95%; max-height:95%; }
+    .review-logos img{ max-width:75%; max-height:75%; object-fit:contain }
+    .review-logos a.wallapop img{ max-width:96%; max-height:96%; }
+    .review-logos a.milanuncios img{ max-width:96%; max-height:96%; }
   </style>
 </head>
 <body>
@@ -131,7 +131,6 @@
       <a href="https://www.wallapop.com/user/diegot-393029070?_pid=wi&_uid=393029070" target="_blank" class="btn">Ver catálogo</a>
     </section>
 
-    <!-- Accesorios (SOLO botón; la lista va en el modal) -->
     <section id="accessories">
       <h2>Accesorios</h2>
       <p>Complementa tu dispositivo con nuestros accesorios: fundas, cargadores, baterías, cables y más.</p>
@@ -166,7 +165,7 @@
     <p>© 2024 Electro Fix It. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- --------------- MODAL: Accesorios --------------- -->
+  <!-- MODAL: Accesorios -->
   <div class="modal" id="accessoriesModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="accTitle">
     <div class="modal-inner">
       <div class="modal-header">
@@ -179,135 +178,86 @@
         <div class="filters" id="filters">
           <button class="filter-btn active" data-filter="all">Todos</button>
           <button class="filter-btn" data-filter="fundas">Fundas</button>
+          <button class="filter-btn" data-filter="protectores">Protectores de pantalla</button>
           <button class="filter-btn" data-filter="cables">Cables</button>
           <button class="filter-btn" data-filter="cargadores">Cargadores</button>
           <button class="filter-btn" data-filter="baterias">Baterías</button>
+          <button class="filter-btn" data-filter="soportes">Soportes</button>
         </div>
       </div>
 
       <div class="grid" id="accCards">
-        <!-- SOLO accesorios con foto; imágenes ajustadas con object-fit:contain -->
-
-        <!-- Fundas -->
-        <article class="card" data-name="fundas colores originales" data-cat="fundas">
+        <!-- FUNDAS -->
+        <article class="card" data-cat="fundas">
           <div class="media"><img src="img/fundas_colores.jpg" alt="Fundas originales de colores"></div>
-          <div class="body">
-            <div class="title">Fundas originales (colores)</div>
-            <div class="desc">Acabado premium y protección elegante.</div>
-            <div class="price">10 €</div>
-            <a class="cta btn" target="_blank"
-               href="https://wa.me/34642886426?text=Quiero%20Fundas%20originales%20de%20colores%20(10%E2%82%AC)">Pedir por WhatsApp</a>
-          </div>
+          <div class="body"><div class="title">Fundas originales (colores)</div><div class="desc">Acabado premium y protección elegante.</div><div class="price">10 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Fundas%20originales%20de%20colores%20(10%E2%82%AC)">Pedir por WhatsApp</a></div>
         </article>
-        <article class="card" data-name="carcasa transparente magsafe" data-cat="fundas">
+        <article class="card" data-cat="fundas">
           <div class="media"><img src="img/Carcasa_transparente.jpg" alt="Carcasa transparente MagSafe"></div>
-          <div class="body">
-            <div class="title">Carcasa transparente MagSafe</div>
-            <div class="desc">Funda transparente con anillo magnético.</div>
-            <div class="price">5 €</div>
-            <a class="cta btn" target="_blank"
-               href="https://wa.me/34642886426?text=Quiero%20Carcasa%20MagSafe%20(5%E2%82%AC)">Pedir por WhatsApp</a>
-          </div>
+          <div class="body"><div class="title">Carcasa transparente MagSafe</div><div class="desc">Funda transparente con anillo magnético.</div><div class="price">5 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Carcasa%20MagSafe%20(5%E2%82%AC)">Pedir por WhatsApp</a></div>
         </article>
 
-        <!-- Protectores (los dejamos en 'fundas' para no crear categoría extra) -->
-        <article class="card" data-name="protector de pantalla" data-cat="fundas">
+        <!-- PROTECTORES -->
+        <article class="card" data-cat="protectores">
           <div class="media"><img src="img/protector_pantalla.jpg" alt="Protector de pantalla"></div>
-          <div class="body">
-            <div class="title">Protector de pantalla</div>
-            <div class="desc">Protección básica.</div>
-            <div class="price">4 €</div>
-            <a class="cta btn" target="_blank"
-               href="https://wa.me/34642886426?text=Quiero%20Protector%20de%20pantalla%20(4%E2%82%AC)">Pedir por WhatsApp</a>
-          </div>
+          <div class="body"><div class="title">Protector de pantalla</div><div class="desc">Protección básica.</div><div class="price">4 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Protector%20de%20pantalla%20(4%E2%82%AC)">Pedir por WhatsApp</a></div>
         </article>
-        <article class="card" data-name="protector con instalación" data-cat="fundas">
+        <article class="card" data-cat="protectores">
           <div class="media"><img src="img/protector_instalacion.jpg" alt="Protector con instalación"></div>
-          <div class="body">
-            <div class="title">Protector con instalación</div>
-            <div class="desc">Incluye instalación profesional.</div>
-            <div class="price">6 €</div>
-            <a class="cta btn" target="_blank"
-               href="https://wa.me/34642886426?text=Quiero%20Protector%20con%20instalaci%C3%B3n%20(6%E2%82%AC)">Pedir por WhatsApp</a>
-          </div>
+          <div class="body"><div class="title">Protector con instalación</div><div class="desc">Incluye instalación profesional.</div><div class="price">6 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Protector%20con%20instalaci%C3%B3n%20(6%E2%82%AC)">Pedir por WhatsApp</a></div>
         </article>
 
-        <!-- Cables -->
-        <article class="card" data-name="cable lightning a usb tipo c" data-cat="cables">
+        <!-- CABLES -->
+        <article class="card" data-cat="cables">
           <div class="media"><img src="img/cable_tipo_c_lightning.jpg" alt="Cable Lightning a USB/Tipo C"></div>
-          <div class="body">
-            <div class="title">Cable Lightning a USB/Tipo C</div>
-            <div class="desc">Datos y carga para iPhone.</div>
-            <div class="price">4,50 €</div>
-            <a class="cta btn" target="_blank"
-               href="https://wa.me/34642886426?text=Quiero%20Cable%20Lightning%20a%20USB/Tipo%20C%20(4,50%E2%82%AC)">Pedir por WhatsApp</a>
-          </div>
+          <div class="body"><div class="title">Cable Lightning a USB/Tipo C</div><div class="desc">Cable de datos y carga para iPhone.</div><div class="price">4,50 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Cable%20Lightning%20a%20USB/Tipo%20C%20(4%2C50%E2%82%AC)">Pedir por WhatsApp</a></div>
+        </article>
+        <!-- (Opcional) Mostrar también el cargador de reloj en CABLES si quieres doble categoría -->
+        <article class="card" data-cat="cables">
+          <div class="media"><img src="img/cargador_watch.jpg" alt="Cargador Apple Watch / SmartWatch"></div>
+          <div class="body"><div class="title">Cargador Apple Watch / SmartWatch</div><div class="desc">Base magnética para relojes inteligentes.</div><div class="price">10 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Cargador%20Apple%20Watch/SmartWatch%20(10%E2%82%AC)">Pedir por WhatsApp</a></div>
         </article>
 
-        <!-- Cargadores -->
-        <article class="card" data-name="cargador 65w" data-cat="cargadores">
+        <!-- CARGADORES -->
+        <article class="card" data-cat="cargadores">
           <div class="media"><img src="img/cargador_65w.jpg" alt="Cargador genérico 65W"></div>
-          <div class="body">
-            <div class="title">Cargador genérico 65W</div>
-            <div class="desc">Compatible con varios dispositivos.</div>
-            <div class="price">10 €</div>
-            <a class="cta btn" target="_blank"
-               href="https://wa.me/34642886426?text=Quiero%20Cargador%2065W%20(10%E2%82%AC)">Pedir por WhatsApp</a>
-          </div>
+          <div class="body"><div class="title">Cargador genérico 65W</div><div class="desc">Compatible con varios dispositivos.</div><div class="price">10 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Cargador%2065W%20(10%E2%82%AC)">Pedir por WhatsApp</a></div>
         </article>
-        <article class="card" data-name="cargador apple watch smartwatch" data-cat="cargadores,cables">
-          <div class="media"><img src="img/cargador_watch.jpg" alt="Cargador Apple Watch SmartWatch"></div>
-          <div class="body">
-            <div class="title">Cargador Apple Watch / SmartWatch</div>
-            <div class="desc">Base magnética para relojes inteligentes.</div>
-            <div class="price">10 €</div>
-            <a class="cta btn" target="_blank"
-               href="https://wa.me/34642886426?text=Quiero%20Cargador%20Apple%20Watch/SmartWatch%20(10%E2%82%AC)">Pedir por WhatsApp</a>
-          </div>
-        </article>
-        <article class="card" data-name="set de carga 3 en 1" data-cat="cargadores">
+        <article class="card" data-cat="cargadores">
           <div class="media"><img src="img/set_3en1.jpg" alt="Set de carga 3 en 1"></div>
-          <div class="body">
-            <div class="title">Set de carga 3 en 1</div>
-            <div class="desc">Móvil + AirPods + Apple Watch.</div>
-            <div class="price">20 €</div>
-            <a class="cta btn" target="_blank"
-               href="https://wa.me/34642886426?text=Quiero%20Set%203%20en%201%20(20%E2%82%AC)">Pedir por WhatsApp</a>
-          </div>
+          <div class="body"><div class="title">Set de carga 3 en 1</div><div class="desc">Móvil + AirPods + Apple Watch.</div><div class="price">20 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Set%203%20en%201%20(20%E2%82%AC)">Pedir por WhatsApp</a></div>
+        </article>
+        <article class="card" data-cat="cargadores">
+          <div class="media"><img src="img/cargador_watch.jpg" alt="Cargador Apple Watch / SmartWatch"></div>
+          <div class="body"><div class="title">Cargador Apple Watch / SmartWatch</div><div class="desc">Base magnética para relojes inteligentes.</div><div class="price">10 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Cargador%20Apple%20Watch/SmartWatch%20(10%E2%82%AC)">Pedir por WhatsApp</a></div>
         </article>
 
-        <!-- Baterías -->
-        <article class="card" data-name="bateria magsafe 5000" data-cat="baterias">
+        <!-- BATERÍAS -->
+        <article class="card" data-cat="baterias">
           <div class="media"><img src="img/bateria_magsafe.jpg" alt="Batería MagSafe 5000 mAh"></div>
-          <div class="body">
-            <div class="title">Batería MagSafe 5.000 mAh</div>
-            <div class="desc">Power bank magnético, carga inalámbrica 15W.</div>
-            <div class="price">30 €</div>
-            <a class="cta btn" target="_blank"
-               href="https://wa.me/34642886426?text=Quiero%20Bater%C3%ADa%20MagSafe%205000mAh%20(30%E2%82%AC)">Pedir por WhatsApp</a>
-          </div>
+          <div class="body"><div class="title">Batería MagSafe 5.000 mAh</div><div class="desc">Power bank magnético, carga inalámbrica 15W.</div><div class="price">30 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Bater%C3%ADa%20MagSafe%205000mAh%20(30%E2%82%AC)">Pedir por WhatsApp</a></div>
         </article>
-        <article class="card" data-name="bateria magsafe 10000" data-cat="baterias">
+        <article class="card" data-cat="baterias">
           <div class="media"><img src="img/bateria_magsafe.jpg" alt="Batería MagSafe 10000 mAh"></div>
-          <div class="body">
-            <div class="title">Batería MagSafe 10.000 mAh</div>
-            <div class="desc">Mayor capacidad para viajes.</div>
-            <div class="price">40 €</div>
-            <a class="cta btn" target="_blank"
-               href="https://wa.me/34642886426?text=Quiero%20Bater%C3%ADa%20MagSafe%2010000mAh%20(40%E2%82%AC)">Pedir por WhatsApp</a>
-          </div>
+          <div class="body"><div class="title">Batería MagSafe 10.000 mAh</div><div class="desc">Mayor capacidad para viajes.</div><div class="price">40 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Bater%C3%ADa%20MagSafe%2010000mAh%20(40%E2%82%AC)">Pedir por WhatsApp</a></div>
         </article>
 
-        <!-- Otros (soporte) -->
-        <article class="card" data-name="soporte con ventosas" data-cat="fundas">
+        <!-- SOPORTES -->
+        <article class="card" data-cat="soportes">
           <div class="media"><img src="img/soporte_ventosas.jpg" alt="Soporte con ventosas"></div>
-          <div class="body">
-            <div class="title">Soporte con ventosas</div>
-            <div class="desc">Antirrobo; se adhiere a superficies.</div>
-            <div class="price">2,50 €</div>
-            <a class="cta btn" target="_blank"
-               href="https://wa.me/34642886426?text=Quiero%20Soporte%20con%20ventosas%20(2,50%E2%82%AC)">Pedir por WhatsApp</a>
-          </div>
+          <div class="body"><div class="title">Soporte con ventosas</div><div class="desc">Antirrobo; se adhiere a superficies.</div><div class="price">2,50 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Soporte%20con%20ventosas%20(2%2C50%E2%82%AC)">Pedir por WhatsApp</a></div>
         </article>
       </div>
     </div>
@@ -318,7 +268,7 @@
     const $ = (q,ctx=document)=>ctx.querySelector(q);
     const $$ = (q,ctx=document)=>Array.from(ctx.querySelectorAll(q));
 
-    // Modal accesorios
+    // Modal Accesorios
     const accModal = $('#accessoriesModal');
     const openAccBtns = [$('#nav-accessories'), $('#section-accessories-btn')];
     const closeAccBtn = $('#closeAcc');
@@ -330,7 +280,7 @@
       document.body.style.overflow='hidden';
       accSearch.value='';
       filterCards('');
-      setTimeout(()=>accSearch.focus(), 0);
+      setTimeout(()=>accSearch.focus(),0);
       document.addEventListener('keydown', onEscClose);
     }
     function closeModal(){
@@ -344,27 +294,34 @@
     closeAccBtn.addEventListener('click', closeModal);
     accModal.addEventListener('click', e=>{ if(e.target===accModal) closeModal(); });
 
-    // Búsqueda + filtros
-    function filterCards(q, cat='all'){
-      const query = (q||'').toLowerCase();
+    // Búsqueda
+    function filterCards(q){
+      const query = q.toLowerCase();
       $$('.card', accCards).forEach(card=>{
-        const matchesText = card.innerText.toLowerCase().includes(query);
-        const cats = (card.getAttribute('data-cat')||'').split(',');
-        const matchesCat = (cat==='all') || cats.includes(cat);
-        card.style.display = (matchesText && matchesCat) ? '' : 'none';
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(query) ? '' : 'none';
       });
     }
-    accSearch.addEventListener('input', e=>{
-      const activeCat = $('.filter-btn.active')?.getAttribute('data-filter') || 'all';
-      filterCards(e.target.value, activeCat);
-    });
+    accSearch.addEventListener('input', e=>filterCards(e.target.value));
 
-    $$('#filters .filter-btn').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        $$('#filters .filter-btn').forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        filterCards(accSearch.value, btn.getAttribute('data-filter'));
+    // Filtros por categoría
+    const filters = $('#filters');
+    const filterBtns = $$('.filter-btn', filters);
+
+    function applyCategory(cat){
+      filterBtns.forEach(b=>b.classList.toggle('active', b.dataset.filter===cat || (cat==='all' && b.dataset.filter==='all')));
+      $$('.card', accCards).forEach(card=>{
+        const c = card.getAttribute('data-cat');
+        card.style.display = (cat==='all' || c===cat) ? '' : 'none';
       });
+    }
+    filters.addEventListener('click', e=>{
+      const btn = e.target.closest('.filter-btn');
+      if(!btn) return;
+      const cat = btn.dataset.filter;
+      applyCategory(cat);
+      // Limpia búsqueda cuando se filtra por categoría
+      accSearch.value='';
     });
   </script>
 </body>
