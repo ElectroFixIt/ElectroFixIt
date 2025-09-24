@@ -205,10 +205,19 @@
           <div class="body"><div class="title">Protector de pantalla</div><div class="desc">Protección básica.</div><div class="price">4 €</div>
             <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Protector%20de%20pantalla%20(4%E2%82%AC)">Pedir por WhatsApp</a></div>
         </article>
+
+        <!-- NUEVO: Protector anti-espía -->
         <article class="card" data-cat="protectores">
-          <div class="media"><img src="img/protector_instalacion.jpg" alt="Protector con instalación"></div>
-          <div class="body"><div class="title">Protector con instalación</div><div class="desc">Incluye instalación profesional.</div><div class="price">6 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Protector%20con%20instalaci%C3%B3n%20(6%E2%82%AC)">Pedir por WhatsApp</a></div>
+          <div class="media"><img src="img/protector_antiespia.jpg" alt="Protector de pantalla anti-espía"></div>
+          <div class="body"><div class="title">Protector anti-espía</div><div class="desc">Privacidad lateral: solo tú ves la pantalla de frente.</div><div class="price">7 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Protector%20anti-esp%C3%ADa%20(7%E2%82%AC)">Pedir por WhatsApp</a></div>
+        </article>
+
+        <!-- EDITADO: Instalación de protector -->
+        <article class="card" data-cat="protectores">
+          <div class="media"><img src="img/protector_instalacion.jpg" alt="Instalación de protector de pantalla"></div>
+          <div class="body"><div class="title">Instalación de protector de pantalla</div><div class="desc">Colocación precisa con guía y limpieza previa. (Solo mano de obra, sin protector incluido).</div><div class="price">2 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20la%20Instalaci%C3%B3n%20del%20protector%20de%20pantalla%20(2%E2%82%AC)">Pedir por WhatsApp</a></div>
         </article>
 
         <!-- CABLES -->
@@ -217,7 +226,6 @@
           <div class="body"><div class="title">Cable Lightning a USB/Tipo C</div><div class="desc">Cable de datos y carga para iPhone.</div><div class="price">4,50 €</div>
             <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Cable%20Lightning%20a%20USB/Tipo%20C%20(4%2C50%E2%82%AC)">Pedir por WhatsApp</a></div>
         </article>
-        <!-- (Opcional) Mostrar también el cargador de reloj en CABLES si quieres doble categoría -->
         <article class="card" data-cat="cables">
           <div class="media"><img src="img/cargador_watch.jpg" alt="Cargador Apple Watch / SmartWatch"></div>
           <div class="body"><div class="title">Cargador Apple Watch / SmartWatch</div><div class="desc">Base magnética para relojes inteligentes.</div><div class="price">10 €</div>
@@ -320,7 +328,6 @@
       if(!btn) return;
       const cat = btn.dataset.filter;
       applyCategory(cat);
-      // Limpia búsqueda cuando se filtra por categoría
       accSearch.value='';
     });
   </script>
