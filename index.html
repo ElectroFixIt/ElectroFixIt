@@ -61,9 +61,16 @@
     /* Tarjetas Accesorios */
     .grid{ display:grid; gap:14px; grid-template-columns:repeat(3,1fr) }
     .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden }
-    .card .media{ background:#fff; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; }
-    /* Mostrar imágenes completas sin recortar ni deformar */
-    .card .media img{ width:100%; height:100%; object-fit:contain; background:#fff; }
+    .card .media{
+      background:#fff; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
+      overflow:hidden; /* recorta el “zoom” para no salirse del cuadro */
+    }
+    /* Imágenes más grandes sin deformar y sin salirse */
+    .card .media img{
+      width:100%; height:100%; object-fit:contain; background:#fff;
+      transform:scale(1.18); /* zoom controlado */
+      transform-origin:center;
+    }
     .card .body{ padding:12px 14px }
     .card .title{ font-weight:800; margin-bottom:6px }
     .card .desc{ color:var(--muted); font-size:.95rem; margin-bottom:8px }
@@ -71,7 +78,10 @@
     .card .cta{ margin-top:10px; display:inline-block; font-size:.95rem }
 
     @media (max-width:980px){ .grid{ grid-template-columns:repeat(2,1fr) } }
-    @media (max-width:640px){ .grid{ grid-template-columns:1fr } }
+    @media (max-width:640px){
+      .grid{ grid-template-columns:1fr }
+      .card .media img{ transform:scale(1.24); } /* un pelín más grande en móvil */
+    }
 
     /* Reseñas (iconos solo, alineados a la izquierda) */
     .review-logos{
