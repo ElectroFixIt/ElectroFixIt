@@ -63,13 +63,11 @@
     .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden }
     .card .media{
       background:#fff; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
-      overflow:hidden; /* recorta el “zoom” para no salirse del cuadro */
+      overflow:hidden;
     }
-    /* Imágenes más grandes sin deformar y sin salirse */
     .card .media img{
       width:100%; height:100%; object-fit:contain; background:#fff;
-      transform:scale(1.18); /* zoom controlado */
-      transform-origin:center;
+      transform:scale(1.18); transform-origin:center;
     }
     .card .body{ padding:12px 14px }
     .card .title{ font-weight:800; margin-bottom:6px }
@@ -80,7 +78,7 @@
     @media (max-width:980px){ .grid{ grid-template-columns:repeat(2,1fr) } }
     @media (max-width:640px){
       .grid{ grid-template-columns:1fr }
-      .card .media img{ transform:scale(1.24); } /* un pelín más grande en móvil */
+      .card .media img{ transform:scale(1.24); }
     }
 
     /* Reseñas (iconos solo, alineados a la izquierda) */
@@ -94,7 +92,8 @@
     }
     .review-logos a:hover{ transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,.35) }
     .review-logos img{ max-width:70%; max-height:70%; object-fit:contain }
-    .review-logos a.wallapop img{ max-width:80%; max-height:80%; } /* Wallapop un poco más grande */
+    .review-logos a.wallapop img{ max-width:80%; max-height:80%; }   /* Wallapop un poco más grande */
+    .review-logos a.milanuncios img{ max-width:90%; max-height:90%; } /* Milanuncios más grande para mejor lectura */
   </style>
 </head>
 <body>
@@ -181,6 +180,9 @@
         </a>
         <a href="https://es.wallapop.com/app/profile/reviews" target="_blank" aria-label="Reseñas en Wallapop" class="wallapop">
           <img src="img/wallapop_icon.png" alt="Wallapop">
+        </a>
+        <a href="https://www.milanuncios.com/valoraciones-usuario/electro-fix-it-74694909.htm" target="_blank" aria-label="Reseñas en Milanuncios" class="milanuncios">
+          <img src="img/milanuncios_icon.png" alt="Milanuncios">
         </a>
       </div>
     </section>
