@@ -12,19 +12,25 @@
       --background-overlay:rgba(0,0,0,.7); --accent-color:#a7d8ff;
       --text-color:#f0f0f0; --muted:#c9d1d9;
       --card:#0f1115; --border:rgba(255,255,255,.12); --radius:12px;
+      --ok:#1db954;
     }
+
+    /* Base */
     *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0 }
     html{ scroll-behavior:smooth }
     body{ font-family:'Roboto',sans-serif; background:linear-gradient(135deg,#121212,#2a2a2a); color:var(--text-color); line-height:1.6; }
 
+    /* Header */
     header{ background:var(--background-overlay); padding:40px 20px; text-align:center; box-shadow:0 4px 6px rgba(0,0,0,.2); }
     header img{ width:300px; height:auto; margin-bottom:20px }
     #header-tagline1{ font-size:2rem; font-weight:700; margin-top:10px }
 
+    /* Nav */
     nav{ position:sticky; top:0; z-index:100; background:rgba(0,0,0,.85); padding:10px 0; text-align:center; box-shadow:0 2px 4px rgba(0,0,0,.3); }
     nav a{ display:inline-block; margin:0 12px; padding:10px 18px; font-size:1.05rem; font-weight:700; text-decoration:none; color:var(--primary-color); background:rgba(0,0,0,.6); border-radius:8px; transition:.15s; }
     nav a:hover{ background:var(--primary-color); color:#fff; transform:translateY(-1px) }
 
+    /* Main */
     main{ padding:20px; max-width:1000px; margin:20px auto }
     section{ scroll-margin-top:140px; background:var(--background-overlay); padding:30px; margin-bottom:30px; border-radius:12px; box-shadow:0 4px 8px rgba(0,0,0,.2); }
     h2{ color:var(--primary-color); margin-bottom:15px; border-bottom:2px solid var(--primary-color); padding-bottom:6px; text-shadow:1px 1px 2px rgba(0,0,0,.8); }
@@ -32,36 +38,33 @@
 
     .btn{ display:inline-block; background:var(--primary-color); color:#fff; padding:10px 20px; border-radius:8px; font-weight:700; text-decoration:none; transition:.2s; }
     .btn:hover{ background:var(--accent-color) }
-    .btn.alt{ background:#2ecc71 } .btn.alt:hover{ filter:brightness(1.1) }
 
+    /* Footer */
     footer{ background:var(--background-overlay); color:var(--primary-color); text-align:center; padding:20px 10px; margin-top:30px; }
     footer a{ color:var(--primary-color); font-weight:700; text-decoration:none }
     footer a:hover{ color:var(--accent-color) }
     footer img{ vertical-align:middle; width:20px; height:20px; margin-right:10px }
 
-    .icon{ vertical-align:middle; width:20px; height:20px; margin-right:6px }
-    .inline-chip{ display:inline-flex; align-items:center; gap:6px; margin-right:12px; vertical-align:middle; }
+    /* Iconos inline junto a botones */
+    .icon{ vertical-align:middle; width:20px; height:20px; margin-right:6px; }
 
-    /* MODALES (compartido) */
+    /* MODAL genérico */
     .modal{ display:none; position:fixed; inset:0; background:rgba(0,0,0,.9); z-index:1200; padding:24px; overflow:auto }
     .modal[aria-hidden="false"]{ display:block }
     .modal-inner{ max-width:1100px; margin:0 auto; background:rgba(0,0,0,.6); border:1px solid var(--border); border-radius:14px; padding:20px; box-shadow:0 10px 30px rgba(0,0,0,.5); }
-    .modal-header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:10px }
+    .modal-header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; gap:10px }
     .modal-title{ font-size:1.4rem; font-weight:800 }
     .modal-close{ background:transparent; border:1px solid var(--border); color:#fff; border-radius:10px; padding:8px 12px; cursor:pointer }
-    .modal-tools{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:8px 0 14px }
+    .modal-tools{ display:flex; gap:10px; align-items:center; margin:8px 0 14px; flex-wrap:wrap }
 
-    .modal-search{ flex:1 1 220px; background:rgba(255,255,255,.06); border:1px solid var(--border); color:#fff; padding:10px 12px; border-radius:10px; outline:none; }
-    .filters{ display:flex; flex-wrap:wrap; gap:8px; }
-    .filter-btn{ background:rgba(255,255,255,.06); color:#fff; border:1px solid var(--border); padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer; transition:.15s; }
-    .filter-btn.active, .filter-btn:hover{ background:var(--primary-color); border-color:var(--primary-color) }
+    .pill{ background:rgba(255,255,255,.08); border:1px solid var(--border); color:#fff; padding:8px 12px; border-radius:999px; cursor:pointer; user-select:none; font-weight:700; }
+    .pill.active{ background:var(--primary-color) }
 
+    /* GRID tarjetas */
     .grid{ display:grid; gap:14px; grid-template-columns:repeat(3,1fr) }
     .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden }
-    .card .media{
-      background:#fff; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; overflow:hidden;
-    }
-    .card .media img{ width:100%; height:100%; object-fit:contain; background:#fff; }
+    .card .media{ background:#fff; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; }
+    .card .media img{ width:100%; height:100%; object-fit:contain; background:#fff }
     .card .body{ padding:12px 14px }
     .card .title{ font-weight:800; margin-bottom:6px }
     .card .desc{ color:var(--muted); font-size:.95rem; margin-bottom:8px }
@@ -71,22 +74,26 @@
     @media (max-width:980px){ .grid{ grid-template-columns:repeat(2,1fr) } }
     @media (max-width:640px){ .grid{ grid-template-columns:1fr } }
 
-    /* Reseñas: solo iconos clicables */
-    .review-logos{ display:flex; gap:24px; justify-content:flex-start; align-items:center; flex-wrap:wrap; margin-top:12px; }
-    .review-logos a{ display:inline-flex; align-items:center; justify-content:center; width:86px; height:86px; border-radius:16px; background:#ffffff; border:1px solid var(--border); transition:transform .15s ease, box-shadow .15s ease; }
-    .review-logos a:hover{ transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,.35) }
-    .review-logos img{ max-width:75%; max-height:75%; object-fit:contain }
-    .review-logos a.wallapop img{ max-width:96%; max-height:96% }
-    .review-logos a.milanuncios img{ max-width:96%; max-height:96% }
+    /* ======= FIX desplegable modelos (contraste) ======= */
+    select, option{
+      background:#0f1115;   /* fondo oscuro dentro del menú */
+      color:#ffffff;         /* texto claro */
+    }
+    select{
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:.55rem .75rem;
+      min-width:240px;
+      appearance:auto;
+    }
 
-    /* --- Estilos modal reparaciones --- */
-    .select{ background:rgba(255,255,255,.06); border:1px solid var(--border); color:#fff; padding:10px 12px; border-radius:10px; min-width:220px; }
-    .repairs-list{ display:grid; gap:12px; grid-template-columns:repeat(2,1fr) }
-    .repair{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:12px 14px; display:flex; flex-direction:column; gap:8px }
-    .repair h4{ margin:0; font-size:1rem }
-    .repair .row{ display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap }
-    .pill{ padding:4px 10px; border-radius:999px; background:rgba(255,255,255,.08); border:1px solid var(--border); font-weight:700 }
-    @media (max-width:800px){ .repairs-list{ grid-template-columns:1fr } }
+    /* Estilos lista de reparaciones */
+    .repairs-list{ display:grid; gap:10px; }
+    .repair-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; background:rgba(255,255,255,.06); border:1px solid var(--border); border-radius:12px; padding:10px 12px; }
+    .repair-name{ font-weight:700 }
+    .repair-price{ font-weight:800; background:#111; padding:6px 10px; border-radius:10px; border:1px solid var(--border) }
+    .repair-actions{ display:flex; gap:8px; flex-wrap:wrap }
+    .btn.ok{ background:var(--ok) }
   </style>
 </head>
 <body>
@@ -122,18 +129,20 @@
       </ul>
       <p>🌟 Transparencia, precios justos y trato cercano. Tu tranquilidad es nuestra prioridad.</p>
       <p>
-        <span class="inline-chip"><img class="icon" src="img/whatsapp_icon.png" alt="WhatsApp"><a href="https://wa.me/34642886426" target="_blank" class="btn">Escribir por WhatsApp</a></span>
-        <span class="inline-chip"><img class="icon" src="img/Instagram_logo_2022.svg.webp" alt="Instagram"><a href="https://www.instagram.com/electro_fix_it/" target="_blank" class="btn" style="background:#E1306C">Instagram</a></span>
+        <img class="icon" src="img/whatsapp_icon.png" alt="WhatsApp">
+        <a href="https://wa.me/34642886426" target="_blank" class="btn">Escribir por WhatsApp</a>
+        &nbsp;&nbsp;
+        <img class="icon" src="img/Instagram_logo_2022.svg.webp" alt="Instagram">
+        <a href="https://www.instagram.com/electro_fix_it/" target="_blank" class="btn" style="background:#E1306C">Instagram</a>
       </p>
     </section>
 
     <section id="services">
       <h2>Servicios</h2>
       <p>Reparación de pantallas, baterías, cámaras, conectores y más. Servicio rápido, precios claros y con garantía.</p>
-      <div style="display:flex; gap:10px; flex-wrap:wrap">
-        <a href="#" class="btn" id="openRepairs">Ver precios iPhone</a>
-        <a href="https://wa.me/34642886426?text=Hola%20Electro%20Fix%20It%2C%20tengo%20un%20Android%20u%20otro%20dispositivo%20y%20quiero%20presupuesto." target="_blank" class="btn alt">Android u otro — WhatsApp</a>
-      </div>
+      <a href="#" id="openRepairs" class="btn">Ver precios iPhone</a>
+      &nbsp;
+      <a href="https://wa.me/34642886426?text=Hola%20Electro%20Fix%20It%2C%20tengo%20un%20Android%20y%20quiero%20presupuesto" target="_blank" class="btn ok">Android — Pedir presupuesto</a>
     </section>
 
     <section id="products">
@@ -142,9 +151,10 @@
       <a href="https://www.wallapop.com/user/diegot-393029070?_pid=wi&_uid=393029070" target="_blank" class="btn">Ver catálogo</a>
     </section>
 
+    <!-- Accesorios (solo botón; la lista se muestra en el modal) -->
     <section id="accessories">
       <h2>Accesorios</h2>
-      <p>Complementa tu dispositivo con nuestros accesorios: fundas, cargadores, baterías, cables y más.</p>
+      <p>Complementa tu dispositivo con nuestros accesorios: fundas, cargadores, cables, baterías y más.</p>
       <a href="#" class="btn" id="section-accessories-btn">Ver lista de Accesorios</a>
     </section>
 
@@ -162,17 +172,27 @@
 
     <section id="reseñas">
       <h2>Reseñas</h2>
-      <p>¿Dónde quieres dejar tu opinión o leer lo que dicen de nosotros?</p>
-      <div class="review-logos">
-        <a href="https://www.google.com/search?q=Electro+Fix+IT+rese%C3%B1as" target="_blank" aria-label="Reseñas en Google"><img src="img/google_icon.png" alt="Google"></a>
-        <a href="https://es.wallapop.com/app/profile/reviews" target="_blank" aria-label="Reseñas en Wallapop" class="wallapop"><img src="img/wallapop_icon.png" alt="Wallapop"></a>
-        <a href="https://www.milanuncios.com/valoraciones-usuario/electro-fix-it-74694909.htm" target="_blank" aria-label="Reseñas en Milanuncios" class="milanuncios"><img src="img/milanuncios_icon.png" alt="Milanuncios"></a>
+      <p>Elige la plataforma que prefieras:</p>
+      <div class="modal-tools" style="justify-content:flex-start">
+        <a href="https://www.google.com/search?q=Electro+Fix+IT+rese%C3%B1as" target="_blank" title="Reseñas en Google">
+          <img src="img/google.png" alt="Google" style="height:44px">
+        </a>
+        <a href="https://es.wallapop.com/app/profile/reviews" target="_blank" title="Reseñas en Wallapop">
+          <img src="img/Wallapop.svg.png" alt="Wallapop" style="height:46px">
+        </a>
+        <a href="https://www.milanuncios.com/valoraciones-usuario/electro-fix-it-74694909.htm" target="_blank" title="Reseñas en Milanuncios">
+          <img src="img/milanuncios.jpg" alt="Milanuncios" style="height:46px">
+        </a>
       </div>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
-    <p><img src="img/Instagram_logo_2022.svg.webp" alt="Logo Instagram"><a href="https://www.instagram.com/electro_fix_it/" target="_blank">@electro_fix_it</a></p>
+    <p>
+      <img src="img/Instagram_logo_2022.svg.webp" alt="Logo Instagram">
+      <a href="https://www.instagram.com/electro_fix_it/" target="_blank">@electro_fix_it</a>
+    </p>
     <p>© 2024 Electro Fix It. Todos los derechos reservados.</p>
   </footer>
 
@@ -185,309 +205,355 @@
       </div>
 
       <div class="modal-tools">
-        <input type="search" id="accSearch" class="modal-search" placeholder="Buscar accesorio...">
-        <div class="filters" id="filters">
-          <button class="filter-btn active" data-filter="all">Todos</button>
-          <button class="filter-btn" data-filter="fundas">Fundas</button>
-          <button class="filter-btn" data-filter="protectores">Protectores de pantalla</button>
-          <button class="filter-btn" data-filter="cables">Cables</button>
-          <button class="filter-btn" data-filter="cargadores">Cargadores</button>
-          <button class="filter-btn" data-filter="baterias">Baterías</button>
-          <button class="filter-btn" data-filter="soportes">Soportes</button>
-        </div>
+        <div class="pill active" data-cat="all">Todos</div>
+        <div class="pill" data-cat="fundas">Fundas</div>
+        <div class="pill" data-cat="cables">Cables</div>
+        <div class="pill" data-cat="cargadores">Cargadores</div>
+        <div class="pill" data-cat="baterias">Baterías</div>
+        <div class="pill" data-cat="protectores">Protectores de pantalla</div>
+        <div class="pill" data-cat="soportes">Soportes</div>
+        <input type="search" id="accSearch" class="pill" placeholder="Buscar accesorio..." style="flex:1; min-width:220px; border-radius:10px; cursor:text">
       </div>
 
       <div class="grid" id="accCards">
-        <!-- FUNDAS -->
-        <article class="card" data-cat="fundas">
-          <div class="media"><img src="img/fundas_colores.jpg" alt="Fundas originales de colores"></div>
-          <div class="body"><div class="title">Fundas originales (colores)</div><div class="desc">Acabado premium y protección elegante.</div><div class="price">10 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Fundas%20originales%20de%20colores%20(10%E2%82%AC)">Pedir por WhatsApp</a></div>
-        </article>
-        <article class="card" data-cat="fundas">
-          <div class="media"><img src="img/Carcasa_transparente.jpg" alt="Carcasa transparente MagSafe"></div>
-          <div class="body"><div class="title">Carcasa transparente MagSafe</div><div class="desc">Funda transparente con anillo magnético.</div><div class="price">5 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Carcasa%20MagSafe%20(5%E2%82%AC)">Pedir por WhatsApp</a></div>
-        </article>
-
-        <!-- PROTECTORES -->
+        <!-- Protector de pantalla -->
         <article class="card" data-cat="protectores">
           <div class="media"><img src="img/protector_pantalla.jpg" alt="Protector de pantalla"></div>
-          <div class="body"><div class="title">Protector de pantalla</div><div class="desc">Protección básica.</div><div class="price">4 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Protector%20de%20pantalla%20(4%E2%82%AC)">Pedir por WhatsApp</a></div>
-        </article>
-        <article class="card" data-cat="protectores">
-          <div class="media"><img src="img/protector_antiespia.jpg" alt="Protector de pantalla anti-espía"></div>
-          <div class="body"><div class="title">Protector anti-espía</div><div class="desc">Privacidad lateral: solo tú ves la pantalla de frente.</div><div class="price">7 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Protector%20anti-esp%C3%ADa%20(7%E2%82%AC)">Pedir por WhatsApp</a></div>
-        </article>
-        <article class="card" data-cat="protectores">
-          <div class="media"><img src="img/protector_instalacion.jpg" alt="Instalación de protector de pantalla"></div>
-          <div class="body"><div class="title">Instalación de protector de pantalla</div><div class="desc">Colocación precisa con guía y limpieza previa. (Solo mano de obra, sin protector incluido).</div><div class="price">2 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20la%20Instalaci%C3%B3n%20del%20protector%20de%20pantalla%20(2%E2%82%AC)">Pedir por WhatsApp</a></div>
+          <div class="body">
+            <div class="title">Protector de pantalla</div>
+            <div class="desc">Protección básica.</div>
+            <div class="price">4 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Protector%20de%20pantalla%20(4%E2%82%AC)">Pedir por WhatsApp</a>
+          </div>
         </article>
 
-        <!-- CABLES -->
+        <!-- Instalación de protector -->
+        <article class="card" data-cat="protectores">
+          <div class="media"><img src="img/protector_instalacion.jpg" alt="Instalación de protector"></div>
+          <div class="body">
+            <div class="title">Instalación de protector de pantalla</div>
+            <div class="desc">Montaje profesional sin burbujas. Solo servicio de instalación.</div>
+            <div class="price">2 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20la%20Instalaci%C3%B3n%20de%20protector%20de%20pantalla%20(2%E2%82%AC)">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- Anti-espía -->
+        <article class="card" data-cat="protectores">
+          <div class="media"><img src="img/protector_antiespia.jpg" alt="Protector anti-espía"></div>
+          <div class="body">
+            <div class="title">Protector de pantalla anti-espía</div>
+            <div class="desc">Privacidad a 30º, vidrio templado.</div>
+            <div class="price">7 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Protector%20anti-esp%C3%ADa%20(7%E2%82%AC)">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- Carcasa transparente MagSafe -->
+        <article class="card" data-cat="fundas">
+          <div class="media"><img src="img/Carcasa_transparente.jpg" alt="Carcasa transparente MagSafe"></div>
+          <div class="body">
+            <div class="title">Carcasa transparente MagSafe</div>
+            <div class="desc">Funda transparente con anillo magnético.</div>
+            <div class="price">5 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Carcasa%20MagSafe%20(5%E2%82%AC)">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- Fundas originales colores -->
+        <article class="card" data-cat="fundas">
+          <div class="media"><img src="img/fundas_colores.jpg" alt="Fundas originales colores"></div>
+          <div class="body">
+            <div class="title">Fundas originales (varios colores)</div>
+            <div class="desc">Ajuste perfecto y tacto premium.</div>
+            <div class="price">10 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Funda%20original%20de%20colores%20(10%E2%82%AC)">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- Cable Lightning a USB/Tipo C -->
         <article class="card" data-cat="cables">
           <div class="media"><img src="img/cable_tipo_c_lightning.jpg" alt="Cable Lightning a USB/Tipo C"></div>
-          <div class="body"><div class="title">Cable Lightning a USB/Tipo C</div><div class="desc">Cable de datos y carga para iPhone.</div><div class="price">4,50 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Cable%20Lightning%20a%20USB/Tipo%20C%20(4%2C50%E2%82%AC)">Pedir por WhatsApp</a></div>
-        </article>
-        <article class="card" data-cat="cables">
-          <div class="media"><img src="img/cargador_watch.jpg" alt="Cargador Apple Watch / SmartWatch"></div>
-          <div class="body"><div class="title">Cargador Apple Watch / SmartWatch</div><div class="desc">Base magnética para relojes inteligentes.</div><div class="price">10 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Cargador%20Apple%20Watch/SmartWatch%20(10%E2%82%AC)">Pedir por WhatsApp</a></div>
-        </article>
-
-        <!-- CARGADORES -->
-        <article class="card" data-cat="cargadores">
-          <div class="media"><img src="img/cargador_65w.jpg" alt="Cargador genérico 65W"></div>
-          <div class="body"><div class="title">Cargador genérico 65W</div><div class="desc">Compatible con varios dispositivos.</div><div class="price">10 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Cargador%2065W%20(10%E2%82%AC)">Pedir por WhatsApp</a></div>
-        </article>
-        <article class="card" data-cat="cargadores">
-          <div class="media"><img src="img/set_3en1.jpg" alt="Set de carga 3 en 1"></div>
-          <div class="body"><div class="title">Set de carga 3 en 1</div><div class="desc">Móvil + AirPods + Apple Watch.</div><div class="price">20 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Set%203%20en%201%20(20%E2%82%AC)">Pedir por WhatsApp</a></div>
-        </article>
-        <article class="card" data-cat="cargadores">
-          <div class="media"><img src="img/cargador_watch.jpg" alt="Cargador Apple Watch / SmartWatch"></div>
-          <div class="body"><div class="title">Cargador Apple Watch / SmartWatch</div><div class="desc">Base magnética para relojes inteligentes.</div><div class="price">10 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Cargador%20Apple%20Watch/SmartWatch%20(10%E2%82%AC)">Pedir por WhatsApp</a></div>
+          <div class="body">
+            <div class="title">Cable Lightning a USB/Tipo C</div>
+            <div class="desc">Datos y carga para iPhone.</div>
+            <div class="price">4,50 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Cable%20Lightning%20a%20USB/Tipo%20C%20(4%2C50%E2%82%AC)">Pedir por WhatsApp</a>
+          </div>
         </article>
 
-        <!-- BATERÍAS -->
+        <!-- Batería MagSafe 5.000 -->
         <article class="card" data-cat="baterias">
           <div class="media"><img src="img/bateria_magsafe.jpg" alt="Batería MagSafe 5000 mAh"></div>
-          <div class="body"><div class="title">Batería MagSafe 5.000 mAh</div><div class="desc">Power bank magnético, carga inalámbrica 15W.</div><div class="price">30 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Bater%C3%ADa%20MagSafe%205000mAh%20(30%E2%82%AC)">Pedir por WhatsApp</a></div>
-        </article>
-        <article class="card" data-cat="baterias">
-          <div class="media"><img src="img/bateria_magsafe.jpg" alt="Batería MagSafe 10000 mAh"></div>
-          <div class="body"><div class="title">Batería MagSafe 10.000 mAh</div><div class="desc">Mayor capacidad para viajes.</div><div class="price">40 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Bater%C3%ADa%20MagSafe%2010000mAh%20(40%E2%82%AC)">Pedir por WhatsApp</a></div>
+          <div class="body">
+            <div class="title">Batería MagSafe 5.000 mAh</div>
+            <div class="desc">Power bank magnético, carga inalámbrica 15W.</div>
+            <div class="price">30 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Bater%C3%ADa%20MagSafe%205000mAh%20(30%E2%82%AC)">Pedir por WhatsApp</a>
+          </div>
         </article>
 
-        <!-- SOPORTES -->
+        <!-- Batería MagSafe 10.000 -->
+        <article class="card" data-cat="baterias">
+          <div class="media"><img src="img/bateria_magsafe.jpg" alt="Batería MagSafe 10000 mAh"></div>
+          <div class="body">
+            <div class="title">Batería MagSafe 10.000 mAh</div>
+            <div class="desc">Mayor capacidad para viajes.</div>
+            <div class="price">40 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Bater%C3%ADa%20MagSafe%2010000mAh%20(40%E2%82%AC)">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- Cargador 65W -->
+        <article class="card" data-cat="cargadores">
+          <div class="media"><img src="img/cargador_65w.jpg" alt="Cargador genérico 65W"></div>
+          <div class="body">
+            <div class="title">Cargador genérico 65W</div>
+            <div class="desc">Compatible con varios dispositivos.</div>
+            <div class="price">10 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Cargador%2065W%20(10%E2%82%AC)">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- Cargador Apple Watch -->
+        <article class="card" data-cat="cargadores cables">
+          <div class="media"><img src="img/cargador_watch.jpg" alt="Cargador Apple Watch / SmartWatch"></div>
+          <div class="body">
+            <div class="title">Cargador Apple Watch / SmartWatch</div>
+            <div class="desc">Base magnética para relojes inteligentes.</div>
+            <div class="price">10 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Cargador%20Apple%20Watch/SmartWatch%20(10%E2%82%AC)">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- Set 3 en 1 (en Cargadores) -->
+        <article class="card" data-cat="cargadores">
+          <div class="media"><img src="img/set_3en1.jpg" alt="Set de carga 3 en 1"></div>
+          <div class="body">
+            <div class="title">Set de carga 3 en 1</div>
+            <div class="desc">Móvil + AirPods + Apple Watch.</div>
+            <div class="price">20 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Set%203%20en%201%20(20%E2%82%AC)">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- Soporte con ventosas (categoría Soportes) -->
         <article class="card" data-cat="soportes">
           <div class="media"><img src="img/soporte_ventosas.jpg" alt="Soporte con ventosas"></div>
-          <div class="body"><div class="title">Soporte con ventosas</div><div class="desc">Antirrobo; se adhiere a superficies.</div><div class="price">2,50 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Soporte%20con%20ventosas%20(2%2C50%E2%82%AC)">Pedir por WhatsApp</a></div>
+          <div class="body">
+            <div class="title">Soporte con ventosas</div>
+            <div class="desc">Antirrobo; se adhiere a superficies.</div>
+            <div class="price">2,50 €</div>
+            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20Soporte%20con%20ventosas%20(2%2C50%E2%82%AC)">Pedir por WhatsApp</a>
+          </div>
         </article>
       </div>
     </div>
   </div>
 
-  <!-- MODAL: Reparaciones iPhone -->
+  <!-- MODAL: Presupuestos iPhone -->
   <div class="modal" id="repairsModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="repTitle">
     <div class="modal-inner">
       <div class="modal-header">
         <div class="modal-title" id="repTitle">Presupuestos de reparación – iPhone</div>
-        <button class="modal-close" id="closeRepairs" aria-label="Cerrar">Cerrar ✕</button>
+        <button class="modal-close" id="closeRep" aria-label="Cerrar">Cerrar ✕</button>
       </div>
 
       <div class="modal-tools">
-        <select id="modelSelect" class="select" aria-label="Modelo de iPhone"></select>
-        <a id="genericWA" class="btn alt" target="_blank"
-           href="https://wa.me/34642886426?text=Hola%20Electro%20Fix%20It%2C%20quiero%20presupuesto%20para%20mi%20iPhone.">
-           No encuentro mi reparación — WhatsApp
-        </a>
+        <select id="iphoneModel" aria-label="Modelo de iPhone"></select>
+        <a class="btn ok" target="_blank" id="btnUnknown"
+           href="https://wa.me/34642886426?text=No%20encuentro%20mi%20reparaci%C3%B3n%20del%20iPhone.%20%C2%BFMe%20ayudas%3F">No encuentro mi reparación — WhatsApp</a>
       </div>
 
-      <div id="repairsContainer" class="repairs-list" aria-live="polite"></div>
+      <div class="repairs-list" id="repairsList"></div>
     </div>
   </div>
 
   <script>
-    // Helpers
+    /* ========== Utilidades comunes ========== */
     const $ = (q,ctx=document)=>ctx.querySelector(q);
     const $$ = (q,ctx=document)=>Array.from(ctx.querySelectorAll(q));
 
-    /* -------------------- MODAL ACCESORIOS -------------------- */
+    /* ===== Accesorios: abrir/cerrar + filtros ===== */
     const accModal = $('#accessoriesModal');
     const openAccBtns = [$('#nav-accessories'), $('#section-accessories-btn')];
     const closeAccBtn = $('#closeAcc');
     const accSearch = $('#accSearch');
     const accCards = $('#accCards');
+    const pills = $$('.pill');
 
-    function openModal(m){ m.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; document.addEventListener('keydown', escClose); }
-    function closeModal(m){ m.setAttribute('aria-hidden','true'); document.body.style.overflow=''; document.removeEventListener('keydown', escClose); }
-    function escClose(e){ if(e.key==='Escape'){ closeModal(accModal); closeModal(repairsModal); } }
+    function openModal(el){ el.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+    function closeModal(el){ el.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
 
-    openAccBtns.forEach(btn=>{ if(btn){ btn.addEventListener('click', e=>{ e.preventDefault(); openModal(accModal); accSearch.value=''; filterCards(''); setTimeout(()=>accSearch.focus(),0); }); }});
-    closeAccBtn.addEventListener('click', ()=>closeModal(accModal));
-    accModal.addEventListener('click', e=>{ if(e.target===accModal) closeModal(accModal); });
+    openAccBtns.forEach(b=>b && b.addEventListener('click',e=>{ e.preventDefault(); openModal(accModal); accSearch.value=''; filterCards(); }));
+    closeAccBtn.addEventListener('click',()=>closeModal(accModal));
+    accModal.addEventListener('click',e=>{ if(e.target===accModal) closeModal(accModal); });
 
-    function filterCards(q){
-      const query = q.toLowerCase();
+    function filterCards(){
+      const q = accSearch.value.toLowerCase();
+      const activeCat = $('.pill.active')?.dataset.cat ?? 'all';
       $$('.card', accCards).forEach(card=>{
-        const text = card.innerText.toLowerCase();
-        card.style.display = text.includes(query) ? '' : 'none';
+        const matchesText = card.innerText.toLowerCase().includes(q);
+        const cats = (card.dataset.cat||'').split(/\s+/);
+        const matchesCat = activeCat==='all' || cats.includes(activeCat);
+        card.style.display = (matchesText && matchesCat) ? '' : 'none';
       });
     }
-    accSearch.addEventListener('input', e=>filterCards(e.target.value));
-
-    const filters = $('#filters');
-    const filterBtns = $$('.filter-btn', filters);
-    filters.addEventListener('click', e=>{
-      const btn = e.target.closest('.filter-btn'); if(!btn) return;
-      const cat = btn.dataset.filter;
-      filterBtns.forEach(b=>b.classList.toggle('active', b===btn));
-      $$('.card', accCards).forEach(card=>{
-        const c = card.getAttribute('data-cat');
-        card.style.display = (cat==='all' || c===cat) ? '' : 'none';
+    accSearch.addEventListener('input', filterCards);
+    pills.forEach(p=>{
+      p.addEventListener('click', ()=>{
+        pills.forEach(x=>x.classList.remove('active'));
+        p.classList.add('active');
+        filterCards();
       });
-      accSearch.value='';
     });
 
-    /* -------------------- MODAL REPARACIONES (SERVICIOS) -------------------- */
+    /* ====== Presupuestos iPhone ====== */
     const repairsModal = $('#repairsModal');
     const openRepairsBtn = $('#openRepairs');
-    const closeRepairsBtn = $('#closeRepairs');
-    const modelSelect = $('#modelSelect');
-    const repairsContainer = $('#repairsContainer');
+    const closeRepBtn = $('#closeRep');
+    const iphoneModelSel = $('#iphoneModel');
+    const repairsList = $('#repairsList');
 
-    openRepairsBtn.addEventListener('click', e=>{ e.preventDefault(); openModal(repairsModal); modelSelect.focus(); });
-    closeRepairsBtn.addEventListener('click', ()=>closeModal(repairsModal));
+    openRepairsBtn.addEventListener('click', e=>{ e.preventDefault(); openModal(repairsModal); iphoneModelSel.focus(); });
+    closeRepBtn.addEventListener('click', ()=>closeModal(repairsModal));
     repairsModal.addEventListener('click', e=>{ if(e.target===repairsModal) closeModal(repairsModal); });
 
-    // Datos de precios (modelo => lista de reparaciones)
-    const PRICE = (v)=> typeof v==='number' ? `${v} €` : v;
-    const iphones = {
-      "iPhone 11": [
-        ["Pantalla (InCell)",69],["Batería",59],["Cámara trasera",59],["Cámara frontal",49],
-        ["Cristal cámara trasera",39],["Puerto de carga (reemplazo)",59],["Puerto de carga (limpieza)",19],
-        ["Carga inalámbrica / NFC",59],["Botones",59],["Vibrador",39],["Altavoces (reemplazo)",69],
-        ["Altavoces (limpieza)",19],["Cubierta trasera",79],["Chasis completo",99],["Daños por líquidos","Presupuesto tras revisión"]
-      ],
-      "iPhone 11 Pro": [
-        ["Pantalla (InCell)",69],["Pantalla (Soft OLED)",105],["Batería",59],["Cámara trasera",89],["Cámara frontal",59],
-        ["Cristal cámara trasera",59],["Puerto de carga (reemplazo)",69],["Puerto de carga (limpieza)",19],
-        ["Carga inalámbrica / NFC",69],["Botones",69],["Vibrador",44],["Altavoces (reemplazo)",69],
-        ["Altavoces (limpieza)",19],["Cubierta trasera",99],["Chasis completo",139],["Daños por líquidos","Presupuesto tras revisión"]
-      ],
-      "iPhone 11 Pro Max": [
-        ["Pantalla (InCell)",89],["Pantalla (JK Soft OLED)",115],["Batería",59],["Cámara trasera",89],["Cámara frontal",49],
-        ["Cristal cámara trasera",59],["Puerto de carga (reemplazo)",69],["Puerto de carga (limpieza)",19],
-        ["Carga inalámbrica / NFC",69],["Botones",69],["Vibrador",44],["Altavoces (reemplazo)",69],
-        ["Altavoces (limpieza)",19],["Cubierta trasera",109],["Chasis completo",149],["Daños por líquidos","Presupuesto tras revisión"]
-      ],
-      "iPhone 12": [
-        ["Pantalla (InCell)",79],["Pantalla (Soft OLED)",139],["Batería",59],["Cámara trasera",89],["Cámara frontal",59],
-        ["Cristal cámara trasera",59],["Puerto de carga (reemplazo)",79],["Puerto de carga (limpieza)",19],
-        ["Carga inalámbrica / NFC",89],["Botones",79],["Vibrador",49],["Altavoces (reemplazo)",69],
-        ["Altavoces (limpieza)",19],["Cubierta trasera",104],["Chasis completo",134],["Daños por líquidos","Presupuesto tras revisión"]
-      ],
-      "iPhone 12 Pro": [
-        ["Pantalla (InCell)",79],["Pantalla (Soft OLED)",139],["Batería",59],["Cámara trasera",109],["Cámara frontal",59],
-        ["Cristal cámara trasera",59],["Puerto de carga (reemplazo)",79],["Puerto de carga (limpieza)",19],
-        ["Carga inalámbrica / NFC",89],["Botones",79],["Vibrador",49],["Altavoces (reemplazo)",69],
-        ["Altavoces (limpieza)",19],["Cubierta trasera",114],["Chasis completo",149],["Daños por líquidos","Presupuesto tras revisión"]
-      ],
-      "iPhone 12 Pro Max": [
-        ["Pantalla (InCell)",84],["Pantalla (Soft OLED)",144],["Batería",59],["Cámara trasera",109],["Cámara frontal",59],
-        ["Cristal cámara trasera",59],["Puerto de carga (reemplazo)",79],["Puerto de carga (limpieza)",19],
-        ["Carga inalámbrica / NFC",89],["Botones",79],["Vibrador",49],["Altavoces (reemplazo)",69],
-        ["Altavoces (limpieza)",19],["Cubierta trasera",124],["Chasis completo",159],["Daños por líquidos","Presupuesto tras revisión"]
-      ],
-      "iPhone 13": [
-        ["Pantalla (InCell)",84],["Pantalla (Soft OLED)",144],["Batería",69],["Cámara trasera",109],["Cámara frontal",69],
-        ["Cristal cámara trasera",59],["Puerto de carga (reemplazo)",79],["Puerto de carga (limpieza)",19],
-        ["Carga inalámbrica / NFC",89],["Botones",79],["Vibrador",49],["Altavoces (reemplazo)",69],
-        ["Altavoces (limpieza)",19],["Cubierta trasera",104],["Chasis completo",134],["Daños por líquidos","Presupuesto tras revisión"]
-      ],
-      "iPhone 13 Pro": [
-        ["Pantalla (InCell)",94],["Pantalla (Soft OLED)",154],["Batería",79],["Cámara trasera",129],["Cámara frontal",79],
-        ["Cristal cámara trasera",59],["Puerto de carga (reemplazo)",79],["Puerto de carga (limpieza)",19],
-        ["Carga inalámbrica / NFC",89],["Botones",79],["Vibrador",49],["Altavoces (reemplazo)",69],
-        ["Altavoces (limpieza)",19],["Cubierta trasera",114],["Chasis completo",149],["Daños por líquidos","Presupuesto tras revisión"]
-      ],
-      "iPhone 13 Pro Max": [
-        ["Pantalla (InCell)",99],["Pantalla (Soft OLED)",159],["Batería",79],["Cámara trasera",129],["Cámara frontal",79],
-        ["Cristal cámara trasera",59],["Puerto de carga (reemplazo)",79],["Puerto de carga (limpieza)",19],
-        ["Carga inalámbrica / NFC",89],["Botones",79],["Vibrador",49],["Altavoces (reemplazo)",69],
-        ["Altavoces (limpieza)",19],["Cubierta trasera",114],["Chasis completo",149],["Daños por líquidos","Presupuesto tras revisión"]
-      ],
-      "iPhone 14": [
-        ["Pantalla (InCell)",84],["Pantalla (Soft OLED)",144],["Batería",69],["Cámara trasera",99],["Cámara frontal",69],
-        ["Cristal cámara trasera",69],["Puerto de carga (reemplazo)",84],["Puerto de carga (limpieza)",19],
-        ["Carga inalámbrica / NFC",89],["Botones",84],["Vibrador",59],["Altavoces (reemplazo)",79],
-        ["Altavoces (limpieza)",19],["Cubierta trasera",69],["Chasis completo",149],["Daños por líquidos","Presupuesto tras revisión"]
-      ],
-      "iPhone 14 Plus": [
-        ["Pantalla (InCell)",84],["Pantalla (Soft OLED)",149],["Batería",69],["Cámara trasera",99],["Cámara frontal",69],
-        ["Cristal cámara trasera",59],["Puerto de carga (reemplazo)",79],["Puerto de carga (limpieza)",19],
-        ["Carga inalámbrica / NFC",89],["Botones",79],["Vibrador",49],["Altavoces (reemplazo)",69],
-        ["Altavoces (limpieza)",19],["Cubierta trasera",74],["Chasis completo",154],["Daños por líquidos","Presupuesto tras revisión"]
-      ],
-      "iPhone 14 Pro": [
-        ["Pantalla (InCell)",109],["Pantalla (Soft OLED)",189],["Batería",79],["Cámara trasera",129],["Cámara frontal",79],
-        ["Cristal cámara trasera",69],["Puerto de carga (reemplazo)",84],["Puerto de carga (limpieza)",19],
-        ["Carga inalámbrica / NFC",89],["Botones",84],["Vibrador",59],["Altavoces (reemplazo)",79],
-        ["Altavoces (limpieza)",19],["Cubierta trasera",119],["Chasis completo",164],["Daños por líquidos","Presupuesto tras revisión"]
-      ],
-      "iPhone 14 Pro Max": [
-        ["Pantalla (InCell)",114],["Pantalla (Soft OLED)",239],["Batería",79],["Cámara trasera",129],["Cámara frontal",79],
-        ["Cristal cámara trasera",69],["Puerto de carga (reemplazo)",84],["Puerto de carga (limpieza)",19],
-        ["Carga inalámbrica / NFC",89],["Botones",84],["Vibrador",59],["Altavoces (reemplazo)",79],
-        ["Altavoces (limpieza)",19],["Cubierta trasera",119],["Chasis completo",164],["Daños por líquidos","Presupuesto tras revisión"]
-      ],
-      "iPhone 15": [
-        ["Pantalla (InCell)",89],["Pantalla (Soft OLED)",169],["Batería",79],["Cámara trasera",99],["Cámara frontal",69],
-        ["Cristal cámara trasera",59],["Puerto de carga (reemplazo)",79],["Puerto de carga (limpieza)",19],
-        ["Carga inalámbrica / NFC",89],["Botones",79],["Vibrador",49],["Altavoces (reemplazo)",69],
-        ["Altavoces (limpieza)",19],["Cubierta trasera",84],["Chasis completo",159],["Daños por líquidos","Presupuesto tras revisión"]
-      ],
-      "iPhone 15 Plus": [
-        ["Pantalla (InCell)",94],["Pantalla (Soft OLED)",194],["Batería",79],["Cámara trasera",104],["Cámara frontal",69],
-        ["Cristal cámara trasera",59],["Puerto de carga (reemplazo)",79],["Puerto de carga (limpieza)",19],
-        ["Carga inalámbrica / NFC",89],["Botones",79],["Vibrador",49],["Altavoces (reemplazo)",69],
-        ["Altavoces (limpieza)",19],["Cubierta trasera",84],["Chasis completo",164],["Daños por líquidos","Presupuesto tras revisión"]
-      ],
-      "iPhone 15 Pro": [
-        ["Pantalla (InCell)",109],["Pantalla (Soft OLED)",239],["Batería",84],["Cámara trasera",149],["Cámara frontal",79],
-        ["Cristal cámara trasera",59],["Puerto de carga (reemplazo)",79],["Puerto de carga (limpieza)",19],
-        ["Carga inalámbrica / NFC",89],["Botones",79],["Vibrador",49],["Altavoces (reemplazo)",69],
-        ["Altavoces (limpieza)",19],["Cubierta trasera",84],["Chasis completo",169],["Daños por líquidos","Presupuesto tras revisión"]
-      ],
-      "iPhone 15 Pro Max": [
-        ["Pantalla (InCell)",119],["Pantalla (Soft OLED)",249],["Pantalla (Original)",319],["Batería",84],["Cámara trasera",149],
-        ["Cámara frontal",89],["Cristal cámara trasera",59],["Puerto de carga (reemplazo)",79],["Puerto de carga (limpieza)",19],
-        ["Carga inalámbrica / NFC",89],["Botones",79],["Vibrador",49],["Altavoces (reemplazo)",69],["Altavoces (limpieza)",19],
-        ["Cubierta trasera",84],["Chasis completo",179],["Daños por líquidos","Presupuesto tras revisión"]
-      ]
+    // Datos: precios por modelo
+    const DATA = {
+      "iPhone 11":{
+        "Pantalla (InCell)":69, "Batería":59, "Cámara trasera":59, "Cámara frontal":49, "Cristal cámara trasera":39,
+        "Puerto de carga (reemplazo)":59, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":59, "Botones":59,
+        "Vibrador":39, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":79, "Chasis completo":99,
+        "Daños por líquidos":"presupuesto tras revisión"
+      },
+      "iPhone 11 Pro":{
+        "Pantalla (InCell)":69, "Pantalla (Soft OLED)":105, "Batería":59, "Cámara trasera":89, "Cámara frontal":59,
+        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":69, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":69,
+        "Botones":69, "Vibrador":44, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":99, "Chasis completo":139,
+        "Daños por líquidos":"presupuesto tras revisión"
+      },
+      "iPhone 11 Pro Max":{
+        "Pantalla (InCell)":89, "Pantalla (JK Soft OLED)":115, "Batería":59, "Cámara trasera":89, "Cámara frontal":49,
+        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":69, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":69,
+        "Botones":69, "Vibrador":44, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":109, "Chasis completo":149,
+        "Daños por líquidos":"presupuesto tras revisión"
+      },
+      "iPhone 12":{
+        "Pantalla (InCell)":79, "Pantalla (Soft OLED)":139, "Batería":59, "Cámara trasera":89, "Cámara frontal":59,
+        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
+        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":104, "Chasis completo":134,
+        "Daños por líquidos":"presupuesto tras revisión"
+      },
+      "iPhone 12 Pro":{
+        "Pantalla (InCell)":79, "Pantalla (Soft OLED)":139, "Batería":59, "Cámara trasera":109, "Cámara frontal":59,
+        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
+        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":114, "Chasis completo":149,
+        "Daños por líquidos":"presupuesto tras revisión"
+      },
+      "iPhone 12 Pro Max":{
+        "Pantalla (InCell)":84, "Pantalla (Soft OLED)":144, "Batería":59, "Cámara trasera":109, "Cámara frontal":59,
+        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
+        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":124, "Chasis completo":159,
+        "Daños por líquidos":"presupuesto tras revisión"
+      },
+      "iPhone 13":{
+        "Pantalla (InCell)":84, "Pantalla (Soft OLED)":144, "Batería":69, "Cámara trasera":109, "Cámara frontal":69,
+        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
+        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":104, "Chasis completo":134,
+        "Daños por líquidos":"presupuesto tras revisión"
+      },
+      "iPhone 13 Pro":{
+        "Pantalla (InCell)":94, "Pantalla (Soft OLED)":154, "Batería":79, "Cámara trasera":129, "Cámara frontal":79,
+        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
+        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":114, "Chasis completo":149,
+        "Daños por líquidos":"presupuesto tras revisión"
+      },
+      "iPhone 13 Pro Max":{
+        "Pantalla (InCell)":99, "Pantalla (Soft OLED)":159, "Batería":79, "Cámara trasera":129, "Cámara frontal":79,
+        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
+        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":114, "Chasis completo":149,
+        "Daños por líquidos":"presupuesto tras revisión"
+      },
+      "iPhone 14":{
+        "Pantalla (InCell)":84, "Pantalla (Soft OLED)":144, "Batería":69, "Cámara trasera":99, "Cámara frontal":69,
+        "Cristal cámara trasera":69, "Puerto de carga (reemplazo)":84, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
+        "Botones":84, "Vibrador":59, "Altavoces (reemplazo)":79, "Altavoces (limpieza)":19, "Cubierta trasera":69, "Chasis completo":149,
+        "Daños por líquidos":"presupuesto tras revisión"
+      },
+      "iPhone 14 Plus":{
+        "Pantalla (InCell)":84, "Pantalla (Soft OLED)":149, "Batería":69, "Cámara trasera":99, "Cámara frontal":69,
+        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
+        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":74, "Chasis completo":154,
+        "Daños por líquidos":"presupuesto tras revisión"
+      },
+      "iPhone 14 Pro":{
+        "Pantalla (InCell)":109, "Pantalla (Soft OLED)":189, "Batería":79, "Cámara trasera":129, "Cámara frontal":79,
+        "Cristal cámara trasera":69, "Puerto de carga (reemplazo)":84, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
+        "Botones":84, "Vibrador":59, "Altavoces (reemplazo)":79, "Altavoces (limpieza)":19, "Cubierta trasera":119, "Chasis completo":164,
+        "Daños por líquidos":"presupuesto tras revisión"
+      },
+      "iPhone 14 Pro Max":{
+        "Pantalla (InCell)":114, "Pantalla (Soft OLED)":239, "Batería":79, "Cámara trasera":129, "Cámara frontal":79,
+        "Cristal cámara trasera":69, "Puerto de carga (reemplazo)":84, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
+        "Botones":84, "Vibrador":59, "Altavoces (reemplazo)":79, "Altavoces (limpieza)":19, "Cubierta trasera":119, "Chasis completo":164,
+        "Daños por líquidos":"presupuesto tras revisión"
+      },
+      "iPhone 15":{
+        "Pantalla (InCell)":89, "Pantalla (Soft OLED)":169, "Batería":79, "Cámara trasera":99, "Cámara frontal":69,
+        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
+        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":84, "Chasis completo":159,
+        "Daños por líquidos":"presupuesto tras revisión"
+      },
+      "iPhone 15 Plus":{
+        "Pantalla (InCell)":94, "Pantalla (Soft OLED)":194, "Batería":79, "Cámara trasera":104, "Cámara frontal":69,
+        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
+        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":84, "Chasis completo":164,
+        "Daños por líquidos":"presupuesto tras revisión"
+      },
+      "iPhone 15 Pro":{
+        "Pantalla (InCell)":109, "Pantalla (Soft OLED)":239, "Batería":84, "Cámara trasera":149, "Cámara frontal":79,
+        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
+        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":84, "Chasis completo":169,
+        "Daños por líquidos":"presupuesto tras revisión"
+      },
+      "iPhone 15 Pro Max":{
+        "Pantalla (InCell)":119, "Pantalla (Soft OLED)":249, "Pantalla (Original)":319, "Batería":84, "Cámara trasera":149, "Cámara frontal":89,
+        "Cristal cámara trasera":59, "Puerto de carga (reemplazo)":79, "Puerto de carga (limpieza)":19, "Carga inalámbrica / NFC":89,
+        "Botones":79, "Vibrador":49, "Altavoces (reemplazo)":69, "Altavoces (limpieza)":19, "Cubierta trasera":84, "Chasis completo":179,
+        "Daños por líquidos":"presupuesto tras revisión"
+      }
     };
 
-    // Rellena selector
-    Object.keys(iphones).forEach((m,i)=>{
-      const opt=document.createElement('option'); opt.value=m; opt.textContent=m; if(i===0) opt.selected=true; modelSelect.appendChild(opt);
-    });
+    // Cargar modelos en el select
+    iphoneModelSel.innerHTML = Object.keys(DATA).map(m=>`<option value="${m}">${m}</option>`).join('');
+    iphoneModelSel.addEventListener('change', renderRepairs);
+    renderRepairs(); // inicial
 
-    function renderRepairs(model){
-      repairsContainer.innerHTML='';
-      iphones[model].forEach(([name, price])=>{
-        const isNumber = typeof price==='number';
-        const priceText = PRICE(price);
-        const wrap=document.createElement('div'); wrap.className='repair';
-        wrap.innerHTML = `
-          <div class="row">
-            <h4>${name}</h4>
-            <span class="pill">${priceText}</span>
-          </div>
-          <div class="row">
-            <a class="btn" target="_blank"
-               href="${makeWA(model,name,priceText)}">Pedir por WhatsApp</a>
-          </div>
-        `;
-        repairsContainer.appendChild(wrap);
+    function renderRepairs(){
+      const model = iphoneModelSel.value || Object.keys(DATA)[0];
+      const items = DATA[model];
+      repairsList.innerHTML = '';
+      Object.entries(items).forEach(([name, price])=>{
+        const row = document.createElement('div');
+        row.className = 'repair-row';
+        row.innerHTML = `
+          <div class="repair-name">${name}</div>
+          <div class="repair-actions">
+            <div class="repair-price">${typeof price==='number' ? price+' €' : price}</div>
+            ${typeof price==='number'
+              ? `<a class="btn" target="_blank" href="${waLink(model,name,price)}">Pedir por WhatsApp</a>`
+              : `<a class="btn" target="_blank" href="https://wa.me/34642886426?text=Quiero%20presupuesto%20para%20${encodeURIComponent(model)}%20(%20${encodeURIComponent(name)}%20)">Consultar por WhatsApp</a>`
+            }
+          </div>`;
+        repairsList.appendChild(row);
       });
     }
-    function makeWA(model, repair, priceText){
-      const msg = `Hola Electro Fix It, quiero reparar mi ${model}: ${repair} — ${priceText}.`;
-      return `https://wa.me/34642886426?text=${encodeURIComponent(msg)}`;
+
+    function waLink(model, repair, price){
+      const text = `Hola Electro Fix It, quiero la reparación de ${model}: ${repair} (${price}€).`;
+      return `https://wa.me/34642886426?text=${encodeURIComponent(text)}`;
     }
-    modelSelect.addEventListener('change', e=>renderRepairs(e.target.value));
-    renderRepairs(modelSelect.value);
   </script>
 </body>
 </html>
