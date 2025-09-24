@@ -14,22 +14,18 @@
       --card:#0f1115; --border:rgba(255,255,255,.12); --radius:12px;
     }
 
-    /* Base */
     *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0 }
     html{ scroll-behavior:smooth }
     body{ font-family:'Roboto',sans-serif; background:linear-gradient(135deg,#121212,#2a2a2a); color:var(--text-color); line-height:1.6; }
 
-    /* Header */
     header{ background:var(--background-overlay); padding:40px 20px; text-align:center; box-shadow:0 4px 6px rgba(0,0,0,.2); }
     header img{ width:300px; height:auto; margin-bottom:20px }
     #header-tagline1{ font-size:2rem; font-weight:700; margin-top:10px }
 
-    /* Nav */
     nav{ position:sticky; top:0; z-index:100; background:rgba(0,0,0,.85); padding:10px 0; text-align:center; box-shadow:0 2px 4px rgba(0,0,0,.3); }
     nav a{ display:inline-block; margin:0 12px; padding:10px 18px; font-size:1.05rem; font-weight:700; text-decoration:none; color:var(--primary-color); background:rgba(0,0,0,.6); border-radius:8px; transition:.15s; }
     nav a:hover{ background:var(--primary-color); color:#fff; transform:translateY(-1px) }
 
-    /* Main */
     main{ padding:20px; max-width:1000px; margin:20px auto }
     section{ scroll-margin-top:140px; background:var(--background-overlay); padding:30px; margin-bottom:30px; border-radius:12px; box-shadow:0 4px 8px rgba(0,0,0,.2); }
     h2{ color:var(--primary-color); margin-bottom:15px; border-bottom:2px solid var(--primary-color); padding-bottom:6px; text-shadow:1px 1px 2px rgba(0,0,0,.8); }
@@ -38,17 +34,15 @@
     .btn{ display:inline-block; background:var(--primary-color); color:#fff; padding:10px 20px; border-radius:8px; font-weight:700; text-decoration:none; transition:.2s; }
     .btn:hover{ background:var(--accent-color) }
 
-    /* Footer */
     footer{ background:var(--background-overlay); color:var(--primary-color); text-align:center; padding:20px 10px; margin-top:30px; }
     footer a{ color:var(--primary-color); font-weight:700; text-decoration:none }
     footer a:hover{ color:var(--accent-color) }
     footer img{ vertical-align:middle; width:20px; height:20px; margin-right:10px }
 
-    /* Iconos inline */
     .icon{ vertical-align:middle; width:20px; height:20px; margin-right:6px }
     .inline-chip{ display:inline-flex; align-items:center; gap:6px; margin-right:12px; vertical-align:middle; }
 
-    /* MODAL Accesorios */
+    /* ---------- MODAL Accesorios ---------- */
     .modal{ display:none; position:fixed; inset:0; background:rgba(0,0,0,.9); z-index:1200; padding:24px; overflow:auto }
     .modal[aria-hidden="false"]{ display:block }
     .modal-inner{ max-width:1100px; margin:0 auto; background:rgba(0,0,0,.6); border:1px solid var(--border); border-radius:14px; padding:20px; box-shadow:0 10px 30px rgba(0,0,0,.5); }
@@ -56,28 +50,19 @@
     .modal-title{ font-size:1.4rem; font-weight:800 }
     .modal-close{ background:transparent; border:1px solid var(--border); color:#fff; border-radius:10px; padding:8px 12px; cursor:pointer }
     .modal-tools{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:8px 0 14px }
-
     .modal-search{ flex:1 1 220px; background:rgba(255,255,255,.06); border:1px solid var(--border); color:#fff; padding:10px 12px; border-radius:10px; outline:none; }
 
-    /* Filtros por categoría (simplificados) */
     .filters{ display:flex; flex-wrap:wrap; gap:8px; }
-    .filter-btn{
-      background:rgba(255,255,255,.06); color:#fff; border:1px solid var(--border);
-      padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer; transition:.15s;
-    }
+    .filter-btn{ background:rgba(255,255,255,.06); color:#fff; border:1px solid var(--border); padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer; transition:.15s; }
     .filter-btn.active, .filter-btn:hover{ background:var(--primary-color); border-color:var(--primary-color) }
 
-    /* Tarjetas Accesorios */
     .grid{ display:grid; gap:14px; grid-template-columns:repeat(3,1fr) }
     .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden }
     .card .media{
-      background:#fff; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
-      overflow:hidden;
+      background:#fff; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; overflow:hidden;
     }
-    /* Mostrar enteras sin recortar ni salirse */
-    .card .media img{
-      width:100%; height:100%; object-fit:contain; background:#fff; transform:none;
-    }
+    /* Mostrar las imágenes enteras sin recortes ni deformación */
+    .card .media img{ width:100%; height:100%; object-fit:contain; background:#fff; }
     .card .body{ padding:12px 14px }
     .card .title{ font-weight:800; margin-bottom:6px }
     .card .desc{ color:var(--muted); font-size:.95rem; margin-bottom:8px }
@@ -87,18 +72,12 @@
     @media (max-width:980px){ .grid{ grid-template-columns:repeat(2,1fr) } }
     @media (max-width:640px){ .grid{ grid-template-columns:1fr } }
 
-    /* Reseñas (iconos solo, alineados a la izquierda) */
-    .review-logos{
-      display:flex; gap:24px; justify-content:flex-start; align-items:center; flex-wrap:wrap; margin-top:12px;
-    }
-    .review-logos a{
-      display:inline-flex; align-items:center; justify-content:center;
-      width:72px; height:72px; border-radius:16px; background:#ffffff; border:1px solid var(--border);
-      transition:transform .15s ease, box-shadow .15s ease;
-    }
+    /* Reseñas: iconos alineados a la izq., Wallapop un poco más grande */
+    .review-logos{ display:flex; gap:24px; justify-content:flex-start; align-items:center; flex-wrap:wrap; margin-top:12px; }
+    .review-logos a{ display:inline-flex; align-items:center; justify-content:center; width:78px; height:78px; border-radius:16px; background:#ffffff; border:1px solid var(--border); transition:transform .15s ease, box-shadow .15s ease; }
     .review-logos a:hover{ transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,.35) }
     .review-logos img{ max-width:70%; max-height:70%; object-fit:contain }
-    .review-logos a.wallapop img{ max-width:85%; max-height:85%; }
+    .review-logos a.wallapop img{ max-width:92%; max-height:92%; }   /* más grande */
     .review-logos a.milanuncios img{ max-width:95%; max-height:95%; }
   </style>
 </head>
@@ -135,14 +114,8 @@
       </ul>
       <p>🌟 Transparencia, precios justos y trato cercano. Tu tranquilidad es nuestra prioridad.</p>
       <p>
-        <span class="inline-chip">
-          <img class="icon" src="img/whatsapp_icon.png" alt="WhatsApp">
-          <a href="https://wa.me/34642886426" target="_blank" class="btn">Escribir por WhatsApp</a>
-        </span>
-        <span class="inline-chip">
-          <img class="icon" src="img/Instagram_logo_2022.svg.webp" alt="Instagram">
-          <a href="https://www.instagram.com/electro_fix_it/" target="_blank" class="btn" style="background:#E1306C">Instagram</a>
-        </span>
+        <span class="inline-chip"><img class="icon" src="img/whatsapp_icon.png" alt="WhatsApp"><a href="https://wa.me/34642886426" target="_blank" class="btn">Escribir por WhatsApp</a></span>
+        <span class="inline-chip"><img class="icon" src="img/Instagram_logo_2022.svg.webp" alt="Instagram"><a href="https://www.instagram.com/electro_fix_it/" target="_blank" class="btn" style="background:#E1306C">Instagram</a></span>
       </p>
     </section>
 
@@ -158,11 +131,11 @@
       <a href="https://www.wallapop.com/user/diegot-393029070?_pid=wi&_uid=393029070" target="_blank" class="btn">Ver catálogo</a>
     </section>
 
-    <!-- Accesorios (solo botón; la lista se muestra en el modal) -->
+    <!-- Accesorios (SOLO botón; la lista va en el modal) -->
     <section id="accessories">
       <h2>Accesorios</h2>
-      <p>Haz clic para ver los accesorios con precio e imágenes.</p>
-      <a href="#" class="btn" id="section-accessories-btn">Abrir lista de Accesorios</a>
+      <p>Complementa tu dispositivo con nuestros accesorios: fundas, cargadores, baterías, cables y más.</p>
+      <a href="#" class="btn" id="section-accessories-btn">Ver lista de Accesorios</a>
     </section>
 
     <section id="trabajos">
@@ -181,29 +154,19 @@
       <h2>Reseñas</h2>
       <p>¿Dónde quieres dejar tu opinión o leer lo que dicen de nosotros?</p>
       <div class="review-logos">
-        <a href="https://www.google.com/search?q=Electro+Fix+IT+rese%C3%B1as" target="_blank" aria-label="Reseñas en Google">
-          <img src="img/google_icon.png" alt="Google">
-        </a>
-        <a href="https://es.wallapop.com/app/profile/reviews" target="_blank" aria-label="Reseñas en Wallapop" class="wallapop">
-          <img src="img/wallapop_icon.png" alt="Wallapop">
-        </a>
-        <a href="https://www.milanuncios.com/valoraciones-usuario/electro-fix-it-74694909.htm" target="_blank" aria-label="Reseñas en Milanuncios" class="milanuncios">
-          <img src="img/milanuncios_icon.png" alt="Milanuncios">
-        </a>
+        <a href="https://www.google.com/search?q=Electro+Fix+IT+rese%C3%B1as" target="_blank" aria-label="Reseñas en Google"><img src="img/google_icon.png" alt="Google"></a>
+        <a href="https://es.wallapop.com/app/profile/reviews" target="_blank" aria-label="Reseñas en Wallapop" class="wallapop"><img src="img/wallapop_icon.png" alt="Wallapop"></a>
+        <a href="https://www.milanuncios.com/valoraciones-usuario/electro-fix-it-74694909.htm" target="_blank" aria-label="Reseñas en Milanuncios" class="milanuncios"><img src="img/milanuncios_icon.png" alt="Milanuncios"></a>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
-    <p>
-      <img src="img/Instagram_logo_2022.svg.webp" alt="Logo Instagram">
-      <a href="https://www.instagram.com/electro_fix_it/" target="_blank">@electro_fix_it</a>
-    </p>
+    <p><img src="img/Instagram_logo_2022.svg.webp" alt="Logo Instagram"><a href="https://www.instagram.com/electro_fix_it/" target="_blank">@electro_fix_it</a></p>
     <p>© 2024 Electro Fix It. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- MODAL: Accesorios -->
+  <!-- --------------- MODAL: Accesorios --------------- -->
   <div class="modal" id="accessoriesModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="accTitle">
     <div class="modal-inner">
       <div class="modal-header">
@@ -211,139 +174,139 @@
         <button class="modal-close" id="closeAcc" aria-label="Cerrar">Cerrar ✕</button>
       </div>
 
-      <!-- Herramientas: filtros + buscador -->
       <div class="modal-tools">
-        <div class="filters" id="accFilters">
-          <button class="filter-btn active" data-cat="all">Todos</button>
-          <button class="filter-btn" data-cat="protectores">Protectores</button>
-          <button class="filter-btn" data-cat="fundas">Fundas</button>
-          <button class="filter-btn" data-cat="cables">Cables</button>
-          <button class="filter-btn" data-cat="baterias">Baterías</button>
-          <button class="filter-btn" data-cat="cargadores">Cargadores</button>
-          <button class="filter-btn" data-cat="soportes">Soportes</button>
-        </div>
         <input type="search" id="accSearch" class="modal-search" placeholder="Buscar accesorio...">
+        <div class="filters" id="filters">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="fundas">Fundas</button>
+          <button class="filter-btn" data-filter="cables">Cables</button>
+          <button class="filter-btn" data-filter="cargadores">Cargadores</button>
+          <button class="filter-btn" data-filter="baterias">Baterías</button>
+        </div>
       </div>
 
       <div class="grid" id="accCards">
-        <!-- 1) Protector de pantalla -->
-        <article class="card" data-cat="protectores">
-          <div class="media"><img src="img/protector_pantalla.jpg" alt="Protector de pantalla"></div>
+        <!-- SOLO accesorios con foto; imágenes ajustadas con object-fit:contain -->
+
+        <!-- Fundas -->
+        <article class="card" data-name="fundas colores originales" data-cat="fundas">
+          <div class="media"><img src="img/fundas_colores.jpg" alt="Fundas originales de colores"></div>
           <div class="body">
-            <div class="title">Protector de pantalla</div>
-            <div class="desc">Protección básica.</div>
-            <div class="price">4 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Hola%20Electro%20Fix%20It%2C%20quiero%20un%20Protector%20de%20pantalla%20(4%E2%82%AC)">Pedir por WhatsApp</a>
+            <div class="title">Fundas originales (colores)</div>
+            <div class="desc">Acabado premium y protección elegante.</div>
+            <div class="price">10 €</div>
+            <a class="cta btn" target="_blank"
+               href="https://wa.me/34642886426?text=Quiero%20Fundas%20originales%20de%20colores%20(10%E2%82%AC)">Pedir por WhatsApp</a>
           </div>
         </article>
-
-        <!-- 2) Protector con instalación -->
-        <article class="card" data-cat="protectores">
-          <div class="media"><img src="img/protector_instalacion.jpg" alt="Protector con instalación"></div>
-          <div class="body">
-            <div class="title">Protector con instalación</div>
-            <div class="desc">Incluye instalación profesional.</div>
-            <div class="price">6 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Hola%20Electro%20Fix%20It%2C%20quiero%20Protector%20con%20instalaci%C3%B3n%20(6%E2%82%AC)">Pedir por WhatsApp</a>
-          </div>
-        </article>
-
-        <!-- 3) Carcasa transparente MagSafe -->
-        <article class="card" data-cat="fundas">
+        <article class="card" data-name="carcasa transparente magsafe" data-cat="fundas">
           <div class="media"><img src="img/Carcasa_transparente.jpg" alt="Carcasa transparente MagSafe"></div>
           <div class="body">
             <div class="title">Carcasa transparente MagSafe</div>
             <div class="desc">Funda transparente con anillo magnético.</div>
             <div class="price">5 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Hola%20Electro%20Fix%20It%2C%20quiero%20Carcasa%20MagSafe%20(5%E2%82%AC)">Pedir por WhatsApp</a>
+            <a class="cta btn" target="_blank"
+               href="https://wa.me/34642886426?text=Quiero%20Carcasa%20MagSafe%20(5%E2%82%AC)">Pedir por WhatsApp</a>
           </div>
         </article>
 
-        <!-- 3b) Fundas originales de colores -->
-        <article class="card" data-cat="fundas">
-          <div class="media"><img src="img/fundas_colores.jpg" alt="Fundas originales de colores"></div>
+        <!-- Protectores (los dejamos en 'fundas' para no crear categoría extra) -->
+        <article class="card" data-name="protector de pantalla" data-cat="fundas">
+          <div class="media"><img src="img/protector_pantalla.jpg" alt="Protector de pantalla"></div>
           <div class="body">
-            <div class="title">Fundas originales de colores</div>
-            <div class="desc">Variedad de colores, ajuste perfecto.</div>
-            <div class="price">10 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Hola%20Electro%20Fix%20It%2C%20quiero%20Fundas%20originales%20de%20colores%20(10%E2%82%AC)">Pedir por WhatsApp</a>
+            <div class="title">Protector de pantalla</div>
+            <div class="desc">Protección básica.</div>
+            <div class="price">4 €</div>
+            <a class="cta btn" target="_blank"
+               href="https://wa.me/34642886426?text=Quiero%20Protector%20de%20pantalla%20(4%E2%82%AC)">Pedir por WhatsApp</a>
+          </div>
+        </article>
+        <article class="card" data-name="protector con instalación" data-cat="fundas">
+          <div class="media"><img src="img/protector_instalacion.jpg" alt="Protector con instalación"></div>
+          <div class="body">
+            <div class="title">Protector con instalación</div>
+            <div class="desc">Incluye instalación profesional.</div>
+            <div class="price">6 €</div>
+            <a class="cta btn" target="_blank"
+               href="https://wa.me/34642886426?text=Quiero%20Protector%20con%20instalaci%C3%B3n%20(6%E2%82%AC)">Pedir por WhatsApp</a>
           </div>
         </article>
 
-        <!-- 4) Cable Lightning a USB/Tipo C -->
-        <article class="card" data-cat="cables">
+        <!-- Cables -->
+        <article class="card" data-name="cable lightning a usb tipo c" data-cat="cables">
           <div class="media"><img src="img/cable_tipo_c_lightning.jpg" alt="Cable Lightning a USB/Tipo C"></div>
           <div class="body">
             <div class="title">Cable Lightning a USB/Tipo C</div>
-            <div class="desc">Cable de datos y carga para iPhone.</div>
+            <div class="desc">Datos y carga para iPhone.</div>
             <div class="price">4,50 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Hola%20Electro%20Fix%20It%2C%20quiero%20Cable%20Lightning%20a%20USB/Tipo%20C%20(4%2C50%E2%82%AC)">Pedir por WhatsApp</a>
+            <a class="cta btn" target="_blank"
+               href="https://wa.me/34642886426?text=Quiero%20Cable%20Lightning%20a%20USB/Tipo%20C%20(4,50%E2%82%AC)">Pedir por WhatsApp</a>
           </div>
         </article>
 
-        <!-- 5) Batería MagSafe 5000 mAh -->
-        <article class="card" data-cat="baterias">
-          <div class="media"><img src="img/bateria_magsafe.jpg" alt="Batería MagSafe 5000 mAh"></div>
-          <div class="body">
-            <div class="title">Batería MagSafe 5.000 mAh</div>
-            <div class="desc">Power bank magnético, carga inalámbrica 15W.</div>
-            <div class="price">30 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Hola%20Electro%20Fix%20It%2C%20quiero%20Bater%C3%ADa%20MagSafe%205000mAh%20(30%E2%82%AC)">Pedir por WhatsApp</a>
-          </div>
-        </article>
-
-        <!-- 6) Batería MagSafe 10000 mAh -->
-        <article class="card" data-cat="baterias">
-          <div class="media"><img src="img/bateria_magsafe.jpg" alt="Batería MagSafe 10000 mAh"></div>
-          <div class="body">
-            <div class="title">Batería MagSafe 10.000 mAh</div>
-            <div class="desc">Mayor capacidad para viajes.</div>
-            <div class="price">40 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Hola%20Electro%20Fix%20It%2C%20quiero%20Bater%C3%ADa%20MagSafe%2010000mAh%20(40%E2%82%AC)">Pedir por WhatsApp</a>
-          </div>
-        </article>
-
-        <!-- 7) Cargador genérico 65W -->
-        <article class="card" data-cat="cargadores">
+        <!-- Cargadores -->
+        <article class="card" data-name="cargador 65w" data-cat="cargadores">
           <div class="media"><img src="img/cargador_65w.jpg" alt="Cargador genérico 65W"></div>
           <div class="body">
             <div class="title">Cargador genérico 65W</div>
             <div class="desc">Compatible con varios dispositivos.</div>
             <div class="price">10 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Hola%20Electro%20Fix%20It%2C%20quiero%20Cargador%2065W%20(10%E2%82%AC)">Pedir por WhatsApp</a>
+            <a class="cta btn" target="_blank"
+               href="https://wa.me/34642886426?text=Quiero%20Cargador%2065W%20(10%E2%82%AC)">Pedir por WhatsApp</a>
           </div>
         </article>
-
-        <!-- 8) Cargador Apple Watch / SmartWatch (cargadores + cables) -->
-        <article class="card" data-cat="cargadores cables">
+        <article class="card" data-name="cargador apple watch smartwatch" data-cat="cargadores,cables">
           <div class="media"><img src="img/cargador_watch.jpg" alt="Cargador Apple Watch SmartWatch"></div>
           <div class="body">
             <div class="title">Cargador Apple Watch / SmartWatch</div>
             <div class="desc">Base magnética para relojes inteligentes.</div>
             <div class="price">10 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Hola%20Electro%20Fix%20It%2C%20quiero%20Cargador%20Apple%20Watch/SmartWatch%20(10%E2%82%AC)">Pedir por WhatsApp</a>
+            <a class="cta btn" target="_blank"
+               href="https://wa.me/34642886426?text=Quiero%20Cargador%20Apple%20Watch/SmartWatch%20(10%E2%82%AC)">Pedir por WhatsApp</a>
           </div>
         </article>
-
-        <!-- 9) Set de carga 3 en 1 (ahora en cargadores) -->
-        <article class="card" data-cat="cargadores">
+        <article class="card" data-name="set de carga 3 en 1" data-cat="cargadores">
           <div class="media"><img src="img/set_3en1.jpg" alt="Set de carga 3 en 1"></div>
           <div class="body">
             <div class="title">Set de carga 3 en 1</div>
             <div class="desc">Móvil + AirPods + Apple Watch.</div>
             <div class="price">20 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Hola%20Electro%20Fix%20It%2C%20quiero%20Set%203%20en%201%20(20%E2%82%AC)">Pedir por WhatsApp</a>
+            <a class="cta btn" target="_blank"
+               href="https://wa.me/34642886426?text=Quiero%20Set%203%20en%201%20(20%E2%82%AC)">Pedir por WhatsApp</a>
           </div>
         </article>
 
-        <!-- 10) Soporte con ventosas -->
-        <article class="card" data-cat="soportes">
+        <!-- Baterías -->
+        <article class="card" data-name="bateria magsafe 5000" data-cat="baterias">
+          <div class="media"><img src="img/bateria_magsafe.jpg" alt="Batería MagSafe 5000 mAh"></div>
+          <div class="body">
+            <div class="title">Batería MagSafe 5.000 mAh</div>
+            <div class="desc">Power bank magnético, carga inalámbrica 15W.</div>
+            <div class="price">30 €</div>
+            <a class="cta btn" target="_blank"
+               href="https://wa.me/34642886426?text=Quiero%20Bater%C3%ADa%20MagSafe%205000mAh%20(30%E2%82%AC)">Pedir por WhatsApp</a>
+          </div>
+        </article>
+        <article class="card" data-name="bateria magsafe 10000" data-cat="baterias">
+          <div class="media"><img src="img/bateria_magsafe.jpg" alt="Batería MagSafe 10000 mAh"></div>
+          <div class="body">
+            <div class="title">Batería MagSafe 10.000 mAh</div>
+            <div class="desc">Mayor capacidad para viajes.</div>
+            <div class="price">40 €</div>
+            <a class="cta btn" target="_blank"
+               href="https://wa.me/34642886426?text=Quiero%20Bater%C3%ADa%20MagSafe%2010000mAh%20(40%E2%82%AC)">Pedir por WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- Otros (soporte) -->
+        <article class="card" data-name="soporte con ventosas" data-cat="fundas">
           <div class="media"><img src="img/soporte_ventosas.jpg" alt="Soporte con ventosas"></div>
           <div class="body">
             <div class="title">Soporte con ventosas</div>
             <div class="desc">Antirrobo; se adhiere a superficies.</div>
             <div class="price">2,50 €</div>
-            <a class="cta btn" target="_blank" href="https://wa.me/34642886426?text=Hola%20Electro%20Fix%20It%2C%20quiero%20Soporte%20con%20ventosas%20(2%2C50%E2%82%AC)">Pedir por WhatsApp</a>
+            <a class="cta btn" target="_blank"
+               href="https://wa.me/34642886426?text=Quiero%20Soporte%20con%20ventosas%20(2,50%E2%82%AC)">Pedir por WhatsApp</a>
           </div>
         </article>
       </div>
@@ -356,21 +319,17 @@
     const $$ = (q,ctx=document)=>Array.from(ctx.querySelectorAll(q));
 
     // Modal accesorios
-    const accModal   = $('#accessoriesModal');
-    const openAccBtns= [$('#nav-accessories'), $('#section-accessories-btn')];
-    const closeAccBtn= $('#closeAcc');
-    const accSearch  = $('#accSearch');
-    const accCards   = $('#accCards');
-    const accFilters = $('#accFilters');
-
-    let activeCat = 'all';
+    const accModal = $('#accessoriesModal');
+    const openAccBtns = [$('#nav-accessories'), $('#section-accessories-btn')];
+    const closeAccBtn = $('#closeAcc');
+    const accSearch = $('#accSearch');
+    const accCards = $('#accCards');
 
     function openModal(){
       accModal.setAttribute('aria-hidden','false');
       document.body.style.overflow='hidden';
-      accSearch.value=''; activeCat='all';
-      setActiveFilterButton();
-      applyFilters();
+      accSearch.value='';
+      filterCards('');
       setTimeout(()=>accSearch.focus(), 0);
       document.addEventListener('keydown', onEscClose);
     }
@@ -381,39 +340,31 @@
     }
     function onEscClose(e){ if(e.key==='Escape') closeModal(); }
 
-    openAccBtns.forEach(btn=>{
-      if(btn){ btn.addEventListener('click', e=>{ e.preventDefault(); openModal(); }); }
-    });
+    openAccBtns.forEach(btn=>{ if(btn){ btn.addEventListener('click', e=>{ e.preventDefault(); openModal(); }); }});
     closeAccBtn.addEventListener('click', closeModal);
     accModal.addEventListener('click', e=>{ if(e.target===accModal) closeModal(); });
 
-    // Buscador + filtros combinados (admite multi-categoría: data-cat="cargadores cables")
-    function cardMatchesCategory(card){
-      if(activeCat==='all') return true;
-      const cats = (card.dataset.cat || '').toLowerCase().split(/\s+/);
-      return cats.includes(activeCat);
-    }
-    function applyFilters(){
-      const q = accSearch.value.toLowerCase();
+    // Búsqueda + filtros
+    function filterCards(q, cat='all'){
+      const query = (q||'').toLowerCase();
       $$('.card', accCards).forEach(card=>{
-        const matchesText = card.innerText.toLowerCase().includes(q);
-        const matchesCat  = cardMatchesCategory(card);
+        const matchesText = card.innerText.toLowerCase().includes(query);
+        const cats = (card.getAttribute('data-cat')||'').split(',');
+        const matchesCat = (cat==='all') || cats.includes(cat);
         card.style.display = (matchesText && matchesCat) ? '' : 'none';
       });
     }
-    accSearch.addEventListener('input', applyFilters);
+    accSearch.addEventListener('input', e=>{
+      const activeCat = $('.filter-btn.active')?.getAttribute('data-filter') || 'all';
+      filterCards(e.target.value, activeCat);
+    });
 
-    function setActiveFilterButton(){
-      $$('.filter-btn', accFilters).forEach(b=>{
-        b.classList.toggle('active', b.dataset.cat===activeCat);
+    $$('#filters .filter-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        $$('#filters .filter-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        filterCards(accSearch.value, btn.getAttribute('data-filter'));
       });
-    }
-    accFilters.addEventListener('click', (e)=>{
-      const btn = e.target.closest('.filter-btn');
-      if(!btn) return;
-      activeCat = btn.dataset.cat || 'all';
-      setActiveFilterButton();
-      applyFilters();
     });
   </script>
 </body>
