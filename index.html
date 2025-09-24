@@ -59,7 +59,7 @@
 
     .modal-search{ flex:1 1 220px; background:rgba(255,255,255,.06); border:1px solid var(--border); color:#fff; padding:10px 12px; border-radius:10px; outline:none; }
 
-    /* Filtros por categoría */
+    /* Filtros por categoría (simplificados) */
     .filters{ display:flex; flex-wrap:wrap; gap:8px; }
     .filter-btn{
       background:rgba(255,255,255,.06); color:#fff; border:1px solid var(--border);
@@ -74,9 +74,9 @@
       background:#fff; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
       overflow:hidden;
     }
+    /* Mostrar enteras sin recortar ni salirse */
     .card .media img{
-      width:100%; height:100%; object-fit:contain; background:#fff;
-      transform:scale(1.18); transform-origin:center; /* zoom ligero para que “llene” el cuadro sin recortar */
+      width:100%; height:100%; object-fit:contain; background:#fff; transform:none;
     }
     .card .body{ padding:12px 14px }
     .card .title{ font-weight:800; margin-bottom:6px }
@@ -85,10 +85,7 @@
     .card .cta{ margin-top:10px; display:inline-block; font-size:.95rem }
 
     @media (max-width:980px){ .grid{ grid-template-columns:repeat(2,1fr) } }
-    @media (max-width:640px){
-      .grid{ grid-template-columns:1fr }
-      .card .media img{ transform:scale(1.24); }
-    }
+    @media (max-width:640px){ .grid{ grid-template-columns:1fr } }
 
     /* Reseñas (iconos solo, alineados a la izquierda) */
     .review-logos{
@@ -223,9 +220,7 @@
           <button class="filter-btn" data-cat="cables">Cables</button>
           <button class="filter-btn" data-cat="baterias">Baterías</button>
           <button class="filter-btn" data-cat="cargadores">Cargadores</button>
-          <button class="filter-btn" data-cat="sets">Sets</button>
           <button class="filter-btn" data-cat="soportes">Soportes</button>
-          <button class="filter-btn" data-cat="relojes">Relojes</button>
         </div>
         <input type="search" id="accSearch" class="modal-search" placeholder="Buscar accesorio...">
       </div>
@@ -264,7 +259,7 @@
           </div>
         </article>
 
-        <!-- 3b) Fundas originales de colores (NUEVO) -->
+        <!-- 3b) Fundas originales de colores -->
         <article class="card" data-cat="fundas">
           <div class="media"><img src="img/fundas_colores.jpg" alt="Fundas originales de colores"></div>
           <div class="body">
@@ -319,8 +314,8 @@
           </div>
         </article>
 
-        <!-- 8) Cargador Apple Watch / SmartWatch -->
-        <article class="card" data-cat="relojes">
+        <!-- 8) Cargador Apple Watch / SmartWatch (cargadores + cables) -->
+        <article class="card" data-cat="cargadores cables">
           <div class="media"><img src="img/cargador_watch.jpg" alt="Cargador Apple Watch SmartWatch"></div>
           <div class="body">
             <div class="title">Cargador Apple Watch / SmartWatch</div>
@@ -330,8 +325,8 @@
           </div>
         </article>
 
-        <!-- 9) Set de carga 3 en 1 -->
-        <article class="card" data-cat="sets">
+        <!-- 9) Set de carga 3 en 1 (ahora en cargadores) -->
+        <article class="card" data-cat="cargadores">
           <div class="media"><img src="img/set_3en1.jpg" alt="Set de carga 3 en 1"></div>
           <div class="body">
             <div class="title">Set de carga 3 en 1</div>
@@ -392,12 +387,17 @@
     closeAccBtn.addEventListener('click', closeModal);
     accModal.addEventListener('click', e=>{ if(e.target===accModal) closeModal(); });
 
-    // Buscador + filtros combinados
+    // Buscador + filtros combinados (admite multi-categoría: data-cat="cargadores cables")
+    function cardMatchesCategory(card){
+      if(activeCat==='all') return true;
+      const cats = (card.dataset.cat || '').toLowerCase().split(/\s+/);
+      return cats.includes(activeCat);
+    }
     function applyFilters(){
       const q = accSearch.value.toLowerCase();
       $$('.card', accCards).forEach(card=>{
         const matchesText = card.innerText.toLowerCase().includes(q);
-        const matchesCat  = activeCat==='all' || card.dataset.cat===activeCat;
+        const matchesCat  = cardMatchesCategory(card);
         card.style.display = (matchesText && matchesCat) ? '' : 'none';
       });
     }
